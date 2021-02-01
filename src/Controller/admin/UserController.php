@@ -77,138 +77,22 @@ class UserController extends AbstractController
 
         ]);
     }
-
     /**
-     * @Route("/{id}/new/user", name="admin_create_user_in_congres")
+     * @Route("/{id}/user", name="admin_produits_user")
      */
-    public function createUserInCongres($id, Request $request)
+    public function user_products($id, Request $request, EntityManagerInterface $em)
     {
-        $congres = $this->congresManager->getById($id);
-        if ($congres == null) {
+        $produits = $this->em->getRepository(User::class)->getProduits();
+        $users = $this->userManager->getAllByCongres($produits);
+        if ($produits == null) {
             return $this->render('notFound.html.twig');
         }
 
-        $form = $this->createForm(UserCreationType::class);
-        $form->setData(new User());
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user = $form->getData();
-            $img = $form->get('img')->getData();
-
-            $originalFilename = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
-            // this is needed to safely include the file name as part of the URL
-            $safeFilename = $originalFilename;
-            $newFilename = $safeFilename . '-' . uniqid() . '.' . $img->guessExtension();
-
-            // Move the file to the directory where brochures are stored
-            try {
-                $img->move(
-                    $this->getParameter('photo_user_directory'),
-                    $newFilename
-                );
-            } catch (FileException $e) {
-                $this->addFlash('error', 'Erreur');
-            }
-
-
-            $user->setPassword($this->passwordEncoder->encodePassword($user, 'userincyte2020'))
-                ->setImg($newFilename)
-                ->addCongres($congres);
-            $this->em->persist($user);
-
-            //Génération des meetings
-            $hourMin = $congres->getHourMin();
-            $startDate = $congres->getStartDate();
-            $endDate = $congres->getEndDate();
-            $hourMax = $congres->getHourMax();
-            //->sub(new \DateInterval('PT1S'));
-            $duration = $congres->getDurationMeeting();
-            $duration = $duration->diff(new \DateTime("1970-01-01 00:00:00.0"));
-
-
-            $daterangeByDay = [];
-            $daterange = new \DatePeriod($hourMin, $duration, $hourMax);
-            while ($startDate <= $endDate) {
-                $daterangeByHour = [];
-                foreach ($daterange as $date) {
-                    $date = (new \DateTime("1970-01-01 00:00:00.0"))->diff($date);
-                    $meetinStartDate = clone $startDate;
-                    $meetinStartDate->add($date);
-                    array_push($daterangeByHour, $meetinStartDate);
-                }
-                array_push($daterangeByDay, $daterangeByHour);
-                $startDate->add(new \DateInterval('P1D'));
-            }
-            foreach ($daterangeByDay as $meetingByDay) {
-                foreach ($meetingByDay as $meetingByHour) {
-                    $meeting = new Meeting();
-                    $endDate = clone $meetingByHour;
-                    $endDate = $endDate->sub($duration);
-                    $meeting->setUser($user)
-                        ->setIsOpen(true)
-                        ->setStartDate($meetingByHour)
-                        ->setEndDate(($endDate))
-                        ->setIsReserved(false)
-                        ->setCongres($congres);
-                    $this->em->persist($meeting);
-                }
-            }
-
-            $this->em->flush();
-            $this->addFlash('sucess', 'Contact ajouté');
-            return $this->redirectToRoute('admin_planning_user', ['idCongres'=>$congres->getId(), 'idUser'=>$user->getId()]);
-        }
-
-        return $this->render('admin/congres/createUserInCongres.html.twig', [
-            'form' => $form->createView(),
-            'congres' => $congres
+        return $this->render('admin/congres/user.html.twig', [
+            'congres' => $produits,
+            'users' => $users
 
         ]);
-    }
-
-    /**
-     * @Route("/{idCongres}/planning/user/{idUser}", name="admin_planning_user")
-     */
-    public function planningUser($idCongres, $idUser, Request $request)
-    {
-        $user = $this->userManager->getById($idUser);
-        $congres = $this->congresManager->getById($idCongres);
-        if ($congres == null || $user == null) {return $this->render('notFound.html.twig');}
-        $meetings = $this->meetingManager->getAllByCongresAndUser($congres->getId(), $user->getId());
-
-        $data = $request->request->all();
-        if (!empty($data)){
-            foreach ($data as $meetingId){
-                if ($meetingId != ""){
-                    $meeting = $this->meetingManager->getById($meetingId);
-                    $meeting->setIsopen(false);
-                    $this->em->persist($meeting);
-                }
-            }
-            $this->em->flush();
-            $this->addFlash('sucess', 'Planning édité');
-            return $this->redirectToRoute('admin_congres_user',['id' => $congres->getId()]);
-        }
-        return $this->render('admin/congres/planningUser.html.twig',[
-            'meetings' => $meetings,
-            'user' => $user,
-            'congres' => $congres,
-            'startDate' => $congres->getStartDate(),
-        ]);
-    }
-
-    /**
-     * @Route("/open/meeting", name="open_meeting")
-     */
-    public function addStatDocument(Request $request)
-    {
-        $idMeeting = $request->query->get('meeting');
-        if ($idMeeting == null){return new JsonResponse(false);}
-        $meeting = $this->meetingManager->getById($idMeeting);
-        $meeting->setIsOpen(true);
-        $this->em->persist($meeting);
-        $this->em->flush();
-        return new JsonResponse(true);
     }
 
     /**

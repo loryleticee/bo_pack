@@ -4,7 +4,7 @@
     </a>
     {% set route =  app.request.get('_route') %}
     <a href="{{ path('admin_home') }}" class="calendar_icon {{ route == 'admin_home' ? 'active': ''}}"></a>
-    <a href="{{ path('admin_categorie') }}" class="cat {{ route == 'admin_categorie' ? 'active': ''}}" style="background-image: url({{ asset('img/cat.svg') }})"  width="40"></a>
+    <a href="{{ path('admin_user') }}" class="cat {{ route == 'admin_categorie' ? 'active': ''}}" style="background-image: url({{ asset('img/cat.svg') }})"  width="40"></a>
     <a href="{{ path('admin_logout') }}" class="logout" style="background-image: url({{ asset('img/logout.svg') }});top: 280px;"></a>
 
 </nav>

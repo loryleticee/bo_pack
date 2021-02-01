@@ -61,7 +61,7 @@ class __TwigTemplate_cee4fb4939c34c7bcc6cce872ee1df4b24deee568ee6455182d318bac9e
         echo "\"></a>
     <a href=\"";
         // line 7
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_categorie");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin_user");
         echo "\" class=\"cat ";
         echo (((0 === twig_compare(($context["route"] ?? null), "admin_categorie"))) ? ("active") : (""));
         echo "\" style=\"background-image: url(";
@@ -108,11 +108,11 @@ class __TwigTemplate_cee4fb4939c34c7bcc6cce872ee1df4b24deee568ee6455182d318bac9e
     </a>
     {% set route =  app.request.get('_route') %}
     <a href=\"{{ path('admin_home') }}\" class=\"calendar_icon {{ route == 'admin_home' ? 'active': ''}}\"></a>
-    <a href=\"{{ path('admin_categorie') }}\" class=\"cat {{ route == 'admin_categorie' ? 'active': ''}}\" style=\"background-image: url({{ asset('img/cat.svg') }})\"  width=\"40\"></a>
+    <a href=\"{{ path('admin_user') }}\" class=\"cat {{ route == 'admin_categorie' ? 'active': ''}}\" style=\"background-image: url({{ asset('img/cat.svg') }})\"  width=\"40\"></a>
     <a href=\"{{ path('admin_logout') }}\" class=\"logout\" style=\"background-image: url({{ asset('img/logout.svg') }});top: 280px;\"></a>
 
 </nav>
 
-", "/admin/_navbar.html.twig", "C:\\wamp64\\www\\incyte\\httpdocs\\templates\\admin\\_navbar.html.twig");
+", "/admin/_navbar.html.twig", "C:\\wamp64\\www\\incyte\\bo_pack\\templates\\admin\\_navbar.html.twig");
     }
 }

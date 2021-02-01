@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin - Incyte{% endblock %}
+{% block title %}Admin - Bo_pack{% endblock %}
 {% block stylesheets %}
     {{ parent() }}
     {{ encore_entry_link_tags('admin') }}
@@ -11,24 +11,39 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="{{ path('admin_create_congres') }}"><button class="btn btn-primary mb-5 text-right float-right">Créer un congrès</button></a>
-                <h3>Vos congrès</h3>
+                <a href="{{ path('produit_new') }}"><button class="btn btn-primary mb-5 text-right float-right">Créer un produit</button></a>
+                <h3>Vos produits</h3>
                 <br>
                 <table class="table bg-white shadow rounded-lg">
                     <thead>
                         <tr>
                             <th>Nom</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
+                            <th>Type</th>
+                            <th>Utilisateur</th>
+                            <th>Date de création</th>
+                            <th>Emplacement</th>
+                            <th>Date de modification</th>
+                            <th>Qr Code</th>
+                            {# <th>Qr code Id</th> #}
+                            <th>Marque</th>
+                            <th>Modele</th>
+                            <th>État</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                    {% for congre in congres %}
+                    {% for produit in produits %}
                         <tr>
-                            <td>{{ congre.name }}</td>
-                            <td>{{ congre.startDate|format_date(locale='fr') }}</td>
-                            <td>{{ congre.endDate|format_date(locale='fr') }}</td>
+                            <td>{{ produit.name }}</td>
+                            <td>{{ produit.type }}</td>
+                            <td>{{ produit.user_id }}</td>
+                            <td>{{ produit.add_date|format_date(locale='fr') }}</td>
+                            <td>{{ produit.place }}</td>
+                            <td>{{ produit.last_modify|format_date(locale='fr') }}</td>
+                            <td>{{ produit.qr_code }}</td>
+                            <td>{{ produit.brand }}</td>
+                            <td>{{ produit.model }}</td>
+                            <td>{{ produit.status }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">
@@ -36,15 +51,9 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item"
-                                           href="{{ path('admin_congres_user', {id: congre.id}) }}">Contacts
+                                           href="{{ path('admin_produits_user', {id: produit.id}) }}">Utilisateur
                                         </a>
-                                        <a class="dropdown-item"
-                                           href="{{ path('admin_congres_documents', {id: congre.id}) }}">Documents
-                                        </a>
-                                        <a class="dropdown-item"
-                                           href="{{ path('admin_congres_edit', {id: congre.id}) }}">Configuration
-                                        </a>
-                                        {{ include('admin/congres/_delete_form.html.twig') }}
+                                        {{ include('produit/_delete_form.html.twig') }}
                                     </div>
                                 </div>
                             </td>

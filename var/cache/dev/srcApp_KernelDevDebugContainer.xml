@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services https://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">C:\wamp64\www\incyte\httpdocs\src</parameter>
-    <parameter key="kernel.project_dir">C:\wamp64\www\incyte\httpdocs</parameter>
+    <parameter key="kernel.root_dir">C:\wamp64\www\incyte\bo_pack\src</parameter>
+    <parameter key="kernel.project_dir">C:\wamp64\www\incyte\bo_pack</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">src</parameter>
-    <parameter key="kernel.cache_dir">C:\wamp64\www\incyte\httpdocs\var\cache\dev</parameter>
-    <parameter key="kernel.logs_dir">C:\wamp64\www\incyte\httpdocs\var\log</parameter>
+    <parameter key="kernel.cache_dir">C:\wamp64\www\incyte\bo_pack\var\cache\dev</parameter>
+    <parameter key="kernel.logs_dir">C:\wamp64\www\incyte\bo_pack\var\log</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
@@ -25,64 +25,64 @@
     </parameter>
     <parameter key="kernel.bundles_metadata" type="collection">
       <parameter key="FrameworkBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\framework-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\framework-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\FrameworkBundle</parameter>
       </parameter>
       <parameter key="DoctrineBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\doctrine\doctrine-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\doctrine\doctrine-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\DoctrineBundle</parameter>
       </parameter>
       <parameter key="DebugBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\debug-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\debug-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\DebugBundle</parameter>
       </parameter>
       <parameter key="DoctrineMigrationsBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\doctrine\doctrine-migrations-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\doctrine\doctrine-migrations-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\MigrationsBundle</parameter>
       </parameter>
       <parameter key="SensioFrameworkExtraBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\sensio\framework-extra-bundle\src</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\sensio\framework-extra-bundle\src</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
       </parameter>
       <parameter key="WebpackEncoreBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\webpack-encore-bundle\src</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\webpack-encore-bundle\src</parameter>
         <parameter key="namespace">Symfony\WebpackEncoreBundle</parameter>
       </parameter>
       <parameter key="DoctrineFixturesBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\doctrine\doctrine-fixtures-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\doctrine\doctrine-fixtures-bundle</parameter>
         <parameter key="namespace">Doctrine\Bundle\FixturesBundle</parameter>
       </parameter>
       <parameter key="TwigBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\TwigBundle</parameter>
       </parameter>
       <parameter key="WebProfilerBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\web-profiler-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\web-profiler-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\WebProfilerBundle</parameter>
       </parameter>
       <parameter key="MakerBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\maker-bundle\src</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\maker-bundle\src</parameter>
         <parameter key="namespace">Symfony\Bundle\MakerBundle</parameter>
       </parameter>
       <parameter key="SecurityBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\security-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\security-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SecurityBundle</parameter>
       </parameter>
       <parameter key="TwigExtraBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\twig\extra-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\twig\extra-bundle</parameter>
         <parameter key="namespace">Twig\Extra\TwigExtraBundle</parameter>
       </parameter>
       <parameter key="SwiftmailerBundle" type="collection">
-        <parameter key="path">C:\wamp64\www\incyte\httpdocs\vendor\symfony\swiftmailer-bundle</parameter>
+        <parameter key="path">C:\wamp64\www\incyte\bo_pack\vendor\symfony\swiftmailer-bundle</parameter>
         <parameter key="namespace">Symfony\Bundle\SwiftmailerBundle</parameter>
       </parameter>
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">srcApp_KernelDevDebugContainer</parameter>
     <parameter key="container.dumper.inline_class_loader">true</parameter>
-    <parameter key="photo_user_directory">C:\wamp64\www\incyte\httpdocs/public/uploads/img/user</parameter>
-    <parameter key="img_doc_directory">C:\wamp64\www\incyte\httpdocs/public/uploads/img/document</parameter>
-    <parameter key="doc_directory">C:\wamp64\www\incyte\httpdocs/public/uploads/documents</parameter>
+    <parameter key="photo_user_directory">C:\wamp64\www\incyte\bo_pack/public/uploads/img/user</parameter>
+    <parameter key="img_doc_directory">C:\wamp64\www\incyte\bo_pack/public/uploads/img/document</parameter>
+    <parameter key="doc_directory">C:\wamp64\www\incyte\bo_pack/public/uploads/documents</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -129,19 +129,19 @@
       <parameter key="cookie_samesite">lax</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">C:\wamp64\www\incyte\httpdocs\var\cache\dev/sessions</parameter>
+    <parameter key="session.save_path">C:\wamp64\www\incyte\bo_pack\var\cache\dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
     <parameter key="asset.request_context.base_path"></parameter>
     <parameter key="asset.request_context.secure">false</parameter>
-    <parameter key="validator.mapping.cache.file">C:\wamp64\www\incyte\httpdocs\var\cache\dev/validation.php</parameter>
+    <parameter key="validator.mapping.cache.file">C:\wamp64\www\incyte\bo_pack\var\cache\dev/validation.php</parameter>
     <parameter key="validator.translation_domain">validators</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\incyte\httpdocs\var\cache\dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\incyte\bo_pack\var\cache\dev/profiler</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">C:\wamp64\www\incyte\httpdocs\var\cache\dev/srcApp_KernelDevDebugContainer.xml</parameter>
+    <parameter key="debug.container.dump">C:\wamp64\www\incyte\bo_pack\var\cache\dev/srcApp_KernelDevDebugContainer.xml</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
@@ -214,7 +214,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\incyte\httpdocs\var\cache\dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\incyte\bo_pack\var\cache\dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="env(VAR_DUMPER_SERVER)">127.0.0.1:9912</parameter>
     <parameter key="doctrine.migrations.preferred_em">null</parameter>
@@ -223,7 +223,7 @@
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
     </parameter>
-    <parameter key="twig.default_path">C:\wamp64\www\incyte\httpdocs/templates</parameter>
+    <parameter key="twig.default_path">C:\wamp64\www\incyte\bo_pack/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
     <parameter key="security.authentication.trust_resolver.anonymous_class">null</parameter>
@@ -235,7 +235,7 @@
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="swiftmailer.mailer.default.transport.name">dynamic</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\incyte\httpdocs\var\cache\dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\incyte\bo_pack\var\cache\dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -378,9 +378,7 @@
     <service id="App\Controller\admin\AdminController" class="App\Controller\admin\AdminController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
-      <argument type="service" id="App\Manager\CongresManager"/>
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
-      <argument type="service" id="App\Manager\CategoriesManager"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\admin\AdminController"/>
       </call>
@@ -404,6 +402,13 @@
       <argument type="service" id="security.user_password_encoder.generic"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.vdmMuyE.App\Controller\admin\DocumentController"/>
+      </call>
+    </service>
+    <service id="App\Controller\admin\ProduitController" class="App\Controller\admin\ProduitController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.vdmMuyE.App\Controller\admin\ProduitController"/>
       </call>
     </service>
     <service id="App\Controller\admin\UserController" class="App\Controller\admin\UserController" public="true" autowire="true" autoconfigure="true">
@@ -454,6 +459,9 @@
     <service id="App\Form\Front\SecurityCongresType" class="App\Form\Front\SecurityCongresType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
+    <service id="App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
     <service id="App\Manager\CategoriesManager" class="App\Manager\CategoriesManager" autowire="true" autoconfigure="true">
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
     </service>
@@ -490,6 +498,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\MeetingRepository" class="App\Repository\MeetingRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -585,7 +597,7 @@
     <service id="cache_warmer" class="Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerAggregate" public="true">
       <argument type="tagged_iterator" tag="kernel.cache_warmer"/>
       <argument>true</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/srcApp_KernelDevDebugContainerDeprecations.log</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/srcApp_KernelDevDebugContainerDeprecations.log</argument>
     </service>
     <service id="cache_clearer" class="Symfony\Component\HttpKernel\CacheClearer\ChainCacheClearer" public="true">
       <argument type="tagged_iterator" tag="kernel.cache_clearer"/>
@@ -593,9 +605,9 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem" public="true"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator" public="false">
       <argument type="service" id="kernel"/>
-      <argument>C:\wamp64\www\incyte\httpdocs\src/Resources</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\src/Resources</argument>
       <argument type="collection">
-        <argument>C:\wamp64\www\incyte\httpdocs\src</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\src</argument>
       </argument>
       <argument>false</argument>
     </service>
@@ -717,21 +729,21 @@
         <argument>/_fragment</argument>
       </call>
     </service>
-    <service id=".2_~oU3riT0" public="false">
+    <service id=".2_~c.EGT9S" public="false">
       <argument type="service" id="request_stack"/>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="getAndCleanOutputBuffer"/>
     </service>
-    <service id=".1_~oU3riT0" public="false">
+    <service id=".1_~c.EGT9S" public="false">
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
       <factory class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer" method="isDebug"/>
     </service>
     <service id="error_handler.error_renderer.html" class="Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer">
-      <argument type="service" id=".1_~oU3riT0"/>
+      <argument type="service" id=".1_~c.EGT9S"/>
       <argument>UTF-8</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
-      <argument type="service" id=".2_~oU3riT0"/>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
+      <argument type="service" id=".2_~c.EGT9S"/>
       <argument type="service" id="logger" on-invalid="null"/>
     </service>
     <service id="console.error_listener" class="Symfony\Component\Console\EventListener\ErrorListener" public="false">
@@ -751,7 +763,7 @@
     <service id="console.command.assets_install" class="Symfony\Bundle\FrameworkBundle\Command\AssetsInstallCommand" public="false">
       <tag name="console.command" command="assets:install"/>
       <argument type="service" id="filesystem"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <call method="setName">
         <argument>assets:install</argument>
       </call>
@@ -878,6 +890,7 @@
         <argument>Symfony\Component\Form\Extension\Core\Type</argument>
         <argument>App\Form\Back</argument>
         <argument>App\Form\Front</argument>
+        <argument>App\Form</argument>
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
@@ -893,6 +906,7 @@
         <argument>App\Form\Front\CustomerCreationType</argument>
         <argument>App\Form\Front\RefuseMeetingType</argument>
         <argument>App\Form\Front\SecurityCongresType</argument>
+        <argument>App\Form\ProduitType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FileType</argument>
@@ -1007,7 +1021,7 @@
       <argument></argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1036,7 +1050,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="logger" on-invalid="ignore"/>
@@ -1146,8 +1160,8 @@
       <argument>0</argument>
       <argument>false</argument>
     </service>
-    <service id=".1_NativeFileSessionHandler~ocMi6im" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/sessions</argument>
+    <service id=".1_NativeFileSessionHandler~KD0gGdS" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\NativeFileSessionHandler" public="false">
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/sessions</argument>
     </service>
     <service id="session" class="Symfony\Component\HttpFoundation\Session\Session" public="true">
       <argument type="service" id="session.storage.native"/>
@@ -1173,12 +1187,12 @@
       <factory service="session" method="getBag"/>
     </service>
     <service id="session.storage.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage" public="false">
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/sessions</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
     <service id="session.handler.native_file" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\StrictSessionHandler" public="false">
-      <argument type="service" id=".1_NativeFileSessionHandler~ocMi6im"/>
+      <argument type="service" id=".1_NativeFileSessionHandler~KD0gGdS"/>
     </service>
     <service id="session.abstract_handler" class="Symfony\Component\HttpFoundation\Session\Storage\Handler\AbstractSessionHandler" public="false">
       <argument></argument>
@@ -1211,7 +1225,7 @@
       <tag name="twig.extension"/>
     </service>
     <service id="form.resolved_type_factory" class="Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy" public="false">
-      <argument type="service" id=".1_ResolvedFormTypeFactory~Uvsx0HH"/>
+      <argument type="service" id=".1_ResolvedFormTypeFactory~Ta_e8vE"/>
       <argument type="service" id="data_collector.form"/>
     </service>
     <service id="form.registry" class="Symfony\Component\Form\FormRegistry" public="false">
@@ -1224,7 +1238,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id=".service_locator.UA_qSag"/>
+      <argument type="service" id=".service_locator.5_i8IOq"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1334,7 +1348,7 @@
       <argument></argument>
     </service>
     <service id="assets._version__default" class="Symfony\Component\Asset\VersionStrategy\JsonManifestVersionStrategy" public="false">
-      <argument>C:\wamp64\www\incyte\httpdocs/public/build/manifest.json</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/public/build/manifest.json</argument>
     </service>
     <service id="assets._default_package" class="Symfony\Component\Asset\PathPackage" public="false">
       <argument></argument>
@@ -1350,7 +1364,7 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\form/Resources/config/validation.xml</argument>
+          <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\form/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1372,14 +1386,14 @@
     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="validator.builder"/>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/validation.php</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/validation.php</argument>
     </service>
     <service id="validator.mapping.cache.symfony" class="Symfony\Component\Validator\Mapping\Cache\Psr6Cache" public="false">
       <argument type="service" id="validator.mapping.cache.adapter"/>
       <deprecated>The "%service_id%" service is deprecated since Symfony 4.4. Use validator.mapping.cache.adapter instead.</deprecated>
     </service>
     <service id="validator.mapping.cache.adapter" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/validation.php</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/validation.php</argument>
       <argument type="service" id="cache.validator"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -1459,7 +1473,7 @@
       </call>
     </service>
     <service id="profiler.storage" class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-      <argument>file:C:\wamp64\www\incyte\httpdocs\var\cache\dev/profiler</argument>
+      <argument>file:C:\wamp64\www\incyte\bo_pack\var\cache\dev/profiler</argument>
     </service>
     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener" public="false">
       <tag name="kernel.event_subscriber"/>
@@ -1497,7 +1511,7 @@
       <tag name="data_collector" template="@WebProfiler/Collector/logger.html.twig" id="logger" priority="300"/>
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service" id="logger" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/srcApp_KernelDevDebugContainer</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/srcApp_KernelDevDebugContainer</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
     </service>
     <service id="data_collector.time" class="Symfony\Component\HttpKernel\DataCollector\TimeDataCollector" public="false">
@@ -1560,7 +1574,7 @@
         <argument type="service" id="cache.security_expression_language"/>
       </call>
     </service>
-    <service id=".1_ResolvedFormTypeFactory~Uvsx0HH" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
+    <service id=".1_ResolvedFormTypeFactory~Ta_e8vE" class="Symfony\Component\Form\ResolvedFormTypeFactory" public="false"/>
     <service id="form.type_extension.form.data_collector" class="Symfony\Component\Form\Extension\DataCollector\Type\DataCollectorTypeExtension" public="false">
       <tag name="form.type_extension"/>
       <argument type="service" id="data_collector.form"/>
@@ -1593,7 +1607,7 @@
     <service id="debug.file_link_formatter" class="Symfony\Component\HttpKernel\Debug\FileLinkFormatter" public="false">
       <argument>null</argument>
       <argument type="service" id="request_stack" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument type="service" id="debug.file_link_formatter.url_format"/>
     </service>
     <service id="debug.stopwatch" class="Symfony\Component\Stopwatch\Stopwatch">
@@ -2018,7 +2032,7 @@
       <argument type="service" id="debug.argument_resolver.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".1_LegacyRouteLoaderContainer~DhVNxSH" class="Symfony\Bundle\FrameworkBundle\Routing\LegacyRouteLoaderContainer" public="false">
+    <service id=".1_LegacyRouteLoaderContainer~xVpIbyt" class="Symfony\Bundle\FrameworkBundle\Routing\LegacyRouteLoaderContainer" public="false">
       <argument type="service" id="service_container"/>
       <argument type="service" id=".service_locator.XwZNkPh"/>
     </service>
@@ -2077,7 +2091,7 @@
     </service>
     <service id="routing.loader.container" class="Symfony\Component\Routing\Loader\ContainerLoader" public="false">
       <tag name="routing.loader"/>
-      <argument type="service" id=".1_LegacyRouteLoaderContainer~DhVNxSH"/>
+      <argument type="service" id=".1_LegacyRouteLoaderContainer~xVpIbyt"/>
     </service>
     <service id="routing.loader" class="Symfony\Bundle\FrameworkBundle\Routing\DelegatingLoader" public="true">
       <argument type="service" id="routing.resolver"/>
@@ -2092,7 +2106,7 @@
       <argument type="service" id=".service_locator.YrZrpzt.router.default"/>
       <argument>kernel::loadRoutes</argument>
       <argument type="collection">
-        <argument key="cache_dir">C:\wamp64\www\incyte\httpdocs\var\cache\dev</argument>
+        <argument key="cache_dir">C:\wamp64\www\incyte\bo_pack\var\cache\dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\CompiledUrlGenerator</argument>
         <argument key="generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\CompiledUrlGeneratorDumper</argument>
@@ -2131,7 +2145,7 @@
       <argument type="service" id="request_stack"/>
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="logger" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument>true</argument>
     </service>
     <service id="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" class="Symfony\Bundle\FrameworkBundle\Controller\RedirectController" public="true">
@@ -2157,12 +2171,12 @@
       <argument type="service" id="file_locator"/>
       <argument type="service" id="routing.loader.annotation"/>
     </service>
-    <service id=".2_PhpArrayAdapter~xo1aazl" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/annotations.php</argument>
+    <service id=".2_PhpArrayAdapter~4UTyEs3" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/annotations.php</argument>
       <argument type="service" id="cache.annotations"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
-    <service id=".1_ArrayCache~xo1aazl" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
+    <service id=".1_ArrayCache~4UTyEs3" class="Doctrine\Common\Cache\ArrayCache" public="false"/>
     <service id="annotations.reader" class="Doctrine\Common\Annotations\AnnotationReader" public="false">
       <call method="addGlobalIgnoredName">
         <argument>required</argument>
@@ -2177,7 +2191,7 @@
     <service id="annotations.cached_reader" class="Doctrine\Common\Annotations\CachedReader" public="false">
       <tag name="annotations.cached_reader"/>
       <argument type="service" id="annotations.reader"/>
-      <argument type="service" id=".1_ArrayCache~xo1aazl"/>
+      <argument type="service" id=".1_ArrayCache~4UTyEs3"/>
       <argument>true</argument>
       <property name="cacheProviderBackup" type="service" id="annotations.cache"/>
     </service>
@@ -2187,12 +2201,12 @@
     <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="service" id="annotations.reader"/>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/annotations.php</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/annotations.php</argument>
       <argument>#^Symfony\\(?:Component\\HttpKernel\\|Bundle\\FrameworkBundle\\Controller\\(?!.*Controller$))#</argument>
       <argument>true</argument>
     </service>
     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
-      <argument type="service" id=".2_PhpArrayAdapter~xo1aazl"/>
+      <argument type="service" id=".2_PhpArrayAdapter~4UTyEs3"/>
     </service>
     <service id="property_accessor" class="Symfony\Component\PropertyAccess\PropertyAccessor" public="false">
       <argument>false</argument>
@@ -2202,11 +2216,11 @@
     </service>
     <service id="secrets.vault" class="Symfony\Bundle\FrameworkBundle\Secrets\SodiumVault">
       <tag name="container.env_var_loader"/>
-      <argument>C:\wamp64\www\incyte\httpdocs/config/secrets/dev</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/config/secrets/dev</argument>
       <argument>%env(base64:default::SYMFONY_DECRYPTION_SECRET)%</argument>
     </service>
     <service id="secrets.local_vault" class="Symfony\Bundle\FrameworkBundle\Secrets\DotenvVault">
-      <argument>C:\wamp64\www\incyte\httpdocs/.env.dev.local</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/.env.dev.local</argument>
     </service>
     <service id="mime_types" class="Symfony\Component\Mime\MimeTypes" public="false">
       <call method="setDefault">
@@ -2343,7 +2357,7 @@
         </service>
       </argument>
     </service>
-    <service id=".1_ServiceLocator~1G73W14" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".1_ServiceLocator~Jrk3y6w" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <argument type="collection"/>
     </service>
     <service id="doctrine.orm.proxy_cache_warmer" class="Symfony\Bridge\Doctrine\CacheWarmer\ProxyCacheWarmer" public="false">
@@ -2364,7 +2378,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.bEro3J0"/>
+      <argument type="service" id=".service_locator.emyNPQw"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -2501,7 +2515,7 @@
         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
       </call>
       <call method="setProxyDir">
-        <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/doctrine/orm/Proxies</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/doctrine/orm/Proxies</argument>
       </call>
       <call method="setProxyNamespace">
         <argument>Proxies</argument>
@@ -2531,7 +2545,7 @@
     <service id="doctrine.orm.default_annotation_metadata_driver" class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
       <argument type="service" id="annotations.cached_reader"/>
       <argument type="collection">
-        <argument>C:\wamp64\www\incyte\httpdocs\src\Entity</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\src\Entity</argument>
       </argument>
     </service>
     <service id="doctrine.orm.default_metadata_driver" class="Doctrine\Persistence\Mapping\Driver\MappingDriverChain" public="false">
@@ -2583,24 +2597,24 @@
       <argument type="service" id="doctrine.orm.default_entity_manager"/>
       <argument>null</argument>
     </service>
-    <service id=".6_HtmlDescriptor~yigjXG9" class="Symfony\Component\VarDumper\Command\Descriptor\HtmlDescriptor" public="false">
+    <service id=".6_HtmlDescriptor~v1wncuL" class="Symfony\Component\VarDumper\Command\Descriptor\HtmlDescriptor" public="false">
       <argument type="service" id="var_dumper.html_dumper"/>
     </service>
-    <service id=".5_CliDescriptor~yigjXG9" class="Symfony\Component\VarDumper\Command\Descriptor\CliDescriptor" public="false">
+    <service id=".5_CliDescriptor~v1wncuL" class="Symfony\Component\VarDumper\Command\Descriptor\CliDescriptor" public="false">
       <argument type="service" id="var_dumper.contextualized_cli_dumper.inner"/>
     </service>
-    <service id=".4_CliContextProvider~yigjXG9" class="Symfony\Component\VarDumper\Dumper\ContextProvider\CliContextProvider" public="false"/>
-    <service id=".3_RequestContextProvider~yigjXG9" class="Symfony\Component\VarDumper\Dumper\ContextProvider\RequestContextProvider" public="false">
+    <service id=".4_CliContextProvider~v1wncuL" class="Symfony\Component\VarDumper\Dumper\ContextProvider\CliContextProvider" public="false"/>
+    <service id=".3_RequestContextProvider~v1wncuL" class="Symfony\Component\VarDumper\Dumper\ContextProvider\RequestContextProvider" public="false">
       <argument type="service" id="request_stack"/>
     </service>
-    <service id=".2_SourceContextProvider~yigjXG9" class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider" public="false">
+    <service id=".2_SourceContextProvider~v1wncuL" class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider" public="false">
       <argument>UTF-8</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
     </service>
-    <service id=".1_SourceContextProvider~yigjXG9" class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider" public="false">
+    <service id=".1_SourceContextProvider~v1wncuL" class="Symfony\Component\VarDumper\Dumper\ContextProvider\SourceContextProvider" public="false">
       <argument>UTF-8</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
     </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
@@ -2641,7 +2655,7 @@
     <service id="var_dumper.contextualized_cli_dumper" class="Symfony\Component\VarDumper\Dumper\ContextualizedDumper" public="false">
       <argument type="service" id="var_dumper.contextualized_cli_dumper.inner"/>
       <argument type="collection">
-        <argument key="source" type="service" id=".1_SourceContextProvider~yigjXG9"/>
+        <argument key="source" type="service" id=".1_SourceContextProvider~v1wncuL"/>
       </argument>
     </service>
     <service id="var_dumper.html_dumper" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
@@ -2657,9 +2671,9 @@
     <service id="var_dumper.server_connection" class="Symfony\Component\VarDumper\Server\Connection" public="false">
       <argument>tcp://%env(VAR_DUMPER_SERVER)%</argument>
       <argument type="collection">
-        <argument key="source" type="service" id=".2_SourceContextProvider~yigjXG9"/>
-        <argument key="request" type="service" id=".3_RequestContextProvider~yigjXG9"/>
-        <argument key="cli" type="service" id=".4_CliContextProvider~yigjXG9"/>
+        <argument key="source" type="service" id=".2_SourceContextProvider~v1wncuL"/>
+        <argument key="request" type="service" id=".3_RequestContextProvider~v1wncuL"/>
+        <argument key="cli" type="service" id=".4_CliContextProvider~v1wncuL"/>
       </argument>
     </service>
     <service id="var_dumper.dump_server" class="Symfony\Component\VarDumper\Server\DumpServer" public="false">
@@ -2671,8 +2685,8 @@
       <tag name="console.command" command="server:dump"/>
       <argument type="service" id="var_dumper.dump_server"/>
       <argument type="collection">
-        <argument key="cli" type="service" id=".5_CliDescriptor~yigjXG9"/>
-        <argument key="html" type="service" id=".6_HtmlDescriptor~yigjXG9"/>
+        <argument key="cli" type="service" id=".5_CliDescriptor~v1wncuL"/>
+        <argument key="html" type="service" id=".6_HtmlDescriptor~v1wncuL"/>
       </argument>
       <call method="setName">
         <argument>server:dump</argument>
@@ -2694,7 +2708,7 @@
     <service id="doctrine.migrations.configuration" class="Doctrine\Migrations\Configuration\Configuration" public="false">
       <call method="addMigrationsDirectory">
         <argument>DoctrineMigrations</argument>
-        <argument>C:\wamp64\www\incyte\httpdocs/migrations</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack/migrations</argument>
       </call>
       <call method="setAllOrNothing">
         <argument>false</argument>
@@ -2879,7 +2893,7 @@
     <service id="framework_extra_bundle.argument_name_convertor" class="Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter">
       <argument type="service" id="argument_metadata_factory"/>
     </service>
-    <service id=".1_ServiceLocator~6JtRcAr" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".1_ServiceLocator~gqm.10F" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="webpack_encore.entrypoint_lookup_collection" type="service" id="webpack_encore.entrypoint_lookup_collection"/>
@@ -2901,18 +2915,18 @@
     </service>
     <service id="webpack_encore.twig_entry_files_extension" class="Symfony\WebpackEncoreBundle\Twig\EntryFilesTwigExtension" public="false">
       <tag name="twig.extension"/>
-      <argument type="service" id=".1_ServiceLocator~6JtRcAr"/>
+      <argument type="service" id=".1_ServiceLocator~gqm.10F"/>
     </service>
     <service id="webpack_encore.entrypoint_lookup.cache_warmer" class="Symfony\WebpackEncoreBundle\CacheWarmer\EntrypointCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
       <argument type="collection">
-        <argument key="_default">C:\wamp64\www\incyte\httpdocs/public/build/entrypoints.json</argument>
+        <argument key="_default">C:\wamp64\www\incyte\bo_pack/public/build/entrypoints.json</argument>
       </argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/webpack_encore.cache.php</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/webpack_encore.cache.php</argument>
       <argument type="service" id="cache.webpack_encore"/>
     </service>
     <service id="webpack_encore.cache" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/webpack_encore.cache.php</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/webpack_encore.cache.php</argument>
       <argument type="service" id="cache.webpack_encore"/>
       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
     </service>
@@ -2930,7 +2944,7 @@
     </service>
     <service id="webpack_encore.entrypoint_lookup[_default]" class="Symfony\WebpackEncoreBundle\Asset\EntrypointLookup">
       <tag name="kernel.reset" method="reset"/>
-      <argument>C:\wamp64\www\incyte\httpdocs/public/build/entrypoints.json</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/public/build/entrypoints.json</argument>
       <argument>null</argument>
       <argument>_default</argument>
       <argument>true</argument>
@@ -2961,7 +2975,7 @@
     <service id="doctrine.fixtures.purger.orm_purger_factory" class="Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory" public="false">
       <tag name="doctrine.fixtures.purger_factory" alias="default"/>
     </service>
-    <service id=".1_~GSJh9g0" public="false">
+    <service id=".1_~2nvxevN" public="false">
       <argument type="service" id="request_stack"/>
       <argument>true</argument>
       <factory class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" method="isDebug"/>
@@ -2970,7 +2984,7 @@
       <argument type="service" id="twig.loader.native_filesystem"/>
       <argument type="collection">
         <argument key="autoescape">name</argument>
-        <argument key="cache">C:\wamp64\www\incyte\httpdocs\var\cache\dev/twig</argument>
+        <argument key="cache">C:\wamp64\www\incyte\bo_pack\var\cache\dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="debug">true</argument>
         <argument key="strict_variables">false</argument>
@@ -3078,12 +3092,12 @@
     </service>
     <service id="twig.template_iterator" class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
       <argument type="service" id="kernel"/>
-      <argument>C:\wamp64\www\incyte\httpdocs\src</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\src</argument>
       <argument type="collection">
-        <argument key="C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bridge/Resources/views/Email">email</argument>
-        <argument key="C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bridge/Resources/views/Form">null</argument>
+        <argument key="C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bridge/Resources/views/Email">email</argument>
+        <argument key="C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bridge/Resources/views/Form">null</argument>
       </argument>
-      <argument>C:\wamp64\www\incyte\httpdocs/templates</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/templates</argument>
     </service>
     <service id="twig.template_cache_warmer" class="Symfony\Bundle\TwigBundle\CacheWarmer\TemplateCacheWarmer" public="false">
       <tag name="kernel.cache_warmer"/>
@@ -3094,76 +3108,76 @@
     <service id="twig.loader.native_filesystem" class="Symfony\Bundle\TwigBundle\Loader\NativeFilesystemLoader" public="false">
       <tag name="twig.loader"/>
       <argument type="collection"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\framework-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\framework-bundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\framework-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\framework-bundle/Resources/views</argument>
         <argument>!Framework</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\doctrine\doctrine-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\doctrine\doctrine-bundle/Resources/views</argument>
         <argument>!Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\debug-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\debug-bundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\debug-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\debug-bundle/Resources/views</argument>
         <argument>!Debug</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bundle/Resources/views</argument>
         <argument>!Twig</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\web-profiler-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\web-profiler-bundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\web-profiler-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\web-profiler-bundle/Resources/views</argument>
         <argument>!WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\security-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\security-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\security-bundle/Resources/views</argument>
         <argument>!Security</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\swiftmailer-bundle/Resources/views</argument>
         <argument>!Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs/templates</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack/templates</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bridge/Resources/views/Email</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>email</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bridge/Resources/views/Email</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bridge/Resources/views/Email</argument>
         <argument>!email</argument>
       </call>
       <call method="addPath">
-        <argument>C:\wamp64\www\incyte\httpdocs\vendor\symfony\twig-bridge/Resources/views/Form</argument>
+        <argument>C:\wamp64\www\incyte\bo_pack\vendor\symfony\twig-bridge/Resources/views/Form</argument>
       </call>
     </service>
     <service id="twig.loader.chain" class="Twig\Loader\ChainLoader" public="false"/>
@@ -3189,7 +3203,7 @@
     <service id="twig.extension.code" class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="debug.file_link_formatter" on-invalid="ignore"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument>UTF-8</argument>
     </service>
     <service id="twig.extension.routing" class="Symfony\Bridge\Twig\Extension\RoutingExtension" public="false">
@@ -3243,7 +3257,7 @@
     <service id="twig.error_renderer.html" class="Symfony\Bridge\Twig\ErrorRenderer\TwigErrorRenderer" public="false">
       <argument type="service" id="twig"/>
       <argument type="service" id="error_handler.error_renderer.html"/>
-      <argument type="service" id=".1_~GSJh9g0"/>
+      <argument type="service" id=".1_~2nvxevN"/>
     </service>
     <service id="twig.extension.form" class="Symfony\Bridge\Twig\Extension\FormExtension" public="false">
       <tag name="twig.extension"/>
@@ -3260,11 +3274,11 @@
     <service id="twig.command.debug" class="Symfony\Bridge\Twig\Command\DebugCommand" public="false">
       <tag name="console.command" command="debug:twig"/>
       <argument type="service" id="twig"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument>%kernel.bundles_metadata%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs/templates</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/templates</argument>
       <argument type="service" id="debug.file_link_formatter" on-invalid="null"/>
-      <argument>C:\wamp64\www\incyte\httpdocs\src</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\src</argument>
       <call method="setName">
         <argument>debug:twig</argument>
       </call>
@@ -3276,7 +3290,7 @@
         <argument>lint:twig</argument>
       </call>
     </service>
-    <service id=".2_HtmlDumper~ZHyxm8w" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
+    <service id=".2_HtmlDumper~Oee7qW2" class="Symfony\Component\VarDumper\Dumper\HtmlDumper" public="false">
       <argument>null</argument>
       <argument>UTF-8</argument>
       <argument>1</argument>
@@ -3287,14 +3301,14 @@
         </argument>
       </call>
     </service>
-    <service id=".1_NonceGenerator~ZHyxm8w" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
+    <service id=".1_NonceGenerator~Oee7qW2" class="Symfony\Bundle\WebProfilerBundle\Csp\NonceGenerator" public="false"/>
     <service id="web_profiler.controller.profiler" class="Symfony\Bundle\WebProfilerBundle\Controller\ProfilerController" public="true">
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="profiler" on-invalid="null"/>
       <argument type="service" id="twig"/>
       <argument>%data_collector.templates%</argument>
       <argument type="service" id="web_profiler.csp.handler"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
     </service>
     <service id="web_profiler.controller.router" class="Symfony\Bundle\WebProfilerBundle\Controller\RouterController" public="true">
       <argument type="service" id="profiler" on-invalid="null"/>
@@ -3316,11 +3330,11 @@
       <argument type="service" id="profiler" on-invalid="null"/>
     </service>
     <service id="web_profiler.csp.handler" class="Symfony\Bundle\WebProfilerBundle\Csp\ContentSecurityPolicyHandler" public="false">
-      <argument type="service" id=".1_NonceGenerator~ZHyxm8w"/>
+      <argument type="service" id=".1_NonceGenerator~Oee7qW2"/>
     </service>
     <service id="twig.extension.webprofiler" class="Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension" public="false">
       <tag name="twig.extension"/>
-      <argument type="service" id=".2_HtmlDumper~ZHyxm8w"/>
+      <argument type="service" id=".2_HtmlDumper~Oee7qW2"/>
     </service>
     <service id="debug.file_link_formatter.url_format" class="string" public="false">
       <argument type="service" id="router.default"/>
@@ -3342,8 +3356,8 @@
       <argument type="service" id="filesystem"/>
       <argument type="service" id="maker.autoloader_util"/>
       <argument type="service" id="maker.file_link_formatter"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs/templates</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack/templates</argument>
     </service>
     <service id="maker.autoloader_finder" class="Symfony\Bundle\MakerBundle\Util\ComposerAutoloaderFinder" public="false">
       <argument>App</argument>
@@ -3416,7 +3430,7 @@
       <tag name="maker.command"/>
       <argument type="service" id="maker.file_manager"/>
       <argument type="service" id="maker.doctrine_helper"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
       <argument type="service" id="maker.generator"/>
       <argument type="service" id="maker.entity_class_generator"/>
     </service>
@@ -3483,7 +3497,7 @@
     </service>
     <service id="maker.maker.make_migration" class="Symfony\Bundle\MakerBundle\Maker\MakeMigration" public="false">
       <tag name="maker.command"/>
-      <argument>C:\wamp64\www\incyte\httpdocs</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack</argument>
     </service>
     <service id="security.authorization_checker" class="Symfony\Component\Security\Core\Authorization\AuthorizationChecker" public="true">
       <argument type="service" id="security.token_storage"/>
@@ -4193,10 +4207,10 @@
     <service id="twig.extension.intl" class="Twig\Extra\Intl\IntlExtension">
       <tag name="twig.extension"/>
     </service>
-    <service id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~x2JPv1P" class="Swift_Transport_Esmtp_Auth_NTLMAuthenticator" public="false"/>
-    <service id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~x2JPv1P" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
-    <service id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~x2JPv1P" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
-    <service id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~x2JPv1P" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
+    <service id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~30_8AXo" class="Swift_Transport_Esmtp_Auth_NTLMAuthenticator" public="false"/>
+    <service id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~30_8AXo" class="Swift_Transport_Esmtp_Auth_PlainAuthenticator" public="false"/>
+    <service id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~30_8AXo" class="Swift_Transport_Esmtp_Auth_LoginAuthenticator" public="false"/>
+    <service id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~30_8AXo" class="Swift_Transport_Esmtp_Auth_CramMd5Authenticator" public="false"/>
     <service id="swiftmailer.mailer.abstract" class="Swift_Mailer" public="true" abstract="true">
       <argument type="service" id="swiftmailer.mailer.default.transport.spool"/>
     </service>
@@ -4209,10 +4223,10 @@
     </service>
     <service id="swiftmailer.transport.authhandler.abstract" class="Swift_Transport_Esmtp_AuthHandler" public="false" abstract="true">
       <argument type="collection">
-        <argument type="service" id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~x2JPv1P"/>
-        <argument type="service" id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~x2JPv1P"/>
-        <argument type="service" id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~x2JPv1P"/>
-        <argument type="service" id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~x2JPv1P"/>
+        <argument type="service" id=".1_Swift_Transport_Esmtp_Auth_CramMd5Authenticator~30_8AXo"/>
+        <argument type="service" id=".2_Swift_Transport_Esmtp_Auth_LoginAuthenticator~30_8AXo"/>
+        <argument type="service" id=".3_Swift_Transport_Esmtp_Auth_PlainAuthenticator~30_8AXo"/>
+        <argument type="service" id=".4_Swift_Transport_Esmtp_Auth_NTLMAuthenticator~30_8AXo"/>
       </argument>
     </service>
     <service id="swiftmailer.transport.eventdispatcher.abstract" class="Swift_Events_SimpleEventDispatcher" public="false" abstract="true"/>
@@ -4314,6 +4328,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\admin\DocumentController" class="App\Controller\admin\DocumentController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\admin\DocumentController" class="App\Controller\admin\DocumentController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\admin\DocumentController" class="App\Controller\admin\DocumentController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\admin\ProduitController" class="App\Controller\admin\ProduitController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\admin\ProduitController" class="App\Controller\admin\ProduitController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\admin\ProduitController" class="App\Controller\admin\ProduitController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\admin\UserController" class="App\Controller\admin\UserController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\admin\UserController" class="App\Controller\admin\UserController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\admin\UserController" class="App\Controller\admin\UserController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -4341,6 +4358,8 @@
     <service id=".abstract.instanceof.App\Form\Front\RefuseMeetingType" class="App\Form\Front\RefuseMeetingType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\Front\SecurityCongresType" class="App\Form\Front\SecurityCongresType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\Front\SecurityCongresType" class="App\Form\Front\SecurityCongresType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ProduitType" class="App\Form\ProduitType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoryDocumentRepository" class="App\Repository\CategoryDocumentRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CategoryDocumentRepository" class="App\Repository\CategoryDocumentRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CategoryUserRepository" class="App\Repository\CategoryUserRepository" autowire="true" abstract="true"/>
@@ -4353,6 +4372,8 @@
     <service id=".abstract.instanceof.App\Repository\DocumentRepository" class="App\Repository\DocumentRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MeetingRepository" class="App\Repository\MeetingRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\MeetingRepository" class="App\Repository\MeetingRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReasonRepository" class="App\Repository\ReasonRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ReasonRepository" class="App\Repository\ReasonRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
@@ -4605,24 +4626,6 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.88cjjf1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="reason" type="service" id=".errored..service_locator.88cjjf1.App\Entity\Reason"/>
-      </argument>
-    </service>
-    <service id=".service_locator.hY90s__" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entity" type="service" id=".errored..service_locator.hY90s__.App\Entity\CategoryDocument"/>
-      </argument>
-    </service>
-    <service id=".service_locator.IISA5Q3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="entity" type="service" id=".errored..service_locator.IISA5Q3.App\Entity\CategoryUser"/>
-      </argument>
-    </service>
     <service id=".service_locator.cDoGPH3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -4637,13 +4640,39 @@
         <argument key="document" type="service" id=".errored..service_locator.3CWM4Lz.App\Entity\Document"/>
       </argument>
     </service>
+    <service id=".service_locator.D_VxfLH" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="produitRepository" type="service" id="App\Repository\ProduitRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.J966qaa" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="produit" type="service" id=".errored..service_locator.J966qaa.App\Entity\Produit"/>
+      </argument>
+    </service>
+    <service id=".service_locator.mZAX5si" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+        <argument key="produit" type="service" id=".errored..service_locator.mZAX5si.App\Entity\Produit"/>
+        <argument key="produitRepository" type="service" id="App\Repository\ProduitRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.ipjTSUc" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="em" type="service" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
     <service id=".service_locator.tIQ5Q0N" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="user" type="service" id=".errored..service_locator.tIQ5Q0N.App\Entity\User"/>
       </argument>
     </service>
-    <service id=".service_locator.2a0ilda" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.jX2Ghob" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\CongresController::documents" type="service" id=".service_locator.__4ZhAa"/>
@@ -4654,14 +4683,17 @@
         <argument key="App\Controller\PlanningController::sendMeeting" type="service" id=".service_locator.j1rTgZz"/>
         <argument key="App\Controller\PlanningController::userPlanning" type="service" id=".service_locator.etJ_SHU"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.g.xob4v"/>
-        <argument key="App\Controller\admin\AdminController::editReason" type="service" id=".service_locator.88cjjf1"/>
-        <argument key="App\Controller\admin\AdminController::editcatDoc" type="service" id=".service_locator.hY90s__"/>
-        <argument key="App\Controller\admin\AdminController::editcatUser" type="service" id=".service_locator.IISA5Q3"/>
         <argument key="App\Controller\admin\CongresController::delete" type="service" id=".service_locator.cDoGPH3"/>
         <argument key="App\Controller\admin\DocumentController::delete" type="service" id=".service_locator.3CWM4Lz"/>
         <argument key="App\Controller\admin\DocumentController::editDocument" type="service" id=".service_locator.3CWM4Lz"/>
+        <argument key="App\Controller\admin\ProduitController::admin_produits_delete" type="service" id=".service_locator.mZAX5si"/>
+        <argument key="App\Controller\admin\ProduitController::delete" type="service" id=".service_locator.J966qaa"/>
+        <argument key="App\Controller\admin\ProduitController::edit" type="service" id=".service_locator.J966qaa"/>
+        <argument key="App\Controller\admin\ProduitController::index" type="service" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\admin\ProduitController::show" type="service" id=".service_locator.J966qaa"/>
         <argument key="App\Controller\admin\UserController::delete" type="service" id=".service_locator.tIQ5Q0N"/>
         <argument key="App\Controller\admin\UserController::edit" type="service" id=".service_locator.tIQ5Q0N"/>
+        <argument key="App\Controller\admin\UserController::user_products" type="service" id=".service_locator.ipjTSUc"/>
         <argument key="App\Controller\CongresController:documents" type="service" id=".service_locator.__4ZhAa"/>
         <argument key="App\Controller\CongresController:home" type="service" id=".service_locator.etJ_SHU"/>
         <argument key="App\Controller\CongresController:questionSend" type="service" id=".service_locator.j1rTgZz"/>
@@ -4670,14 +4702,17 @@
         <argument key="App\Controller\PlanningController:sendMeeting" type="service" id=".service_locator.j1rTgZz"/>
         <argument key="App\Controller\PlanningController:userPlanning" type="service" id=".service_locator.etJ_SHU"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.g.xob4v"/>
-        <argument key="App\Controller\admin\AdminController:editReason" type="service" id=".service_locator.88cjjf1"/>
-        <argument key="App\Controller\admin\AdminController:editcatDoc" type="service" id=".service_locator.hY90s__"/>
-        <argument key="App\Controller\admin\AdminController:editcatUser" type="service" id=".service_locator.IISA5Q3"/>
         <argument key="App\Controller\admin\CongresController:delete" type="service" id=".service_locator.cDoGPH3"/>
         <argument key="App\Controller\admin\DocumentController:delete" type="service" id=".service_locator.3CWM4Lz"/>
         <argument key="App\Controller\admin\DocumentController:editDocument" type="service" id=".service_locator.3CWM4Lz"/>
+        <argument key="App\Controller\admin\ProduitController:admin_produits_delete" type="service" id=".service_locator.mZAX5si"/>
+        <argument key="App\Controller\admin\ProduitController:delete" type="service" id=".service_locator.J966qaa"/>
+        <argument key="App\Controller\admin\ProduitController:edit" type="service" id=".service_locator.J966qaa"/>
+        <argument key="App\Controller\admin\ProduitController:index" type="service" id=".service_locator.D_VxfLH"/>
+        <argument key="App\Controller\admin\ProduitController:show" type="service" id=".service_locator.J966qaa"/>
         <argument key="App\Controller\admin\UserController:delete" type="service" id=".service_locator.tIQ5Q0N"/>
         <argument key="App\Controller\admin\UserController:edit" type="service" id=".service_locator.tIQ5Q0N"/>
+        <argument key="App\Controller\admin\UserController:user_products" type="service" id=".service_locator.ipjTSUc"/>
       </argument>
     </service>
     <service id=".service_locator.Y7gDuDN" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -4739,7 +4774,7 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.UA_qSag" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.5_i8IOq" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\Back\CatDocCreationType" type="service" id="App\Form\Back\CatDocCreationType"/>
@@ -4754,6 +4789,7 @@
         <argument key="App\Form\Front\CustomerCreationType" type="service" id="App\Form\Front\CustomerCreationType"/>
         <argument key="App\Form\Front\RefuseMeetingType" type="service" id="App\Form\Front\RefuseMeetingType"/>
         <argument key="App\Form\Front\SecurityCongresType" type="service" id="App\Form\Front\SecurityCongresType"/>
+        <argument key="App\Form\ProduitType" type="service" id="App\Form\ProduitType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service" id="form.type.choice"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\FileType" type="service" id="form.type.file"/>
@@ -4766,7 +4802,7 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.bEro3J0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.emyNPQw" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\CategoryDocumentRepository" type="service" id="App\Repository\CategoryDocumentRepository"/>
@@ -4775,6 +4811,7 @@
         <argument key="App\Repository\CustomerRepository" type="service" id="App\Repository\CustomerRepository"/>
         <argument key="App\Repository\DocumentRepository" type="service" id="App\Repository\DocumentRepository"/>
         <argument key="App\Repository\MeetingRepository" type="service" id="App\Repository\MeetingRepository"/>
+        <argument key="App\Repository\ProduitRepository" type="service" id="App\Repository\ProduitRepository"/>
         <argument key="App\Repository\ReasonRepository" type="service" id="App\Repository\ReasonRepository"/>
         <argument key="App\Repository\UserRepository" type="service" id="App\Repository\UserRepository"/>
       </argument>
@@ -4852,6 +4889,12 @@
     <service id=".service_locator.vdmMuyE.App\Controller\admin\DocumentController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\admin\DocumentController"/>
       <argument>App\Controller\admin\DocumentController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.vdmMuyE" method="withContext"/>
+    </service>
+    <service id=".service_locator.vdmMuyE.App\Controller\admin\ProduitController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\admin\ProduitController"/>
+      <argument>App\Controller\admin\ProduitController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.vdmMuyE" method="withContext"/>
     </service>
@@ -4991,18 +5034,17 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.2a0ilda"/>
+      <argument type="service" id=".service_locator.jX2Ghob"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.2a0ilda"/>
+      <argument type="service" id=".service_locator.jX2Ghob"/>
     </service>
-    <service id=".errored..service_locator.88cjjf1.App\Entity\Reason" class="App\Entity\Reason"/>
-    <service id=".errored..service_locator.hY90s__.App\Entity\CategoryDocument" class="App\Entity\CategoryDocument"/>
-    <service id=".errored..service_locator.IISA5Q3.App\Entity\CategoryUser" class="App\Entity\CategoryUser"/>
     <service id=".errored..service_locator.cDoGPH3.App\Entity\Congres" class="App\Entity\Congres"/>
     <service id=".errored..service_locator.3CWM4Lz.App\Entity\Document" class="App\Entity\Document"/>
+    <service id=".errored..service_locator.J966qaa.App\Entity\Produit" class="App\Entity\Produit"/>
+    <service id=".errored..service_locator.mZAX5si.App\Entity\Produit" class="App\Entity\Produit"/>
     <service id=".errored..service_locator.tIQ5Q0N.App\Entity\User" class="App\Entity\User"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.3iN5X7g"/>
@@ -5189,51 +5231,51 @@
       </argument>
     </service>
     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false">
-      <argument>F7cJJNnCmc</argument>
+      <argument>ycIEtFjegh</argument>
       <argument>0</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="cache.default_marshaller" on-invalid="ignore"/>
       <call method="setLogger">
         <argument type="service" id="logger" on-invalid="ignore"/>
       </call>
     </service>
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>x4ic62u-Rh</argument>
+      <argument>su9B7i4yj-</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>x6o-CxG3wt</argument>
+      <argument>TEm5PLZk15</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>6j9WwigyO9</argument>
+      <argument>npd00BgzbO</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>LVOk7uspyu</argument>
+      <argument>MmtGTrl74Z</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.property_info.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>lOy2PWj71n</argument>
+      <argument>wPfbMBUwTm</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -5241,18 +5283,18 @@
     <service id="cache.doctrine.orm.default.result.recorder_inner" class="Symfony\Component\Cache\Adapter\ArrayAdapter" public="false"/>
     <service id="cache.doctrine.orm.default.query.recorder_inner" class="Symfony\Component\Cache\Adapter\ArrayAdapter" public="false"/>
     <service id="cache.webpack_encore.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>mAGOANllZr</argument>
+      <argument>9sPTrk9azD</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
     <service id="cache.security_expression_language.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
-      <argument>YSLe7ov6C0</argument>
+      <argument>jePWkOVsc+</argument>
       <argument>0</argument>
       <argument>%container.build_id%</argument>
-      <argument>C:\wamp64\www\incyte\httpdocs\var\cache\dev/pools</argument>
+      <argument>C:\wamp64\www\incyte\bo_pack\var\cache\dev/pools</argument>
       <argument type="service" id="logger" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -5378,10 +5420,10 @@
     <service id="mailer" alias="swiftmailer.mailer.default" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.2a0ilda"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.jX2Ghob"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface" alias="logger" public="false"/>
-    <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~6JtRcAr" public="false"/>
+    <service id=".service_locator.ISjGRTp" alias=".1_ServiceLocator~gqm.10F" public="false"/>
     <service id=".service_locator.tHpW6v3" alias=".service_locator.Y7gDuDN" public="false"/>
     <service id="validator" alias="debug.validator" public="true"/>
     <service id="event_dispatcher" alias="debug.event_dispatcher" public="true"/>

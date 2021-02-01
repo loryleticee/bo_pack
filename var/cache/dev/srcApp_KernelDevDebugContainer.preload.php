@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerZrF6Tg2/srcApp_KernelDevDebugContainer.php';
+require __DIR__.'/ContainerXxRRETh/srcApp_KernelDevDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -38,6 +38,7 @@ $classes[] = 'App\Controller\SecurityController';
 $classes[] = 'App\Controller\admin\AdminController';
 $classes[] = 'App\Controller\admin\CongresController';
 $classes[] = 'App\Controller\admin\DocumentController';
+$classes[] = 'App\Controller\admin\ProduitController';
 $classes[] = 'App\Controller\admin\UserController';
 $classes[] = 'App\Form\Back\CatDocCreationType';
 $classes[] = 'App\Form\Back\CatUserCreationType';
@@ -51,6 +52,7 @@ $classes[] = 'App\Form\Back\UserEditType';
 $classes[] = 'App\Form\Front\CustomerCreationType';
 $classes[] = 'App\Form\Front\RefuseMeetingType';
 $classes[] = 'App\Form\Front\SecurityCongresType';
+$classes[] = 'App\Form\ProduitType';
 $classes[] = 'App\Manager\CategoriesManager';
 $classes[] = 'App\Manager\CongresManager';
 $classes[] = 'App\Manager\DocumentManager';
@@ -62,6 +64,7 @@ $classes[] = 'App\Repository\CongresRepository';
 $classes[] = 'App\Repository\CustomerRepository';
 $classes[] = 'App\Repository\DocumentRepository';
 $classes[] = 'App\Repository\MeetingRepository';
+$classes[] = 'App\Repository\ProduitRepository';
 $classes[] = 'App\Repository\ReasonRepository';
 $classes[] = 'App\Repository\UserRepository';
 $classes[] = 'App\Security\LoginAuthenticator';
