@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Incyte{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+{% block body %}
+
+    {% include '/admin/_navbar.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path('admin_create_congres') }}"><button class="btn btn-primary mb-5 text-right float-right">Créer un congrès</button></a>
+                <h3>Vos congrès</h3>
+                <br>
+                <table class="table bg-white shadow rounded-lg">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for congre in congres %}
+                        <tr>
+                            <td>{{ congre.name }}</td>
+                            <td>{{ congre.startDate|format_date(locale='fr') }}</td>
+                            <td>{{ congre.endDate|format_date(locale='fr') }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-h point"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item"
+                                           href="{{ path('admin_congres_user', {id: congre.id}) }}">Contacts
+                                        </a>
+                                        <a class="dropdown-item"
+                                           href="{{ path('admin_congres_documents', {id: congre.id}) }}">Documents
+                                        </a>
+                                        <a class="dropdown-item"
+                                           href="{{ path('admin_congres_edit', {id: congre.id}) }}">Configuration
+                                        </a>
+                                        {{ include('admin/congres/_delete_form.html.twig') }}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

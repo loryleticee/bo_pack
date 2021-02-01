@@ -1,0 +1,19 @@
+<div id="carrousel">
+    <div class="owl-carousel owl-theme">
+        {% for doc in documents %}
+            <div class="img"
+                 onclick="modalCarousel('modal-'+{{ doc.id }})">
+                <div style="background-image: url({{ asset('uploads/img/document/') }}{{ doc.img }});"
+                     class="img-carrousel"></div>
+                <div style="padding: 10px 20px;">
+                    <div class="name">{{ doc.name }} </div>
+                    <div class="poste">{{ doc.about|slice(0,15) }} ...</div>
+                    <div style="text-align: right">&#8594;</div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        <div class="status"></div>
+    </div>
+</div>

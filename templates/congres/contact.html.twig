@@ -1,0 +1,307 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Congrès - Incyte{% endblock %}
+
+{% block body %}
+    <header class="">
+        <div class="hcontact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-left back" style="float: left; height: 110px; line-height: 130px;" id="back"><a
+                                    onclick="window.history.back();" style="color: #FFF">&#8963;</a></div>
+                        <h1 class="text-right" style="padding-top: 30px;display: inline-block; float: right;"><img
+                                    src="{{ asset('img/logo-blanc.png') }}" width="120" alt=""/></h1>
+                    </div>
+                    <div class="col-12">
+                        <form method="post" action="{{ path('congres_contact', {id: congres.id}) }}">
+                            <div class="input-group" style="padding: 20px 10px;">
+                                <input type="text" class="form-search" name="search" id="search-form" placeholder="Qui recherchez-vous ?">
+                                <div class="input-group-append">
+                                    <button style="border-bottom: #FFF 1px solid; color: #FFF; background-color: transparent; border: none" type="submit">
+                                        <i class='fa fa-search' aria-hidden='true'></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-2 text-left">
+                    <h2>Prendre rendez-vous</h2>
+                    {% if contacts is empty %}
+                        <h3 class="p-5">Aucun contact</h3>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="carrousel">
+            <div class="owl-carousel owl-theme">
+                {% for contact in contacts %}
+                    <div class="img" onclick="modalCarousel('modal-'+{{ contact.id }})">
+                        <div style="background-image: url('{{ asset('uploads/img/user/') }}{{ contact.img }}');"
+                             class="img-carrousel"></div>
+                        <div style="padding: 10px 20px;">
+                            <div class="name">{{ contact.firstname }} {{ contact.lastname }}</div>
+                            <div class="poste">{{ contact.job }}</div>
+                            <div style="position: absolute;bottom: 12px;right: 16px;">&#8594;</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <div class="status"></div>
+            </div>
+        </div>
+    </section>
+    {% for contact in contacts %}
+        <!-- BEGIN : POPIN CONTACT -->
+        <div id="modal-{{ contact.id }}" class="modal1">
+            <div class="modal-content" id="fiche">
+
+                <div style="background-image: url('{{ asset('uploads/img/user/') }}{{ contact.img }}');" class="visuel-bg">
+                    <div class="close" onclick="closeModal('modal-'+{{ contact.id }})"></div>
+                </div>
+                <div class="modal-body">
+                    <div class="name-popin">{{ contact.firstname }} {{ contact.lastname }}</div>
+                    <div class="poste-popin poste">{{ contact.job }}</div>
+					{% if contact.localisation is not empty %}
+                    <div class="lieu-popin">
+                        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik00MjUuOTUxLDg5LjAyMUMzODYuODY0LDMyLjQ1MSwzMjQuOTE3LDAsMjU2LjAwNiwwUzEyNS4xNDgsMzIuNDUxLDg2LjA2MSw4OS4wMjENCgkJCWMtMzguODk1LDU2LjI4NC00Ny44NzYsMTI3LjU0MS0yNC4wNzIsMTkwLjQ5NmM2LjM2NywxNy4xOTIsMTYuNDg4LDMzLjg5NSwzMC4wMSw0OS41NDdsMTUwLjM3OCwxNzYuNjM0DQoJCQljMy40MDEsMy45OTgsOC4zODQsNi4zMDIsMTMuNjI5LDYuMzAyYzUuMjQ1LDAsMTAuMjI4LTIuMzAzLDEzLjYyOS02LjMwMmwxNTAuMzM2LTE3Ni41ODYNCgkJCWMxMy41ODItMTUuNzQyLDIzLjY5LTMyLjQyNywzMC4wMDQtNDkuNDgxQzQ3My44MjcsMjE2LjU2Miw0NjQuODQ2LDE0NS4zMDUsNDI1Ljk1MSw4OS4wMjF6IE00MTYuNDUxLDI2Ny4wOTMNCgkJCWMtNC44NjksMTMuMTU4LTEyLjgxOCwyNi4xNjctMjMuNjEzLDM4LjY4Yy0wLjAzLDAuMDMtMC4wNiwwLjA2LTAuMDg0LDAuMDk2TDI1Ni4wMDYsNDY2LjQ4N0wxMTkuMTc0LDMwNS43NjgNCgkJCWMtMTAuNzg5LTEyLjUwMi0xOC43MzgtMjUuNTEtMjMuNjU1LTM4Ljc5NGMtMTkuNjg2LTUyLjA2NS0xMi4yMTUtMTEwLjk4MSwxOS45OTEtMTU3LjU5Mg0KCQkJYzMyLjMwNy00Ni43Niw4My41MTktNzMuNTc4LDE0MC40OTYtNzMuNTc4YzU2Ljk3NiwwLDEwOC4xODIsMjYuODE3LDE0MC40OSw3My41NzgNCgkJCUM0MjguNzA4LDE1NS45OTMsNDM2LjE4NSwyMTQuOTA5LDQxNi40NTEsMjY3LjA5M3oiLz4NCgk8L2c+DQo8L2c+DQo8Zz4NCgk8Zz4NCgkJPHBhdGggZD0iTTI1Ni4wMDYsMTA2LjIxOWMtNTUuMjc2LDAtMTAwLjI1Miw0NC45Ny0xMDAuMjUyLDEwMC4yNTJzNDQuOTcsMTAwLjI1MiwxMDAuMjUyLDEwMC4yNTJzMTAwLjI1Mi00NC45NywxMDAuMjUyLTEwMC4yNTINCgkJCUMzNTYuMjU4LDE1MS4xOTUsMzExLjI4MiwxMDYuMjE5LDI1Ni4wMDYsMTA2LjIxOXogTTI1Ni4wMDYsMjcwLjkxOGMtMzUuNTM2LDAtNjQuNDQ4LTI4LjkxMi02NC40NDgtNjQuNDQ4DQoJCQljMC0zNS41MzYsMjguOTEyLTY0LjQ0OCw2NC40NDgtNjQuNDQ4YzM1LjUzNiwwLDY0LjQ0OCwyOC45MTIsNjQuNDQ4LDY0LjQ0OFMyOTEuNTQyLDI3MC45MTgsMjU2LjAwNiwyNzAuOTE4eiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K"
+                             style="width: 23px;"/>
+                        &nbsp;
+                        {% for category in contact.categoryUsers %}
+                            {{ category.name }} -
+                        {% endfor %}
+                        <span class="text-capitalize">{{ contact.localisation }}</span>
+                    </div>
+					{% endif %}
+                    {% if contact.about is not empty %}
+					<div>
+                        <p class="titre-apropos-popin">A PROPOS</p>
+                        <p class="apropos-popin">{{ contact.about }}</p>
+                    </div>
+					{% endif %}
+                    <a href="tel:{{ contact.phone }}">
+                        <div class="call-popin"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    </a>
+                    <div class="but-popin" id="form{{ contact.id }}"
+                         onclick="modalCarousel('modalForm-'+{{ contact.id }});closeModal('back2-'+{{ contact.id }});modalCarousel('back1-'+{{ contact.id }})">
+                        Prendre rendez-vous
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for contact in contacts %}
+        <!-- BEGIN POPPIN FORM  -->
+        <div id="modalForm-{{ contact.id }}" class="modal1" style="{{ (customer.contact is defined and customer.contact == contact.id) ? 'display: flex' : 'display: none'}}">
+                <div class="modal-content" style="display: block;" id="formulaire{{ contact.id }}">
+                    <form name="form-{{ contact.id }}" id="form-{{ contact.id }}" action="{{ path('question_send', {id: congres.id} )}}" method="post">
+                    <div style="background-color: #34467e; min-height: 140px; border-bottom-left-radius: 20px; display: inline-block; width: 100%;">
+                        <div class="text-left back" id="back1-{{ contact.id }}"
+                             onclick="closeModal('modalForm-'+{{ contact.id }}); closeModal('back1-'+{{ contact.id }}); modalCarousel('back2-'+{{ contact.id }})"
+                             style="float: left; height: 90px; line-height: 140px;">&#8963;
+                        </div>
+                        <div class="text-left back" id="back2-{{ contact.id }}"
+                             onclick="closeModal('creneau-content'+{{ contact.id }}); modalCarousel('back1-'+{{ contact.id }});modalCarousel('form-content'+{{ contact.id }}); closeModal('back2-'+{{ contact.id }})"
+                             style="float: left; height: 90px; line-height: 140px; display: none;">&#8963;
+                        </div>
+                        <div class="titre-popin">{{ contact.firstname }} {{ contact.lastname }}</div>
+                        <div class="soustitre-popin poste2">{{ contact.job }}</div>
+                        <div class="close" id="close_form"
+                             onclick="closeModal('modalForm-'+{{ contact.id }}); closeModal('modal-'+{{ contact.id }})"></div>
+                    </div>
+                    <div style="background-image: url('{{ asset('uploads/img/user/') }}{{ contact.img }}');background-position: center;background-size: cover; height: 140px; width: 140px; border-radius: 50%; margin: auto; margin-top: -70px; z-index: 100; position: absolute; left: calc(50% - 70px);"></div>
+                    <div class="modal-body" id="form-content{{ contact.id }}" style="margin-top: 60px;{{ (customer.contact is defined and customer.contact == contact.id) ? 'display: none' : 'display: block'}}">
+                        <form>
+                            <div class="bold-OS pb-2">MOTIF DU RENDEZ-VOUS</div>
+                            <select class="form-control w-100 mb-3" name="reason">
+                                {% for reason in contact.reasons %}
+                                    <option value="{{ reason.id }}" {{ (customer.reason is defined and customer.reason == reason.id) ? 'selected="selected"' : ''}}>
+                                        {{ reason.name }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                            <div class="bold-OS pb-2">INFORMATIONS PERSONNELLES</div>
+                            <select class="form-control w-100 mb-3" name="civility">
+                                <option value="">Civilité*</option>
+                                <option>Professeur</option>
+                                <option>Docteur</option>
+                                <option>Monsieur</option>
+                                <option>Madame</option>
+                                {% if customer.civility is defined %}
+                                    <option selected="selected">{{ customer.civility }}</option>
+                                {% endif %}
+                            </select>
+                            <input type="text" placeholder="Nom*" name="lastname" value="{{ (customer.lastname is defined) ? customer.lastname : ''}}" class="form-control w-100 mb-3" required>
+                            <input type="text" placeholder="Prénom*" name="firstname" value="{{ (customer.firstname is defined) ? customer.firstname : ''}}" class="form-control w-100 mb-3" required>
+                            <input type="email" placeholder="Email*" name="mail" value="{{ (customer.mail is defined) ? customer.mail : ''}}" class="form-control w-100 mb-3" required>
+                            <input type="text" placeholder="Téléphone" name="phone" value="{{ (customer.phone is defined) ? customer.phone : ''}}" class="form-control w-100 mb-3">
+                            <input type="text" placeholder="Lieu d'exercice" name="localisation" value="{{ (customer.localisation is defined) ? customer.localisation : ''}}" class="form-control w-100 mb-3">
+                            <span class="badge badge-danger" id="error-{{ contact.id }}" style="display: none;">Veuillez remplir correctement le formulaire.</span>
+                            <div class="but-popin-alert"
+                                 onclick="checkFormValid({{ contact.id }});">
+                                Choisir une date et une heure
+                            </div>
+                            <div class="mention">*champs obligatoires</div>
+                    </div>
+                    <div class="modal-body" id="creneau-content{{ contact.id }}"
+                         style="margin-top: 3rem;{{ (customer.contact is defined and customer.contact == contact.id) ? 'display: inline-block' : 'display: none'}};">
+                        <div>
+                            <div class="wrapper">
+                                <div id="month">
+                                <span class="text-1" style="">
+                                    {{ congres.endDate|format_date(pattern='MMMM', locale='fr') }}
+                                </span>
+                                </div>
+                            </div>
+                            <div id="nav" style="display: inline-block; float: right; font-size: 1.5rem;">
+                                <a href="#left" class="left"><i class="fa fa-angle-left"></i>&nbsp;</a>
+                                <a href="#right" class="right">&nbsp;<i class="fa fa-angle-right"></i></a>
+                            </div>
+                            <div class="btn-group-toggle scroll text-center" data-toggle="buttons">
+                                {# List days #}
+                                {% set difference = date(congres.endDate).diff(date(startDate)) %}
+                                {% set leftDays = difference.days + 1 %}
+                                {% set date = startDate %}
+                                {% set firstDay = startDate|date('d') %}
+                                {% for i in 1..leftDays %}
+                                    <div style="display: inline-block"
+                                         onclick="openCalendar('{{ date|date('D') }}{{ contact.id }}');">
+                                        <span class="day">{{ date|format_datetime('full', 'none', locale='fr')|slice(0, 3) }}</span>
+
+                                        <label style="padding-left: 10px;" class="btn btn-secondary mb-3 round {{ (i == 1) ? 'active': '' }}" >
+                                            <input type="radio"
+                                                   autocomplete="off" {{ (i == 1) ? 'checked': '' }}>
+                                            {{ date|date('d') }}
+                                        </label>
+                                    </div>
+                                    {% set date = date|date_modify("+1 day") %}
+                                {% endfor %}
+                            </div>
+                            <div class="bold-OS pb-2">MEETING DE {{ congres.durationMeeting|format_time(pattern='mm') }}
+                                MN
+                            </div>
+
+                            <div class="btn-group-toggle-hour btn-group-toggle" data-toggle="buttons">
+                                {% for meeting in contact.meetings %}
+                                    <label class="btn {{ meeting.isOpen == true ? 'btn-secondary' : 'btn-outline-secondary disabled' }} mb-3 planning {{ meeting.startDate|date('D') }}{{ contact.id }}"
+                                           style="display: {{ (meeting.startDate|date('d') == firstDay) ? 'block': 'none' }}"
+                                            {{ meeting.isOpen == true ? '' : 'disabled' }}
+                                    >
+                                        <input type="radio" name="meeting" autocomplete="off"
+                                               value="{{ meeting.id }}" required>
+                                        {{ meeting.startDate|date('H:i') }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <input class="but-popin-alert" type="submit" value="Valider le rendez-vous" id="submit-{{ contact.id }}">
+                    </div>
+                    </form>
+
+                </div>
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('slider') }}
+        {{ encore_entry_script_tags('modal') }}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <script>
+            function modalCarousel(id) {
+                var modal = document.getElementById(id);
+                modal.style.display = "inline-block";
+            }
+
+            function openCalendar(id) {
+                console.log(id)
+
+                var divsToHide = document.getElementsByClassName("planning"); //divsToHide is an array
+                for (var i = 0; i < divsToHide.length; i++) {
+                    divsToHide[i].style.display = "none";
+                }
+                var divsToShow = document.getElementsByClassName(id);
+                console.log(divsToShow)
+
+                for (var a = 0; a < divsToShow.length; a++) {
+                    divsToShow[a].style.display = "block";
+                }
+            }
+
+            function closeModal(id) {
+                var modal = document.getElementById(id);
+                modal.style.display = "none";
+            }
+            function validateEmail(email) {
+                const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
+            function checkFormValid(contactId){
+                var civ = document.forms["form-"+contactId]["civility"].value;
+                var lastname = document.forms["form-"+contactId]["lastname"].value;
+                var firstname = document.forms["form-"+contactId]["firstname"].value;
+                var mail = document.forms["form-"+contactId]["mail"].value;
+                if ((validateEmail(mail)) && (civ !== "") && (lastname !== "") && (firstname !== "")){
+                    modalCarousel('creneau-content'+contactId);
+                    closeModal('form-content'+contactId);
+                    closeModal('back1-'+contactId);
+                    modalCarousel('back2-'+contactId)
+                }else {
+                    modalCarousel('error-'+contactId);
+                }
+            }
+
+
+            $('.owl-carousel').owlCarousel({
+                center: false,
+                loop: true,
+                nav: true,
+                navText: ['<i class="fa fa-angle-left previous"></i> PRECEDENT', 'SUIVANT <i class="fa fa-angle-right next"></i>'],
+                responsive: {
+                    0: {
+                        items: 2,
+                    },
+                    768: {
+                        items: 4,
+                    },
+                    990: {
+                        items: 5,
+                    }
+                },
+                onInitialized: coverFlowEfx,
+                onTranslate: coverFlowEfx,
+            });
+
+            function coverFlowEfx(e) {
+                if ($('.owl-dots')) {
+                    $('.owl-dots').remove();
+                }
+                idx = e.item.index;
+                $('.owl-item.big').removeClass('big');
+                $('.owl-item.medium').removeClass('medium');
+                $('.owl-item.mdright').removeClass('mdright');
+                $('.owl-item.mdleft').removeClass('mdleft');
+                $('.owl-item.smallRight').removeClass('smallRight');
+                $('.owl-item.smallLeft').removeClass('smallLeft');
+                $('.owl-item').eq(idx - 1).addClass('medium mdleft');
+                $('.owl-item').eq(idx).addClass('big');
+                $('.owl-item').eq(idx + 1).addClass('medium mdright');
+                $('.owl-item').eq(idx + 2).addClass('smallRight');
+                $('.owl-item').eq(idx - 2).addClass('smallLeft');
+            }
+        </script>
+    {% endblock %}

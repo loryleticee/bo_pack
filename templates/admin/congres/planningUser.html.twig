@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Incyte{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+    <style type="text/css">
+        label{
+            width: 120px;
+            font-weight: 500!important;
+        }
+        .meeting {
+            background-color: #fff;
+            color: rgb(52, 70, 126);
+            border-color: rgb(52, 70, 126);
+            border-width: 2px;
+        }
+
+        .checked {
+            background-color: lightgray;
+            color: #fff;
+            border-color: lightgray;
+            border-width: 2px;
+        }
+        .checked:hover{
+            color: white;
+        }
+
+        input[type="checkbox"] {
+            display: none;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    {% include '/admin/congres/_navbar.html.twig' %}
+    <div class="container">
+        <h3 class="pb-4"><a class="pr-3" href="{{ path('admin_congres_user', {id: congres.id}) }}" >&#8249;</a>Agenda de {{ user.firstname }} - {{ congres.name }}</h3>
+        <div class="row bg-white shadow-lg p-3">
+            <div class="col-12">
+                <br>
+                <form method="post" action="{{ path('admin_planning_user', {idCongres: congres.id, idUser: user.id}) }}">
+                    {% set difference = date(congres.endDate).diff(date(startDate)) %}
+                    {% set leftDays = difference.days + 1 %}
+                    {% set date = startDate %}
+                    {% set firstDay = startDate|date('d') %}
+                    {% for i in 1..leftDays %}
+                        <div class="text-capitalize pb-2 pt-5 font-weight-bolder">
+                            {{ date|format_date('full', locale='fr') }}
+                        </div>
+                        {% for meeting in meetings %}
+                            {% if meeting.startDate|date('d') == date|date('d') %}
+                                {% if meeting.isOpen == true and meeting.isReserved == false %}
+                                    <label class="btn mb-3 meeting" for="{{ meeting.id }}">
+                                        <input type="checkbox" id="{{ meeting.id }}" name="{{ meeting.id }}"
+                                               value="{{ meeting.id }}">
+                                        {{ meeting.startDate|date('H:i') }}
+                                    </label>
+                                {% elseif meeting.isOpen == false and meeting.isReserved == true %}
+                                    <label class="btn mb-3 meeting checked" style="background-color: indianred; border-color: indianred" for="{{ meeting.id }}">
+                                        <input type="checkbox" id="{{ meeting.id }}" name="{{ meeting.id }}"
+                                               value="{{ meeting.id }}" disabled>
+                                        {{ meeting.startDate|date('H:i') }}
+                                    </label>
+                                {% elseif meeting.isOpen == false and meeting.isReserved == false %}
+                                    <label class="btn mb-3 meeting checked" for="{{ meeting.id }}" onclick="openMeeting({{ meeting.id }})">
+                                        <input type="checkbox" id="{{ meeting.id }}" name="{{ meeting.id }}"
+                                               value="{{ meeting.id }}">
+                                        {{ meeting.startDate|date('H:i') }}
+                                    </label>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% set date = date|date_modify("+1 day") %}
+                    {% endfor %}
+                    <br><br>
+                    <input value="" name="no" type="hidden">
+                    <input type="submit" class="btn btn-primary mb-5" value="Enregistrer">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $("document").ready(function () {
+            $("input").click(function () {
+                if ($(this).is(':checked')) {
+                    $(this).parent().addClass('checked');
+                } else {
+                    $(this).parent().removeClass('checked');
+                }
+
+            })
+
+        });
+        function openMeeting(id) {
+            $.ajax({
+                url: '{{ path('open_meeting') }}?meeting='+id,
+                data: id,
+                dataType: 'json'
+            })
+        }
+    </script>
+{% endblock %}
+

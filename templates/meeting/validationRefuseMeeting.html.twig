@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Congrès - Incyte{% endblock %}
+
+{% block body %}
+<body>
+<header>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-right" style="position: absolute;right: 20px;top: 30px;"><img src="{{ asset('img/logo-bleu.png') }}" width="120" alt=""/></h1>
+                    <div class="logo-app"><img src="{{ asset('img/logo-app.png') }}" width="130" alt=""/></div>
+                    <div class="nom-event">{{ congres.name }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="p-5"><img src="{{ asset('img/picto-refus.jpg') }}" style="width: 160px;" alt=""/></div>
+                <h2 class="p-3 bold-OS">{{ refusedBy == 'customer'? 'Annuler' : 'Refuser' }} le rendez-vous</h2>
+                <div class="p-3 content-accept font-weight-bold">Votre {{ refusedBy == 'customer'? 'annulation a bien été prise en compte' : 'refus a bien été pris en compte' }}.</div>
+                <div class="p-3 content-accept ">
+                    Si vous souhaitez plannifier un nouveau rendez-vous, cliquez sur le lien ci-dessous.
+                </div>
+                {% if refusedBy == 'customer' %}
+                    <a href="{{ path('congres_contact', {id: congres.id, firstname: customer.firstname, lastname: customer.lastname, mail: customer.email, phone: customer.phone, civility: customer.civility, localisation: customer.localisation, reason: meeting.reason.id, contact: contact.id}) }}">
+                    <div class="but-popin-alert" style="margin-bottom: 80px;">Plannifier un nouveau rendez-vous</div>
+                </a>
+                {% else %}
+                    <a href="{{ path('planning_user',{email: mailCrypt, idCongres: congres.id}) }}">
+                        <div class="but-popin-alert" style="margin-bottom: 80px;">Accéder à mon agenda</div>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% include 'congres/_footerML.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('modal') }}
+<script>
+    var modal_doc = document.getElementById("myModal_doc");
+
+    function openModal(id) {
+        var modal = document.getElementById(id);
+        modal.style.display = "block";
+    }
+    function closeModal(id) {
+        var modal = document.getElementById(id);
+        modal.style.display = "none";
+    }
+</script>
+{% endblock %}

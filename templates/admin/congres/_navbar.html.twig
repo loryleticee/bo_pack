@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-left text-center">
+    <a href="{{ path('admin_home') }}">
+        <img class="mt-4" src="{{ asset('img/logo-blanc.png') }}" alt="" width="68">
+    </a>
+    {% set route =  app.request.get('_route') %}
+    <a href="{{ path('admin_home') }}" class="calendar_icon {{ route == 'admin_home' ? 'active': ''}}"></a>
+    <a href="{{ path('admin_congres_user', {id: congres.id}) }}" class="contact {{ route == 'admin_congres_user' ? 'active': ''}}"></a>
+    <a href="{{ path('admin_congres_documents', {id: congres.id}) }}" class="documents {{ route == 'admin_congres_documents' ? 'active': ''}}"></a>
+    <a href="{{ path('admin_congres_edit', {id: congres.id}) }}" style="background-image: url({{ asset('img/settings.svg') }})" class="config {{ route == 'admin_congres_edit' ? 'active': ''}}"></a>
+    <a href="{{ path('admin_logout') }}" class="logout" style="background-image: url({{ asset('img/logout.svg') }})"></a>
+</nav>
+

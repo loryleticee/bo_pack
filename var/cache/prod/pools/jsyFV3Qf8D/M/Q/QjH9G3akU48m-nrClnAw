@@ -1,0 +1,102 @@
+<?php //%255B100514e64ab7200583da8513b62ade9c%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'idCongres' => [
+                        0,
+                    ],
+                    'idUser' => [
+                        1,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT m0_.id AS id_0, m0_.start_date AS start_date_1, m0_.end_date AS end_date_2, m0_.is_open AS is_open_3, m0_.is_reserved AS is_reserved_4, m0_.is_cancel AS is_cancel_5, m0_.reason_cancel AS reason_cancel_6, m0_.congres_id AS congres_id_7, m0_.user_id AS user_id_8, m0_.reason_id AS reason_id_9, m0_.customer_id AS customer_id_10 FROM meeting m0_ LEFT JOIN congres c1_ ON m0_.congres_id = c1_.id LEFT JOIN user u2_ ON m0_.user_id = u2_.id WHERE c1_.id = ? AND u2_.id = ?',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'm' => 'App\\Entity\\Meeting',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'start_date_1' => 'start_date',
+                    'end_date_2' => 'end_date',
+                    'is_open_3' => 'is_open',
+                    'is_reserved_4' => 'is_reserved',
+                    'is_cancel_5' => 'isCancel',
+                    'reason_cancel_6' => 'reasonCancel',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'congres_id_7' => 'integer',
+                    'user_id_8' => 'integer',
+                    'reason_id_9' => 'integer',
+                    'customer_id_10' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'm' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'congres_id_7' => 'congres_id',
+                    'user_id_8' => 'user_id',
+                    'reason_id_9' => 'reason_id',
+                    'customer_id_10' => 'customer_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'm',
+                    'start_date_1' => 'm',
+                    'end_date_2' => 'm',
+                    'is_open_3' => 'm',
+                    'is_reserved_4' => 'm',
+                    'is_cancel_5' => 'm',
+                    'reason_cancel_6' => 'm',
+                    'congres_id_7' => 'm',
+                    'user_id_8' => 'm',
+                    'reason_id_9' => 'm',
+                    'customer_id_10' => 'm',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\Meeting',
+                    'start_date_1' => 'App\\Entity\\Meeting',
+                    'end_date_2' => 'App\\Entity\\Meeting',
+                    'is_open_3' => 'App\\Entity\\Meeting',
+                    'is_reserved_4' => 'App\\Entity\\Meeting',
+                    'is_cancel_5' => 'App\\Entity\\Meeting',
+                    'reason_cancel_6' => 'App\\Entity\\Meeting',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

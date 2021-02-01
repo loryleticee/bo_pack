@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Incyte{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+{% block body %}
+
+    {% include '/admin/congres/_navbar.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a href="{{ path("admin_create_document_in_congres", {id: congres.id}) }}"><button class="btn btn-primary mb-5 float-right">Ajouter un document</button></a>
+                <h3>{{ congres.name }} - Documents</h3>
+                <br>
+                <table class="table bg-white shadow rounded-lg">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom du document</th>
+                            <th>Descriptif</th>
+                            <th>Catégorie</th>
+                            <th>Stats</th>
+                            <th style="text-align:center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for doc in documents %}
+                        <tr>
+                            <td><img src="{{ asset( 'uploads/img/document/' ) }}{{ doc.img }}" class="img-circle" width="100px"></td>
+                            <td>{{ doc.name }}</td>
+                            <td>{{ doc.about }}</td>
+                            <td>
+                                {% for cat in doc.categoryDocuments %}
+                                    {{ cat.name }}
+                                {% endfor %}
+                            </td>
+                            <td>{{ doc.numberDownload }}</td>
+                            <td align="center">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-h point"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ path('admin_edit_document',{idCongres: congres.id, id: doc.id}) }}"
+                                        >Editer
+                                        </a>
+                                        {{ include('admin/document/_delete_form.html.twig') }}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

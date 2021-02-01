@@ -1,0 +1,96 @@
+<?php //%255Bcb6e389ad359bed3f6c221820a408dcb%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Doctrine\\ORM\\Query\\ParserResult'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ParserResult')),
+        clone ($p['Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\Exec\\SingleSelectExecutor')),
+        clone ($p['Doctrine\\ORM\\Query\\ResultSetMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Query\\ResultSetMapping')),
+    ],
+    null,
+    [
+        'Doctrine\\ORM\\Query\\ParserResult' => [
+            '_sqlExecutor' => [
+                $o[1],
+            ],
+            '_resultSetMapping' => [
+                $o[2],
+            ],
+            '_parameterMappings' => [
+                [
+                    'id' => [
+                        0,
+                    ],
+                ],
+            ],
+        ],
+        'Doctrine\\ORM\\Query\\Exec\\AbstractSqlExecutor' => [
+            '_sqlStatements' => [
+                1 => 'SELECT d0_.id AS id_0, d0_.name AS name_1, d0_.about AS about_2, d0_.doc_name AS doc_name_3, d0_.img AS img_4, d0_.number_download AS number_download_5, d0_.ref AS ref_6, d0_.size AS size_7, d0_.created_at AS created_at_8, d0_.congres_id AS congres_id_9 FROM document d0_ LEFT JOIN congres c1_ ON d0_.congres_id = c1_.id WHERE c1_.id = ?',
+            ],
+        ],
+        'stdClass' => [
+            'aliasMap' => [
+                2 => [
+                    'd' => 'App\\Entity\\Document',
+                ],
+            ],
+            'fieldMappings' => [
+                2 => [
+                    'id_0' => 'id',
+                    'name_1' => 'name',
+                    'about_2' => 'about',
+                    'doc_name_3' => 'doc_name',
+                    'img_4' => 'img',
+                    'number_download_5' => 'number_download',
+                    'ref_6' => 'ref',
+                    'size_7' => 'size',
+                    'created_at_8' => 'created_at',
+                ],
+            ],
+            'typeMappings' => [
+                2 => [
+                    'congres_id_9' => 'integer',
+                ],
+            ],
+            'entityMappings' => [
+                2 => [
+                    'd' => null,
+                ],
+            ],
+            'metaMappings' => [
+                2 => [
+                    'congres_id_9' => 'congres_id',
+                ],
+            ],
+            'columnOwnerMap' => [
+                2 => [
+                    'id_0' => 'd',
+                    'name_1' => 'd',
+                    'about_2' => 'd',
+                    'doc_name_3' => 'd',
+                    'img_4' => 'd',
+                    'number_download_5' => 'd',
+                    'ref_6' => 'd',
+                    'size_7' => 'd',
+                    'created_at_8' => 'd',
+                    'congres_id_9' => 'd',
+                ],
+            ],
+            'declaringClasses' => [
+                2 => [
+                    'id_0' => 'App\\Entity\\Document',
+                    'name_1' => 'App\\Entity\\Document',
+                    'about_2' => 'App\\Entity\\Document',
+                    'doc_name_3' => 'App\\Entity\\Document',
+                    'img_4' => 'App\\Entity\\Document',
+                    'number_download_5' => 'App\\Entity\\Document',
+                    'ref_6' => 'App\\Entity\\Document',
+                    'size_7' => 'App\\Entity\\Document',
+                    'created_at_8' => 'App\\Entity\\Document',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

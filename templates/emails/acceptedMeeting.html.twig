@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml"
+      xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="x-apple-disable-message-reformatting">
+    <!--[if gte mso 12]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>
+                96
+            </o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    <style type="text/css">
+        @font-face {
+            font-family: 'OpenSans-Regular';
+            font-style: normal;
+            font-weight: 400;
+            src: local('OpenSans-Regular'), url("{{ domain_name }}/public/email/fonts/OpenSans-Regular.woff2") format('woff2');
+        }
+
+        @font-face {
+            font-family: 'OpenSans-Bold';
+            font-style: normal;
+            font-weight: 800;
+            src: local('OpenSans-Bold'), url("{{ domain_name }}/public/email/fonts/OpenSans-Bold.woff2") format('woff2');
+        }
+
+        .ExternalClass {
+            width: 100%;
+        }
+
+        .ExternalClass, .ExternalClass *, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass
+        body, html {
+            min-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+            background-color: #f3f4f7;
+            font-family: 'OpenSans-Regular', 'Arial', Arial, sans-serif;
+			line-height: normal;
+        }
+
+        * {
+            text-size-adjust: none;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased !important
+        }
+
+        table {
+            border-collapse: collapse !important;
+            border-spacing: 0
+        }
+
+        table, td {
+            mso-table-lspace: 0;
+            mso-table-rspace: 0
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic
+        }
+
+        *[x-apple-data-detectors], .unstyle-auto-detected-links *, .aBn {
+            cursor: default !important;
+            font-family: inherit !important;
+            font-size: inherit !important;
+            font-weight: inherit !important;
+            color: inherit !important;
+            line-height: inherit !important;
+            text-decoration: none !important;
+            border-bottom: 0 !important
+        }
+
+        div {
+            line-height: 100%;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: black;
+            line-height: 100%;
+        }
+
+        a, a:link {
+            color: #2A5DB0;
+            text-decoration: underline;
+        }
+
+        body, table, td, p, a, li, blockquote {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+			line-height: normal;
+        }
+
+        .appleLinks, .appleLinksWhite {
+            text-decoration: none !important;
+        }
+
+        .but {
+            background-color: #285eb4 !important;
+            background-repeat: no-repeat;
+            background-position-x: 15px;
+            background-position-y: center;
+            color: #FFF;
+            border: #285eb4 2px solid;
+            -webkit-transition: all 1s ease;
+            -o-transition: all 1s ease;
+            transition: all 1s ease;
+        }
+
+        .but:hover {
+            background-color: #FFF !important;
+            color: #73a1da !important;
+            border: #73a1da 2px solid;
+        }
+
+        .boRed {
+            border-left: #73a1da 1px solid;
+            border-top: 0;
+        }
+
+        .showsmart, *[class~="showsmart"] {
+            width: 0;
+            display: none !important;
+        }
+
+        .hidsmart, *[class~="hidsmart"] {
+            display: block !important;
+            max-height: inherit !important;
+            overflow: visible !important;
+        }
+
+        @media screen and (max-width: 700px) {
+            body {
+                width: auto !important;
+            }
+
+            .w100p, *[class~="w100p"] {
+                width: 100% !important;
+            }
+
+            .w10, *[class~="w10"] {
+                width: 10px !important;
+            }
+
+            .h20, *[class~="h20"] {
+                height: 20px !important;
+            }
+
+            .pad10, *[class~="pad10"] {
+                padding: 10px !important;
+            }
+
+            .pad30, *[class~="pad30"] {
+                padding: 30px !important;
+            }
+
+            .padTop10, *[class~="padTop10"] {
+                padding-top: 10px !important;
+            }
+
+            .pad0, *[class~="pad0"] {
+                padding: 0px !important;
+            }
+
+            .fz13, *[class~="fz13"] {
+                font-size: 13px !important;
+            }
+
+            .noflo, *[class~="noflo"] {
+                float: none !important;
+            }
+
+            .hidsmart, *[class~="hidsmart"] {
+                width: 0;
+                display: none !important;
+            }
+
+            .showsmart, *[class~="showsmartsimple"] {
+                display: inline-block !important;
+                width: auto !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart, *[class~="showsmart"] {
+                display: inline-block !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .noborder, *[class~="noborder"] {
+                border: none !important;
+            }
+
+            .tac, *[class~="tac"] {
+                text-align: center;
+            }
+
+            .padBot, *[class~="padBot"] {
+                padding: 0 !important;
+                padding-bottom: 15px !important;
+                height: auto !important
+            }
+
+            .showsmart300, *[class~="showsmart300"] {
+                display: block !important;
+                width: 300px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart280, *[class~="showsmart280"] {
+                display: block !important;
+                width: 280px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart230, *[class~="showsmart230"] {
+                display: block !important;
+                width: 230px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart187, *[class~="showsmart187"] {
+                display: block !important;
+                width: 230px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart255, *[class~="showsmart255"] {
+                display: block !important;
+                width: 255px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart128, *[class~="showsmart128"] {
+                display: block !important;
+                width: 128px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .onlyForSmall, *[class~="onlyForSmall"] {
+                display: block !important;
+                width: 280px !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .hideForSmall, *[class~="hideForSmall"] {
+                width: 0 !important;
+                display: none !important;
+            }
+
+            .boRed {
+                border-top: #e0215a 1px solid;
+                border-left: 0;
+            }
+        }
+
+        @media screen and (max-width: 420px) {
+            .padding10, *[class~="padding10"] {
+                padding: 10px !important;
+            }
+
+            .padBot, *[class~="padBot"] {
+                padding: 0 !important;
+                padding-bottom: 15px !important;
+                height: auto !important
+            }
+
+            .padTop, *[class~="padTop"] {
+                padding-top: 15px !important;
+            }
+
+            .padBotTop10, *[class~="padBotTop10"] {
+                padding-top: 10px !important;
+                padding-bottom: 10px !important;
+            }
+
+            .pad30, *[class~="pad20"] {
+                padding: 20px !important;
+            }
+
+            .w320, *[class~="w320"] {
+                width: 320px !important;
+                margin: 0 auto;
+            }
+
+            .w300, *[class~="w300"] {
+                width: 300px !important;
+            }
+
+            .hidsmart, *[class~="hidsmart"] {
+                width: 0;
+                display: none !important;
+            }
+
+            .showsmart, *[class~="showsmartsimple"] {
+                display: inline-block !important;
+                width: auto !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .showsmart, *[class~="showsmart"] {
+                display: inline-block !important;
+                width: auto !important;
+                max-height: inherit !important;
+                overflow: visible !important;
+            }
+
+            .t-center, *[class~="t-center"] {
+                text-align: center !important;
+                height: auto !important
+            }
+        }
+    </style>
+</head>
+<body style="-webkit-font-smoothing: antialiased;min-width:100% !important;background:#f3f4f7;-webkit-text-size-adjust:none; margin:0 auto;padding:0;">
+<!--[if !mso]>
+<!-->
+<div style="display:none; max-height:0; visibility:hidden; mso-hide:all;">
+    INCYTE : Votre rendez-vous a été confirmé
+</div>
+<!--
+<![endif]-->
+<center style="width:100% !important; height:100% !important; table-layout:fixed !important; background-color:#f3f4f7;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="margin:auto;">
+        <tbody>
+        <tr>
+            <td align="center">
+                <table width="700" border="0" cellspacing="0" cellpadding="0" align="center"
+                       style="background-color: #FFFFFF" class="w100p">
+                    <tbody>
+                    <!-- PREHEADER -->
+                    <tr>
+                        <td style="background-color: #f3f4f7; color:#999999;text-align: center; font-size: 13px; mso-padding-alt: 15px; padding: 15px;">
+                            <a style="color:#999999; text-decoration:none;" href="#" target="_blank">Voir dans le
+                                navigateur</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 0; mso-padding-alt: 0; padding: 0; background-color: #285eb4; height: 10px;"></td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 30px; padding: 30px; font-size: 24px; background-color:white; mso-line-height: exactly; line-height: 0px;"
+                            align="center"><img src="{{ domain_name }}/public/email/images/logo.png" width="142"
+                                                height="95" alt="Incyte"/></td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 30px 45px;  padding: 30px 45px;  font-size: 30px; background-color:white; mso-line-height: exactly; font-weight: 800; font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;"
+                            align="center">Votre rendez-vous a été confirmé !
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 20px; padding: 20px; font-size: 24px; background-color:white; mso-line-height: exactly; line-height: 0px;"
+                            align="center"><img src="{{ domain_name }}/public/email/images/picto-valid.jpg"
+                                                width="235" height="200" alt=""/></td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 20px; padding: 20px; background-color:white; mso-line-height: exactly;font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;"
+                            align="center"><span
+                                style="font-size: 24px; color: #0049a1; font-weight: 800; text-transform: uppercase;">{{ meeting.startDate|format_datetime('full', 'none', locale='fr') }}</span><br><span
+                                style="font-size: 20px; color: #000000; font-weight: 800; text-transform: uppercase;">{{ meeting.startDate|date('H:i') }} - {{ meeting.endDate|date('H:i') }}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 20px 45px; padding: 20px 45px; background-color:white; mso-line-height: exactly;"
+                            align="center"><p
+                                style="font-size: 20px; color: #000000;font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;font-weight: 800;">
+                            Vous trouverez ci-dessous les informations sur votre rendez-vous</p>
+                            <p style="font-size: 15px; color: #000000;font-family: 'OpenSans-Regular', 'Arial', Arial, sans-serif;font-weight: 400;">
+                                Pour plus d’informations, n’hésitez pas à me contacter aux coordonnées ci-dessous.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 35px; padding: 35px; background-color:white; mso-line-height: exactly;"
+                            align="center">
+							<table width="700" border="0" cellspacing="0" cellpadding="0">
+							  <tbody>
+								<tr>
+								  <td height="140" valign="top">
+									<table width="210" border="0" cellspacing="0" cellpadding="0" class="w100p t-center"
+                                   style="float: left; height: 140px">
+										<tbody>
+										<tr>
+											<td style="mso-padding-alt: 20px 10px; padding: 20px 10px;border-top: #efefef 1px solid; border-bottom: #efefef 1px solid;"
+												valign="top"><span
+													style="font-size: 13px; text-transform: uppercase; color: #7b7b7b">Lieu</span>
+												<p style="font-size: 15px; color: #000000;font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;font-weight: 800;">
+													{{ congres.name }}<br>
+													Stand Incyte</p></td>
+										</tr>
+										</tbody>
+									</table>
+									<!--[if (gte mso 9)|(IE)]></td><td valign="top" height="140"><![endif]-->
+									<table width="210" border="0" cellspacing="0" cellpadding="0" class="w100p t-center"
+										   style="float: left; height: 140px">
+										<tbody>
+										<tr>
+											<td style="mso-padding-alt: 20px 10px; padding: 20px 10px;border-top: #efefef 1px solid; border-bottom: #efefef 1px solid;"
+												valign="top"><span
+													style="font-size: 13px; text-transform: uppercase; color: #7b7b7b">Motif du rendez-vous</span>
+												<p style="font-size: 15px; color: #000000;font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;font-weight: 800;">
+													{{ meeting.reason.name }}</p></td>
+										</tr>
+										</tbody>
+									</table>
+									<!--[if (gte mso 9)|(IE)]></td><td valign="top" height="140"><![endif]-->
+									<table width="210" border="0" cellspacing="0" cellpadding="0" class="w100p t-center"
+										   style="float: left; height: 140px">
+										<tbody>
+										<tr>
+											<td style="mso-padding-alt: 20px 10px; padding: 20px 10px;border-top: #efefef 1px solid; border-bottom: #efefef 1px solid;"
+												valign="top"><span
+													style="font-size: 13px; text-transform: uppercase; color: #7b7b7b">Contact</span>
+												<p style="font-size: 15px; color: #000000;font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;font-weight: 800;">
+													{{ contact.lastname }}<br>
+													{{ contact.email }}<br>
+													{{ contact.localisation }}<br>
+													{{ contact.phone }}</p>
+											</td>
+										</tr>
+										</tbody>
+									</table>
+								  </td>
+								</tr>
+							  </tbody>
+							</table>
+                        </td>
+                    </tr>
+                    <!-- END PREHEADER -->
+                    <!-- HEADER -->
+                    <tr>
+                        <td style="font-size: 20px; background-color:white; mso-line-height: exactly; text-align: center"
+                            class="w100p" valign="top">
+                            <table width="700" border="0" cellspacing="0" cellpadding="0" class="w100p">
+                                <tr>
+                                    <td><!--[if (gte mso 9)|(IE)]></td>
+                                    <td valign="top"><![endif]--></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 20px; padding: 20px;" align="center">
+                            <table width="700" border="0" cellspacing="0" cellpadding="0" align="center" class="w100p">
+                                <tbody>
+                                <tr>
+                                    <td style="mso-padding-alt: 0px; padding: 0px;" align="center">
+                                        <a href="{{ domain_name }}/meeting/refuse/{{ meetingIdEncrypt }}?refusedBy=customer"
+                                           style="font-family: 'OpenSans-Bold', 'Arial', Arial, sans-serif;font-weight: 800;color:#ce6f6f;display:inline-block;font-size:19px;text-align:center;text-decoration:none;-webkit-text-size-adjust:none;">&#10005;
+                                            &nbsp; Annuler le rendez-vous</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt: 0 ; padding: 0;" align="center">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td style="mso-padding-alt:20px; padding:20px;font-size: 11px;color: #303030;background-color: #f3f4f7;"
+                            align="left"><p>Vous recevez cet email car vous avez planifié un rdv avec un collaborateur
+                            Incyte en utilisant la web app.<br>
+                            <strong>L’essentiel sur le traitement de vos données lorsque vous téléchargez la web
+                                app</strong><br>
+                            Lorsque vous utilisez la web application, vos données personnelles sont traitées par Incyte
+                            Biosciences France (35 ter avenue André Morizet 92100 Boulogne Billancourt) aux fins de
+                            planifier des réunions entre les collaborateurs Incyte présents au congrès et vous. Vous
+                            disposez d’un droit d’accès, de rectification et d’effacement de vos données et d’un droit à
+                            la limitation du traitement. Vous pouvez vous opposer au traitement de vos données pour des
+                            raisons tenant à votre situation particulière. Les statistiques d’utilisation (nombre de
+                            téléchargements de la web app, nombre de documents téléchargés et nombre de rdv pris) sont
+                            calculées de manière anonyme à partir de la web app, sans que vous ou votre terminal ne
+                            soyez tracé (aucun dépôt de cookies ou autres traceurs).<br>
+                            Vous pouvez exercer vos droits auprès du DPO d’Incyte : <a href="mailto:Privacy@incyte.com">Privacy@incyte.com</a>.
+                            Vous pouvez introduire une réclamation auprès de la CNIL (<a href="https://www.cnil.fr">www.cnil.fr</a>).
+                        </p>
+                            <p>&nbsp;</p>
+                            <p><strong>Informations complémentaires :</strong><br>
+                                Vos données saisies dans la web app sont accessibles à Incyte et à Surf (l’agence en
+                                charge du développement et de l’hébergement de la web app) et seront supprimées au plus
+                                tard 1 mois après la fin du congrès. Incyte traite vos données personnelles sur la base
+                                de son intérêt légitime en termes d’organisation et de gestion des ressources humaines.
+                                La prise de rdv via la web app ne présente aucun caractère réglementaire ou contractuel
+                                et vous pouvez également rencontrer nos collaborateurs présents au congrès sans rdv
+                                préalable ou planifier une réunion en utilisant les modes de communications habituels.
+                                La prise de rdv via la web app s’inscrit dans un traitement de données plus global ayant
+                                pour finalité la gestion des relations avec les professionnels de santé. Pour une
+                                information complète relative au traitement de vos données à des fins d’information
+                                promotionnelle : <a href="https://www.incyte.fr.">www.incyte.fr.</a></p>
+                            <p>&nbsp;</p>
+                            <p>INS.020.2020</p></td>
+                    </tr>
+                    <!-- END CONTENT -->
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</center>
+</body>
+</html>

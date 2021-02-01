@@ -1,0 +1,36 @@
+label.required{
+    display: none;
+}
+.btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled).active, .show > .btn-secondary.dropdown-toggle {
+    color: #fff!important;
+    background-color: #34467e!important;
+    border-color: #34467e!important;
+}
+
+.btn-secondary {
+    color: #34467e!important;
+    background-color: #FFFFFF!important;
+    border-color: #34467e!important;
+}
+
+.btn-secondary.disabled, .btn-secondary:disabled {
+    color: #6c757d!important;
+    background-color: #fff!important;
+    border-color: #6c757d!important;
+}
+
+.round {
+    border-radius: 50% !important;
+    width: 40px!important;
+    margin-right: 1rem!important;
+}
+
+.btn-group-toggle > div > .btn input[type="radio"], .btn-group-toggle > div > .btn input[type="checkbox"], .btn-group-toggle > div > .btn-group > .btn input[type="radio"], .btn-group-toggle > div > .btn-group > .btn input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+    pointer-events: none;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    margin-left: 15px!important;
+}

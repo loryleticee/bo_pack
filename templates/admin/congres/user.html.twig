@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Incyte{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
+{% block body %}
+
+    {% include '/admin/congres/_navbar.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                {% for message in app.flashes('sucess') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <a href="{{ path("admin_create_user_in_congres", {id: congres.id}) }}"><button class="btn btn-primary mb-5 float-right">Ajouter un contact</button></a>
+
+                <h3>{{ congres.name }} - Contacts</h3>
+                <br>
+                <table class="table bg-white shadow rounded-lg">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Nom contact</th>
+                            <th>Poste</th>
+                            <th>Catégorie</th>
+                            <th>Lieu</th>
+                            <th style="text-align:center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td><img src="{{ asset( 'uploads/img/user/' ) }}{{ user.img }}" class="img-circle" width="100px"></td>
+                            <td>{{ user.firstname }} {{ user.lastname }}</td>
+                            <td>{{ user.job }}</td>
+                            <td>
+                                {% for cat in user.categoryUsers %}
+                                    {{ cat.name }}
+                                {% endfor %}
+                            </td>
+                            <td>{{ user.localisation }}</td>
+                            <td align="center">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-h point"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="{{ path('admin_edit_user', {idCongres: congres.id, id :user.id}) }}"
+                                        >Editer
+                                        </a>
+                                        <a class="dropdown-item" href="{{ path('admin_planning_user', {idCongres: congres.id, idUser: user.id}) }}"
+                                        >Consulter le planning
+                                        </a>
+                                        {{ include('admin/user/_delete_form.html.twig') }}
+
+                                        {#{{ include('admin/users/_delete_form.html.twig') }}#}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+

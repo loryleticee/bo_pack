@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Congrès - Incyte{% endblock %}
+
+{% block body %}
+    <div class="modal-display">
+        <div style="display: block;">
+            <div style="background-color: #34467e; min-height: 140px; border-bottom-left-radius: 20px; display: inline-block; width: 100%;">
+                <div class="titre-popin">{{ contact.firstname }} {{ contact.lastname }}</div>
+                <div class="soustitre-popin poste2">{{ contact.job }}</div>
+                <a href="{{ path('congres_home', {id: id}) }}">
+                    <div class="close" id="close_form"></div>
+                </a>
+            </div>
+            <div style="background-image: url('{{ asset('uploads/img/user/') }}{{ contact.img }}');background-position: center;background-size: cover; height: 140px; width: 140px; border-radius: 50%; margin: auto; margin-top: -70px; z-index: 100; position: absolute; left: calc(50% - 70px);"></div>
+            <div class="modal-body" style="margin-top: 60px;">
+                <section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <div class="pt-5"><img src="{{ asset('img/check-valid.png') }}" style="width: 25%; max-width: 80px;" alt=""/></div>
+                                <h2 class="p-3 bold-OS">Demande envoyée</h2>
+                                <div class="p-3 content-accept">
+                                    Votre demande de rendez-vous a bien été prise en compte. Vous recevrez dans les plus brefs délais une confirmation par mail.
+                                    <br><br>
+                                    <strong>L'équipe Incyte</strong>
+                                </div>
+                                <a href="{{ path('congres_home', {id: id}) }}">
+                                    <div class="but-popin-alert" style="margin-bottom: 80px;">Retour à l'accueil
+
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
