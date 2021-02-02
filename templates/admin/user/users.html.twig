@@ -17,19 +17,27 @@
        
         <div class="row pt-5">
             <div class="col-12">
-                <a href="{{ path('admin_create_reason') }}"><button class="btn btn-primary mb-4 float-right">Ajouter un motif</button></a>
-                <h3>Motif de rendez-vous</h3>
+                {# <a href="{{ path('/admin') }}"><button class="btn btn-primary mb-4 float-right">Ajouter un utilisateur</button></a> #}
+                <h3>Utilisateur</h3>
                 <table class="table bg-white shadow-lg rounded-lg">
                     <thead>
                     <tr>
+                        <th>Prenom</th>
                         <th>Nom</th>
-                        <th>Actions</th>
+                        <th>Email</th>
+                        <th>BU</th>
+                        <th>Date de création</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for reason in reasons %}
+                    {% for user in users %}
                         <tr>
-                            <td>{{ reason.name }}</td>
+                            <td>{{ user.firstname }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>BU</td>
+                            <td>{{ user.created_at }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">
@@ -37,10 +45,10 @@
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item"
-                                           href="{{ path('admin_edit_reason', {id: reason.id}) }}"
-                                        >Editer
+                                           href="{{ path('admin_edit_user', {id: user.id}) }}"
+                                        > Editer
                                         </a>
-                                        {{ include('admin/categories/_delete_formReason.html.twig') }}
+                                        {{ include('admin/user/_delete_form.html.twig') }}
                                     </div>
                                 </div>
                             </td>

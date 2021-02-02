@@ -96,11 +96,11 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/{idCongres}/edit/user/{id}", name="admin_edit_user")
+     * @Route("/edit/user/{id}", name="admin_edit_user")
      */
-    public function edit($idCongres, User $user, Request $request)
+    public function edit(User $user, Request $request)
     {
-        $congres = $this->congresManager->getById($idCongres);
+       
         $form = $this->createForm(UserEditType::class);
         $form->get('firstname')->setData($user->getFirstname());
         $form->get('lastname')->setData($user->getLastname());
@@ -149,7 +149,6 @@ class UserController extends AbstractController
         return $this->render('admin/user/editUser.html.twig', [
             'form' => $form->createView(),
             'user' => $user,
-            'congres' => $congres
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Controller\admin;
 use App\Entity\Produit;
+use App\Entity\User;
 use App\Manager\CategoriesManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -49,12 +50,11 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/users", name="admin_user", methods={"GET","POST"})
+     * @Route("/users", name="admin_user", methods={"GET","POST"})
      */
     public function users()
     { 
         $users = $this->em->getRepository(User::class)->findAll();
-
         return $this->render('admin/user/users.html.twig', [
             'users' => $users
         ]);
