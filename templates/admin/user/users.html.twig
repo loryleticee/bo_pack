@@ -36,8 +36,8 @@
                             <td>{{ user.firstname }}</td>
                             <td>{{ user.lastname }}</td>
                             <td>{{ user.email }}</td>
-                            <td>BU</td>
-                            <td>{{ user.created_at }}</td>
+                            <td>{{ user.bu }}</td>
+                            <td>{{ user.created_at |format_date(locale='fr') }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">

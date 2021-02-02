@@ -21,16 +21,17 @@
 
                 <div class="row">
                     <div class="col">
+                        {{ form_row(form.type) }}
                         {{ form_row(form.name) }}
-                        {{ form_row(form.security_code) }}
+                        {{ form_row(form.brand) }}
+                        {{ form_row(form.model) }}
                     </div>
                     <div class="col">
                         <div class="w-50">
-                            {{ form_row(form.start_date) }}
-                            {{ form_row(form.end_date) }}
-                            {{ form_row(form.duration_meeting) }}
-                            {{ form_row(form.hour_min) }}
-                            {{ form_row(form.hour_max) }}
+                            {{ form_row(form.id_qr_code) }}
+                            {{ form_row(form.status) }}
+                            {{ form_row(form.add_date) }}
+                            {{ form_row(form.last_modify) }}
                         </div>
 
 

@@ -51,56 +51,25 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $created_at;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $phone;
-
     /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $about;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $job;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $localisation;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Congres::class, mappedBy="users")
-     */
-    private $congres;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=CategoryUser::class, inversedBy="user")
-     */
-    private $categoryUsers;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Meeting::class, mappedBy="user", orphanRemoval=true)
-     */
-    private $meetings;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Reason", inversedBy="users")
-     */
-    private $reasons;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $img;
-
-    /**
      * @ORM\OneToMany(targetEntity=Produit::class, mappedBy="user")
      */
     private $produits;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_deleted;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $bu;
 
 
     public function __construct()
@@ -108,7 +77,6 @@ class User implements UserInterface
         $this->congres = new ArrayCollection();
         $this->categoryUsers = new ArrayCollection();
         $this->meetings = new ArrayCollection();
-        $this->reasons = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->produits = new ArrayCollection();
     }
@@ -227,18 +195,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(?string $phone): self
-    {
-        $this->phone = $phone;
-
-        return $this;
-    }
-
     public function getAbout(): ?string
     {
         return $this->about;
@@ -247,157 +203,6 @@ class User implements UserInterface
     public function setAbout(?string $about): self
     {
         $this->about = $about;
-
-        return $this;
-    }
-
-    public function getJob(): ?string
-    {
-        return $this->job;
-    }
-
-    public function setJob(?string $job): self
-    {
-        $this->job = $job;
-
-        return $this;
-    }
-
-    public function getLocalisation(): ?string
-    {
-        return $this->localisation;
-    }
-
-    public function setLocalisation(?string $localisation): self
-    {
-        $this->localisation = $localisation;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Congres[]
-     */
-    public function getCongres(): Collection
-    {
-        return $this->congres;
-    }
-
-    public function addCongres(Congres $congre): self
-    {
-        if (!$this->congres->contains($congre)) {
-            $this->congres[] = $congre;
-            $congre->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCongres(Congres $congre): self
-    {
-        if ($this->congres->contains($congre)) {
-            $this->congres->removeElement($congre);
-            $congre->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|CategoryUser[]
-     */
-    public function getCategoryUsers(): Collection
-    {
-        return $this->categoryUsers;
-    }
-
-    public function addCategoryUser(CategoryUser $categoryUser): self
-    {
-        if (!$this->categoryUsers->contains($categoryUser)) {
-            $this->categoryUsers[] = $categoryUser;
-            $categoryUser->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategoryUser(CategoryUser $categoryUser): self
-    {
-        if ($this->categoryUsers->contains($categoryUser)) {
-            $this->categoryUsers->removeElement($categoryUser);
-            $categoryUser->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Meeting[]
-     */
-    public function getMeetings(): Collection
-    {
-        return $this->meetings;
-    }
-
-    public function addMeeting(Meeting $meeting): self
-    {
-        if (!$this->meetings->contains($meeting)) {
-            $this->meetings[] = $meeting;
-            $meeting->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMeeting(Meeting $meeting): self
-    {
-        if ($this->meetings->contains($meeting)) {
-            $this->meetings->removeElement($meeting);
-            // set the owning side to null (unless already changed)
-            if ($meeting->getUser() === $this) {
-                $meeting->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Reason[]
-     */
-    public function getReasons(): Collection
-    {
-        return $this->reasons;
-    }
-
-    public function addReason(Reason $reason): self
-    {
-        if (!$this->reasons->contains($reason)) {
-            $this->reasons[] = $reason;
-            $reason->addUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReason(Reason $reason): self
-    {
-        if ($this->reasons->contains($reason)) {
-            $this->reasons->removeElement($reason);
-            $reason->removeUser($this);
-        }
-
-        return $this;
-    }
-
-    public function getImg(): ?string
-    {
-        return $this->img;
-    }
-
-    public function setImg(?string $img): self
-    {
-        $this->img = $img;
 
         return $this;
     }
@@ -428,6 +233,30 @@ class User implements UserInterface
                 $produit->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->is_deleted;
+    }
+
+    public function setIsDeleted(bool $is_deleted): self
+    {
+        $this->is_deleted = $is_deleted;
+
+        return $this;
+    }
+
+    public function getBu(): ?string
+    {
+        return $this->bu;
+    }
+
+    public function setBu(?string $bu): self
+    {
+        $this->bu = $bu;
 
         return $this;
     }

@@ -52,6 +52,17 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $results;
     }
 
+    public function findAllActive()
+    {
+        $qb = $this->createQueryBuilder('u')
+            ->where('u.is_deleted != :value')
+            ->setParameter('value', 1);
+
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
+
     public function search($idCongres, $value)
     {
         $qb = $this->createQueryBuilder('d')

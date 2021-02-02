@@ -105,41 +105,18 @@ class UserController extends AbstractController
         $form->get('firstname')->setData($user->getFirstname());
         $form->get('lastname')->setData($user->getLastname());
         $form->get('email')->setData($user->getEmail());
-        $form->get('phone')->setData($user->getPhone());
-        $form->get('localisation')->setData($user->getLocalisation());
-        $form->get('job')->setData($user->getJob());
         $form->get('about')->setData($user->getAbout());
-        $form->get('categoryUsers')->setData($user->getCategoryUsers());
-        $form->get('reasons')->setData($user->getReasons());
+        $form->get('bu')->setData($user->getBu());
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $newUser = $user;
-            $img = $form->get('img')->getData();
-            if ($img != null){
-                $originalFilename = pathinfo($img->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $originalFilename;
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $img->guessExtension();
-
-                $newUser->setImg($newFilename);
-                try {
-                    $img->move(
-                        $this->getParameter('photo_user_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    $this->addFlash('error', 'Erreur');
-                }
-            }else{$newUser->setImg($user->getImg());}
-
             $newUser->setPassword($user->getPassword())
                 ->setEmail($form->get('email')->getData())
                 ->setFirstname($form->get('firstname')->getData())
                 ->setLastname($form->get('lastname')->getData())
-                ->setPhone($form->get('phone')->getData())
                 ->setAbout($form->get('about')->getData())
-                ->setJob($form->get('job')->getData())
-                ->setLocalisation($form->get('localisation')->getData())
+                ->setBu($form->get('bu')->getData())
             ;
 
             $this->em->persist($newUser);
@@ -159,7 +136,7 @@ class UserController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
+            $user->setIsDeleted(true);
             $entityManager->flush();
         }
 

@@ -40,7 +40,7 @@ class ProduitController extends AbstractController
             $entityManager->persist($produit);
             $entityManager->flush();
 
-            return $this->redirectToRoute('produit_index');
+            return $this->redirectToRoute('admin');
         }
 
         return $this->render('produit/createProduit.html.twig', [
@@ -63,20 +63,35 @@ class ProduitController extends AbstractController
     /**
      * @Route("/{id}/edit", name="produit_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Produit $produit): Response
+    public function edit(Produit $produits, Request $request)
     {
-        $form = $this->createForm(ProduitType::class, $produit);
+       
+        $form = $this->createForm(ProduitEditType::class);
+        $form->get('name')->setData($produits->getName());
+        $form->get('brand')->setData($produits->getBrand());
+        $form->get('model')->setData($produits->getModel());
+        $form->get('status')->setData($produits->getStatus());
+        $form->get('type')->setData($produits->getType());
+        $form->get('place')->setData($produits->getPlace());
+
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $newProduit = $produits;
+            $newProduit->setName($form->get('name')->getData())
+                ->setBrand($form->get('brand')->getData())
+                ->setModel($form->get('model')->getData())
+                ->setStatus($form->get('status')->getData())
+                ->setType($form->get('type')->getData())
+                ->setPlace($form->get('place')->getData())
+            ;
 
-            return $this->redirectToRoute('produit_index');
+            $this->em->persist($newProduit);
+            $this->em->flush();
+            $this->addFlash('sucess', 'Produit édité');
         }
-
-        return $this->render('produit/edit.html.twig', [
-            'produit' => $produit,
+        return $this->render('admin/produits/editProduit.html.twig', [
             'form' => $form->createView(),
+            'produits' => $produits,
         ]);
     }
 
