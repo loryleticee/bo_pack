@@ -5,7 +5,7 @@ namespace App\Manager;
 
 use App\Entity\CategoryDocument;
 use App\Entity\Document;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 class DocumentManager
 {

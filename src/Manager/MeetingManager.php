@@ -5,7 +5,7 @@ namespace App\Manager;
 
 use App\Entity\Meeting;
 use App\Entity\Reason;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 class MeetingManager
 {

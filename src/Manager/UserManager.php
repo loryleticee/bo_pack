@@ -5,7 +5,7 @@ namespace App\Manager;
 
 use App\Entity\Customer;
 use App\Entity\User;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 
 class UserManager
 {
