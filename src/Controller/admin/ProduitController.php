@@ -10,6 +10,7 @@ use App\Repository\ProduitRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -72,6 +73,7 @@ class ProduitController extends AbstractController
         }
         return $this->render('produit/createProduit.html.twig', [
             'produit' => $produit,
+            'user' => $user,
             'form' => $form->createView(),
         ]);
         
@@ -84,6 +86,7 @@ class ProduitController extends AbstractController
     {
         return $this->render('produit/show.html.twig', [
             'produit' => $produit,
+            'imageUrl' => $params->get('qr_code_dir') . '/images/' . $produit->getId()
         ]);
     }
 

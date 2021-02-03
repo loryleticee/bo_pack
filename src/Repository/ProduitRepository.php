@@ -38,7 +38,7 @@ class ProduitRepository extends ServiceEntityRepository
 
         foreach ($filters as $key => $filter) {
             dd($key, $filter);
-            if (!empty($key) && !empty($filter)) {
+            if (!empty($filter)) {
                 $qb->andwhere('p.' . $key . ' = :' . $key . '')
                     ->setParameter($key, $filter);
             }

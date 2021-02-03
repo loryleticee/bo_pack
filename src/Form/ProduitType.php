@@ -6,6 +6,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Produit;
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\AbstractType;
@@ -110,10 +111,10 @@ class ProduitType extends AbstractType
         } else {
             $builder->add(
                 'user',
-                TextType::class,
+                HiddenType::class,
                 [
                     'required' => true,
-                    'label' => $options['user']->getLastName().' '.$options['user']->getLastName() ,
+                    'label' => $options['user']->getFirstName().' '.$options['user']->getLastName() ,
                     'data' => $options['user']->getId(),
                     'attr' => [
                         'class' => 'form-control w-100 mb-3',
