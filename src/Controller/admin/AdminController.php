@@ -86,17 +86,19 @@ class AdminController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $product_name = ['name' => $form->get('product_name', [])];
-            $brand = ['brand' => $form->get('brand', [])];
-            $place = ['place' => $form->get('place', [])];
-            $product_type = ['type_produit' => $form->get('product_type', [])];
-            $modele = ['modele' => $form->get('modele', [])];
+            $fliters = [
+                'name' => $form->get('product_name', []),
+                'brand' => $form->get('brand', []),
+                'place' => $form->get('place', []),
+                'type_produit' => $form->get('product_type', []),
+                'modele' => $form->get('modele', []),
 
-            $user = ['' => $form->get('user', [])];
-            $email = ['' => $form->get('email', [])];
-            $bu = ['' => $form->get('bu', [])];
+                '' => $form->get('user', []),
+                '' => $form->get('email', []),
+                '' => $form->get('bu', [])
+            ];
 
-            $produits = $this->em->getRepository(Produit::class)->searchProducts([$product_name, $brand, $place, $product_type, $modele, $user, $email, $bu]);
+            $produits = $this->em->getRepository(Produit::class)->searchProducts($fliters);
 
             $this->addFlash('sucess', 'Lancement de la recherche');
         }

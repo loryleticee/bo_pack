@@ -35,9 +35,10 @@ class ProduitRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->where('p.is_deleted != :value')
             ->setParameter('value', 1);
-            
+
         foreach ($filters as $key => $filter) {
-            if (!empty($filter)) {
+            dd($key, $filter);
+            if (!empty($key) && !empty($filter)) {
                 $qb->andwhere('p.' . $key . ' = :' . $key . '')
                     ->setParameter($key, $filter);
             }
