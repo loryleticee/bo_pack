@@ -40,7 +40,31 @@ class ProduitController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            // $produit->setAddDate(new \DateTime())->format('Y-m-d H:i:s'));
+            $entityManager->persist($produit);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('admin_home');
+        }
+        return $this->render('produit/createProduit.html.twig', [
+            'produit' => $produit,
+            'form' => $form->createView(),
+        ]);
+        
+    }
+
+    /**
+     * @Route("/new/user/{id}", name="produit_new_user", methods={"GET","POST"})
+     */
+    public function newProductUser(User $user, Request $request): Response
+    {
+        $produit = new Produit(); 
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $entityManager->getRepository(User::class)->findOneBy(['id' =>  $user->getId()]);
+        $form = $this->createForm(ProduitType::class, $produit, ['user' => $user]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $produit->setUser($user);
             $entityManager->persist($produit);
             $entityManager->flush();
 
@@ -66,7 +90,7 @@ class ProduitController extends AbstractController
     /**
      * @Route("/{id}/edit", name="produit_edit", methods={"GET","POST"})
      */
-    public function edit(Produit $produits, Request $request, EntityManagerInterface $em)
+    public function edit(Produit $produits,Request $request, EntityManagerInterface $em)
     {
        
         $form = $this->createForm(ProduitEditType::class);
@@ -74,25 +98,27 @@ class ProduitController extends AbstractController
         $form->get('brand')->setData($produits->getBrand());
         $form->get('model')->setData($produits->getModel());
         $form->get('status')->setData($produits->getStatus());
-        $form->get('type')->setData($produits->getType());
+        $form->get('type_produit')->setData($produits->getTypeProduit());
         $form->get('place')->setData($produits->getPlace());
-        $form->get('user')->setData($produits->getUser());
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $newProduit = $produits;
+            $newUser = $em->getRepository(User::class)->findOneBy(['id' => $form->get('user')->getData()]);
             $newProduit->setName($form->get('name')->getData())
                 ->setBrand($form->get('brand')->getData())
                 ->setModel($form->get('model')->getData())
                 ->setStatus($form->get('status')->getData())
-                ->setType($form->get('type')->getData())
+                ->setTypeProduit($form->get('type_produit')->getData())
                 ->setPlace($form->get('place')->getData())
-                ->setLastModif($this->_hasNewUser($form->get('place')->getData(), $form->get('user')->getData()));
+                ->setUser($newUser)
+                ->setLastModify($this->_hasNewUser($form->get('place')->getData(), $form->get('user')->getData()));
 
             $this->em->persist($newProduit);
             $this->em->flush();
             $this->addFlash('sucess', 'Produit édité');
         }
+        
         return $this->render('produit/editProduit.html.twig', [
             'form' => $form->createView(),
             'produits' => $produits,

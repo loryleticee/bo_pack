@@ -77,8 +77,20 @@ class ProduitType extends AbstractType
                     'Home-office' => 'Home-office',
                 ]
             ])
-
             ->add(
+                'save',
+                SubmitType::class,
+                [
+                    'label' => 'Enregister',
+                    'attr' => [
+                        'class' => 'btn btn-primary',
+                    ]
+                ]
+            );
+
+
+        if (!isset($options['user'])) {
+            $builder->add(
                 'user',
                 EntityType::class,
                 [
@@ -92,21 +104,29 @@ class ProduitType extends AbstractType
                         'class' => 'w-100 mb-3'
                     ]
                 ]
-            )
-            ->add(
-                'save',
-                SubmitType::class,
+            );
+        } else {
+            $builder->add(
+                'user',
+                TextType::class,
                 [
-                    'label' => 'Enregister',
+                    'required' => true,
+                    'label' => $options['user']->getLastName().' '.$options['user']->getLastName() ,
+                    'data' => $options['user']->getId(),
                     'attr' => [
-                        'class' => 'btn btn-primary',
-                    ]
+                        'class' => 'form-control w-100 mb-3',
+                        'disabled ' => true,
+                    ],
+                    
                 ]
             );
+        }
     }
+
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setRequired(['user']);
         $resolver->setDefaults([
             'data_class' => Produit::class,
         ]);

@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a href="{{ path('produit_new') }}"><button class="btn btn-primary mb-5 text-right float-right">Créer un produit</button></a>
+                <a href="{{ path('produit_new_user', {id: user.id}) }}"><button class="btn btn-primary mb-5 text-right float-right">Créer un produit pour {{ user.firstname}}  {{user.lastname }} </button></a>
                 <h3>Produits de {{ user.firstname}}  {{user.lastname }}</h3>
                 <br>
                 <table class="table bg-white shadow rounded-lg">
@@ -52,9 +52,6 @@
                                     <div class="dropdown-menu dropdown-menu-right">
                                         <a class="dropdown-item"
                                            href="{{ path('produit_edit', {id: produit.id}) }}">Editer
-                                        </a>
-                                        <a class="dropdown-item"
-                                           href="{{ path('admin_produits_user', {id: produit.id}) }}">Utilisateur
                                         </a>
                                         {{ include('produit/_delete_form.html.twig') }}
                                     </div>
