@@ -35,7 +35,7 @@ class ProduitController extends AbstractController
     public function new(Request $request): Response
     {
         $produit = new Produit(); 
-        $form = $this->createForm(ProduitType::class, $produit);
+        $form = $this->createForm(ProduitType::class, $produit, ['user' => '']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -92,17 +92,18 @@ class ProduitController extends AbstractController
      */
     public function edit(Produit $produits,Request $request, EntityManagerInterface $em)
     {
-       
-        $form = $this->createForm(ProduitEditType::class);
+        $form = $this->createForm(ProduitEditType::class , null,['user' => $produits->getUser() ]);
         $form->get('name')->setData($produits->getName());
         $form->get('brand')->setData($produits->getBrand());
         $form->get('model')->setData($produits->getModel());
         $form->get('status')->setData($produits->getStatus());
         $form->get('type_produit')->setData($produits->getTypeProduit());
         $form->get('place')->setData($produits->getPlace());
+        $form->get('user')->setData($produits->getUser()->getLastName());
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+           
             $newProduit = $produits;
             $newUser = $em->getRepository(User::class)->findOneBy(['id' => $form->get('user')->getData()]);
             $newProduit->setName($form->get('name')->getData())
@@ -112,7 +113,7 @@ class ProduitController extends AbstractController
                 ->setTypeProduit($form->get('type_produit')->getData())
                 ->setPlace($form->get('place')->getData())
                 ->setUser($newUser)
-                ->setLastModify($this->_hasNewUser($form->get('place')->getData(), $form->get('user')->getData()));
+                ->setLastModify($this->_hasNewUser($form->get('user')->getData(), $form->get('old_user')->getData()));
 
             $this->em->persist($newProduit);
             $this->em->flush();
@@ -155,6 +156,7 @@ class ProduitController extends AbstractController
    }
 
     static function _hasNewUser($iUser, $iOldUser) {
+        dd($iUser, $iOldUser);
         $log = [date('Y-m-d H:i:s')];
         if ($iUser !== $iOldUser) {
             $log = ['date' => date('Y-m-d H:i:s'), 'last_user' => $iOldUser];

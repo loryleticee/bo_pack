@@ -93,7 +93,8 @@ class ProduitEditType extends AbstractType
            
             ->add('user',  ChoiceType::class,
                 [
-                    'choices' => $aUsers
+                    'choices' => $aUsers,
+                    'empty_data' => $options['user']->getLastname()
                 ]
             )
 
@@ -101,6 +102,7 @@ class ProduitEditType extends AbstractType
                 'attr' => [
                     'name' => 'old_user'
                 ],
+                'data'=> $options['user']->getId()
             ])
 
             ->add(
@@ -117,6 +119,7 @@ class ProduitEditType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
+        $resolver->setRequired('user');
         $resolver->setDefaults([
             'data_class' => Produit::class,
         ]);

@@ -14,6 +14,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProduitType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -53,9 +54,9 @@ class ProduitType extends AbstractType
             )
             ->add('status', ChoiceType::class, [
                 'choices' => [
-                    'Perdu' => 'Perdu',
-                    'Non attribué' => 'Non attribué',
                     'En cours d’utilisation' => 'En cours d’utilisation',
+                    'Non attribué' => 'Non attribué',
+                    'Perdu' => 'Perdu',
                 ]
             ])
 
@@ -72,6 +73,7 @@ class ProduitType extends AbstractType
                 ]
             ])
             ->add('place', ChoiceType::class, [
+                'label' => 'Emplacement',
                 'choices' => [
                     'Office' => 'Office',
                     'Home-office' => 'Home-office',
@@ -89,7 +91,7 @@ class ProduitType extends AbstractType
             );
 
 
-        if (!isset($options['user'])) {
+        if (empty($options['user'])) {
             $builder->add(
                 'user',
                 EntityType::class,

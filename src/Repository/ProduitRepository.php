@@ -30,6 +30,24 @@ class ProduitRepository extends ServiceEntityRepository
         return $results;
     }
 
+    public function searchProducts($filters)
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.is_deleted != :value')
+            ->setParameter('value', 1);
+            
+        foreach ($filters as $key => $filter) {
+            if (!empty($filter)) {
+                $qb->andwhere('p.' . $key . ' = :' . $key . '')
+                    ->setParameter($key, $filter);
+            }
+        }
+
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */

@@ -74,11 +74,9 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->congres = new ArrayCollection();
-        $this->categoryUsers = new ArrayCollection();
-        $this->meetings = new ArrayCollection();
         $this->setCreatedAt(new \DateTime());
         $this->produits = new ArrayCollection();
+        $this->is_deleted = 0;
     }
 
     public function getId(): ?int

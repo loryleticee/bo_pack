@@ -10,7 +10,7 @@
     {% include '/admin/_navbar.html.twig' %}
     <style>label.required{display: contents}</style>
     <div class="container">
-        <h3 class="pb-4"><a class="pr-3" href="{{ path('admin_home') }}" >&#8249;</a>Créer un produit</h3>
+        <h3 class="pb-4"><a class="pr-3" href="{{ path('admin_home') }}" >&#8249;</a>Créer un utilisateur</h3>
         <div class="row bg-white rounded-lg shadow-lg p-3">
             <div class="col-12">
 
@@ -21,13 +21,11 @@
 
                 <div class="row">
                     <div class="col">
-                        {{ form_row(form.type_produit) }}
-                        {{ form_row(form.name) }}
-                        {{ form_row(form.brand) }}
-                        {{ form_row(form.model) }}
-                        {{ form_row(form.status) }}
-                        {{ form_row(form.place) }}
-                        {{ form_row(form.user) }}
+                        {{ form_row(form.firstname) }}
+                        {{ form_row(form.lastname) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.bu) }}
+                        {{ form_row(form.about) }}
                         {{ form_row(form.save) }}
                     </div>
                 </div>
