@@ -7,6 +7,7 @@ parameters:
     photo_user_directory: '%kernel.project_dir%/public/uploads/img/user'
     img_doc_directory: '%kernel.project_dir%/public/uploads/img/document'
     doc_directory: '%kernel.project_dir%/public/uploads/documents'
+    qr_code_dir: '%kernel.project_dir%/public/uploads/qr_code'
 
 services:
     # default configuration for services in *this* file
@@ -26,5 +27,9 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
+    App\EventListener\ProductQrCodeGenerator:
+        tags:
+            -
+                name: 'doctrine.orm.entity_listener'
+                event: 'postPersist'
+                entity: 'App\Entity\Produit'

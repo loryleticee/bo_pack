@@ -4,3 +4,6 @@
 __.env.local
 vendor/
 var/
+.idea/
+node_modules/
+public/uploads/qr_code/temp/*
