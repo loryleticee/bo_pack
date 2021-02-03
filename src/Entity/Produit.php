@@ -23,16 +23,6 @@ class Produit
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $qr_code;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $id_qr_code;
-
-    /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $brand;
@@ -53,14 +43,9 @@ class Produit
     private $add_date;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $last_modify;
-
-    /**
-     * @ORM\Column(type="string", length=100, nullable=true)
-     */
-    private $type;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
@@ -72,6 +57,21 @@ class Produit
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $is_deleted;
+
+    /**
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $type_produit;
+
+    public function __construct()
+    {
+        $this->add_date = new \DateTime();
+        $this->is_deleted = 0;
+    }
     public function getId(): ?int
     {
         return $this->id;
@@ -85,30 +85,6 @@ class Produit
     public function setName(?string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getQrCode(): ?string
-    {
-        return $this->qr_code;
-    }
-
-    public function setQrCode(?string $qr_code): self
-    {
-        $this->qr_code = $qr_code;
-
-        return $this;
-    }
-
-    public function getIdQrCode(): ?string
-    {
-        return $this->id_qr_code;
-    }
-
-    public function setIdQrCode(?string $id_qr_code): self
-    {
-        $this->id_qr_code = $id_qr_code;
 
         return $this;
     }
@@ -161,26 +137,14 @@ class Produit
         return $this;
     }
 
-    public function getLastModify(): ?\DateTimeInterface
+    public function getLastModify(): ?string
     {
         return $this->last_modify;
     }
 
-    public function setLastModify(?\DateTimeInterface $last_modify): self
+    public function setLastModify(?string $last_modify): self
     {
         $this->last_modify = $last_modify;
-
-        return $this;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): self
-    {
-        $this->type = $type;
 
         return $this;
     }
@@ -205,6 +169,30 @@ class Produit
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getIsDeleted(): ?bool
+    {
+        return $this->is_deleted;
+    }
+
+    public function setIsDeleted(?bool $is_deleted): self
+    {
+        $this->is_deleted = $is_deleted;
+
+        return $this;
+    }
+
+    public function getTypeProduit(): ?string
+    {
+        return $this->type_produit;
+    }
+
+    public function setTypeProduit(?string $type_produit): self
+    {
+        $this->type_produit = $type_produit;
 
         return $this;
     }

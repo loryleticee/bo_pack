@@ -19,6 +19,17 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
+    public function findAllActive()
+    {
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.is_deleted != :value')
+            ->setParameter('value', 1);
+
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */

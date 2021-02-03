@@ -7,6 +7,7 @@ use App\Entity\Produit;
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,9 +28,6 @@ class ProduitType extends AbstractType
                     ]
                 ]
             )
-
-            ->add('qr_code')
-            ->add('id_qr_code')
 
             ->add(
                 'brand',
@@ -61,9 +59,9 @@ class ProduitType extends AbstractType
                 ]
             ])
 
-            ->add('type', ChoiceType::class, [
+            ->add('type_produit', ChoiceType::class, [
                 'choices' => [
-                    'Écran' => 'Écran',
+                    'Ecran' => 'Ecran',
                     'Souris' => 'Souris',
                     'Clavier' => 'Clavier',
                     'Tours' => 'Tours',
@@ -78,24 +76,33 @@ class ProduitType extends AbstractType
                     'Office' => 'Office',
                     'Home-office' => 'Home-office',
                 ]
-            ]);
+            ])
 
-            // ->add(
-            //     'user',
-            //     EntityType::class,
-            //     [
-            //         'class' => User::class,
-            //         'choice_label' => 'name',
-            //         'multiple' => false,
-            //         'expanded' => true,
-            //         'required' => false,
-            //         'label' => 'Categories',
-            //         'attr' => [
-            //             'class' => 'w-100 mb-3'
-            //         ]
-            //     ]
-            // )
-            
+            ->add(
+                'user',
+                EntityType::class,
+                [
+                    'class' => User::class,
+                    'choice_label' => 'lastname',
+                    'multiple' => false,
+                    'expanded' => false,
+                    'required' => true,
+                    'label' => 'Utilisateur',
+                    'attr' => [
+                        'class' => 'w-100 mb-3'
+                    ]
+                ]
+            )
+            ->add(
+                'save',
+                SubmitType::class,
+                [
+                    'label' => 'Enregister',
+                    'attr' => [
+                        'class' => 'btn btn-primary',
+                    ]
+                ]
+            );
     }
 
     public function configureOptions(OptionsResolver $resolver)

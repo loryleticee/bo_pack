@@ -8,7 +8,7 @@
 {% block body %}
 
     <style>label.required{display: contents}</style>
-    <td><a href="{{ path( 'admin_produit' ) }}"><button class="btn btn-primary">Retour à la liste d'utilisateur</button></a></td>
+    <h3 class="pb-4"><a class="pr-3" href="{{ path('admin_home') }}" >&#8249;</a>Retour à la liste de produit</h3>
     <div class="container">
         <div class="row bg-white p-3 shadow-lg">
             <div class="col-12">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 {{ form_row(form.place) }}
-
+                {{ form_row(form.save) }}
                 {{ form_end(form) }}
             </div>
         </div>

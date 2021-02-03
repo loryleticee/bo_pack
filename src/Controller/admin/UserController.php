@@ -77,30 +77,12 @@ class UserController extends AbstractController
 
         ]);
     }
-    /**
-     * @Route("/{id}/user", name="admin_produits_user")
-     */
-    public function user_products($id, Request $request, EntityManagerInterface $em)
-    {
-        $produits = $this->em->getRepository(User::class)->getProduits();
-        $users = $this->userManager->getAllByCongres($produits);
-        if ($produits == null) {
-            return $this->render('notFound.html.twig');
-        }
-
-        return $this->render('admin/congres/user.html.twig', [
-            'congres' => $produits,
-            'users' => $users
-
-        ]);
-    }
 
     /**
      * @Route("/edit/user/{id}", name="admin_edit_user")
      */
     public function edit(User $user, Request $request)
     {
-       
         $form = $this->createForm(UserEditType::class);
         $form->get('firstname')->setData($user->getFirstname());
         $form->get('lastname')->setData($user->getLastname());
@@ -140,6 +122,6 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('admin_home');
+        return $this->redirectToRoute('admin_user');
     }
 }

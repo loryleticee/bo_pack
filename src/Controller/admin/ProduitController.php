@@ -3,8 +3,11 @@
 namespace App\Controller\admin;
 
 use App\Entity\Produit;
+use App\Entity\User;
+use App\Form\ProduitEditType;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,18 +34,18 @@ class ProduitController extends AbstractController
      */
     public function new(Request $request): Response
     {
-        $produit = new Produit();
+        $produit = new Produit(); 
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            // $produit->setAddDate(new \DateTime())->format('Y-m-d H:i:s'));
             $entityManager->persist($produit);
             $entityManager->flush();
 
-            return $this->redirectToRoute('admin');
+            return $this->redirectToRoute('admin_home');
         }
-
         return $this->render('produit/createProduit.html.twig', [
             'produit' => $produit,
             'form' => $form->createView(),
@@ -63,7 +66,7 @@ class ProduitController extends AbstractController
     /**
      * @Route("/{id}/edit", name="produit_edit", methods={"GET","POST"})
      */
-    public function edit(Produit $produits, Request $request)
+    public function edit(Produit $produits, Request $request, EntityManagerInterface $em)
     {
        
         $form = $this->createForm(ProduitEditType::class);
@@ -73,6 +76,7 @@ class ProduitController extends AbstractController
         $form->get('status')->setData($produits->getStatus());
         $form->get('type')->setData($produits->getType());
         $form->get('place')->setData($produits->getPlace());
+        $form->get('user')->setData($produits->getUser());
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -83,13 +87,13 @@ class ProduitController extends AbstractController
                 ->setStatus($form->get('status')->getData())
                 ->setType($form->get('type')->getData())
                 ->setPlace($form->get('place')->getData())
-            ;
+                ->setLastModif($this->_hasNewUser($form->get('place')->getData(), $form->get('user')->getData()));
 
             $this->em->persist($newProduit);
             $this->em->flush();
             $this->addFlash('sucess', 'Produit édité');
         }
-        return $this->render('admin/produits/editProduit.html.twig', [
+        return $this->render('produit/editProduit.html.twig', [
             'form' => $form->createView(),
             'produits' => $produits,
         ]);
@@ -102,11 +106,11 @@ class ProduitController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($produit);
+            $produit->setIsDeleted(true);
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('produit_index');
+        return $this->redirectToRoute('admin_home');
     }
 
     /**
@@ -122,5 +126,14 @@ class ProduitController extends AbstractController
        }
 
        return $this->redirectToRoute('admin_home');
+   }
+
+    static function _hasNewUser($iUser, $iOldUser) {
+        $log = [date('Y-m-d H:i:s')];
+        if ($iUser !== $iOldUser) {
+            $log = ['date' => date('Y-m-d H:i:s'), 'last_user' => $iOldUser];
+        }
+
+        return json_encode($log);
    }
 }

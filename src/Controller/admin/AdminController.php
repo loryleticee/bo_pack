@@ -42,10 +42,28 @@ class AdminController extends AbstractController
     */
     public function home()
     {
-        $produits = $this->em->getRepository(Produit::class)->findAll();
+        $produits = $this->em->getRepository(Produit::class)->findAllActive();
 
         return $this->render('admin/home.html.twig', [
             'produits' => $produits
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/user", name="admin_produits_user")
+     */
+    public function user_products($id)
+    {   
+
+        $user = $this->em->getRepository(User::class)->findOneBy(['id'=> $id]);
+        $produits = $user->getProduits();
+        if ($produits == null) {
+            return $this->render('notFound.html.twig');
+        }
+
+        return $this->render('admin/user/userProducts.html.twig', [
+            'produits' => $produits,
+            'user' => $user
         ]);
     }
 
