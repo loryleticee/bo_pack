@@ -87,15 +87,15 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $fliters = [
-                'name' => $form->get('product_name', []),
-                'brand' => $form->get('brand', []),
-                'place' => $form->get('place', []),
-                'type_produit' => $form->get('product_type', []),
-                'modele' => $form->get('modele', []),
+                'name' => $form->get('product_name', [])->getData(),
+                'brand' => $form->get('brand', [])->getData(),
+                'place' => $form->get('place', [])->getData(),
+                'type_produit' => $form->get('product_type', [])->getData(),
+                'modele' => $form->get('modele', [])->getData(),
 
-                '' => $form->get('user', []),
-                '' => $form->get('email', []),
-                '' => $form->get('bu', [])
+                'user' => $form->get('user', [])->getData(),
+                'email' => $form->get('email', [])->getData(),
+                'bu' => $form->get('bu', [])->getData(),
             ];
 
             $produits = $this->em->getRepository(Produit::class)->searchProducts($fliters);

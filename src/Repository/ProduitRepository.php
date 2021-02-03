@@ -33,17 +33,16 @@ class ProduitRepository extends ServiceEntityRepository
     public function searchProducts($filters)
     {
         $qb = $this->createQueryBuilder('p')
-            ->where('p.is_deleted != :value')
-            ->setParameter('value', 1);
+            ->where('p.is_deleted != 1');
+            // ->setParameter('value', 1);
 
         foreach ($filters as $key => $filter) {
-            dd($key, $filter);
             if (!empty($filter)) {
-                $qb->andwhere('p.' . $key . ' = :' . $key . '')
-                    ->setParameter($key, $filter);
+                $phrase = is_numeric($filter) ? ('p.' . $key . ' = :' . $key . '') : ("p.$key  like :" . $key); 
+                $qb->andwhere($phrase);
+                $qb->setParameter($key, "%$filter%");
             }
         }
-
         $query = $qb->getQuery();
         $results = $query->getResult();
         return $results;
