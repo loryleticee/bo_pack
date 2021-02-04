@@ -6,10 +6,23 @@
     {{ encore_entry_link_tags('admin') }}
 {% endblock %}
 {% block body %}
-
     {% include '/admin/_navbar.html.twig' %}
     <div class="container">
-    {{ include('produit/_search_bar.html.twig') }}
+        <div class="row">
+            <div class="col-12">
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('sucess') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {{ include('produit/_search_bar.html.twig') }}
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <a href="{{ path('produit_new') }}"><button class="btn btn-primary mb-5 text-right float-right">Créer un produit</button></a>

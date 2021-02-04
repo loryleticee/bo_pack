@@ -6,6 +6,7 @@ use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\Back\UserCreationType;
 use App\Manager\CategoriesManager;
+use App\Repository\ProduitRepository;
 use App\Tools\PdfGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -163,18 +164,20 @@ class AdminController extends AbstractController
     /**
      * @Route("/qr_codes", name="admin_produits_get_qr_codes")
      * @param PdfGenerator $pdfGenerator
+     * @param ProduitRepository $productsRepo
      */
-    public function getQrCodes(PdfGenerator $pdfGenerator)
+    public function getQrCodes(PdfGenerator $pdfGenerator, ProduitRepository $productsRepo)
     {
         $lastResultsFilePath = $this->getParameter('qr_code_dir') . '/last_search.csv';
         $fp = fopen($lastResultsFilePath, 'r');
         $ids = fgetcsv($fp);
 
         if (is_null(reset($ids))) {
-            return $this->redirectToRoute('admin_home', ['info' => "Pas d'elements trouvés pour la génération du pdf"]);
+            $products = $productsRepo->findBy(['is_deleted' => false]);
+        } else {
+            $products = $productsRepo->findBy(['id' => $ids]);
         }
 
-        $products = $this->getDoctrine()->getRepository(Produit::class)->findBy(['id' => $ids]);
         $pdfGenerator->getPdf($products);
     }
 
