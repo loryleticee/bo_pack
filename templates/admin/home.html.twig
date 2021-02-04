@@ -65,10 +65,10 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                <a href="{{ path('admin_produits_get_qr_codes') }}"><button class="btn btn-primary mb-5 text-right float-right">QR Codes de tous les produits</button></a>
+                {% set disabledAttr = 0 == totalProduits ? 'disabled' : '' %}
+                <a href="{{ path('admin_produits_get_qr_codes') }}"><button class="btn btn-primary mb-5 text-right float-right" {{ disabledAttr }}>Obtenir QR Codes des produits</button></a>
             </div>
         </div>
     </div>
 
 {% endblock %}
-
