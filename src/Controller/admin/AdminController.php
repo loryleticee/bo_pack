@@ -6,6 +6,7 @@ use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\Back\UserCreationType;
 use App\Manager\CategoriesManager;
+use App\Tools\PdfGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Manager\CongresManager;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class AdminController
@@ -168,5 +171,18 @@ class AdminController extends AbstractController
      */
     public function logout(Request $request)
     {
+    }
+
+    /**
+     * @Route("/qr_codes", name="admin_produits_get_qr_codes")
+     * @param PdfGenerator $pdfGenerator
+     * @param RouterInterface $router
+     */
+    public function getQrCodes(PdfGenerator $pdfGenerator)
+    {
+        #TODO: apply search filters
+        $products = $this->getDoctrine()->getRepository(Produit::class)->findBy(['is_deleted' => false]);
+
+        $pdfGenerator->getPdf($products);
     }
 }
