@@ -94,7 +94,6 @@ class ProduitEditType extends AbstractType
             ->add('user',  ChoiceType::class,
                 [
                     'choices' => $aUsers,
-                    'empty_data' => $options['user']->getLastname(),
                     'data' => $options['user']->getId()
                 ]
             )

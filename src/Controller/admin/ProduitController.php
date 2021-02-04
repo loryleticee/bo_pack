@@ -81,21 +81,15 @@ class ProduitController extends AbstractController
     /**
      * @Route("/{id}/edit", name="produit_edit", methods={"GET","POST"})
      */
-    public function edit(Produit $produits,Request $request, EntityManagerInterface $em)
-    {
-        $form = $this->createForm(ProduitEditType::class , null,['user' => $produits->getUser() ]);
-        $form->get('name')->setData($produits->getName());
-        $form->get('brand')->setData($produits->getBrand());
-        $form->get('model')->setData($produits->getModel());
-        $form->get('status')->setData($produits->getStatus());
-        $form->get('type_produit')->setData($produits->getTypeProduit());
-        $form->get('place')->setData($produits->getPlace());
-        $form->get('user')->setData($produits->getUser()->getLastName());
-
+    public function edit(Produit $produit,Request $request, EntityManagerInterface $em)
+    { 
+        $form = $this->createForm(ProduitEditType::class , null,['user' => $produit->getUser() ]);
         $form->handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            $newProduit = $produits;
+            $newProduit = $produit;
             $newUser = $em->getRepository(User::class)->findOneBy(['id' => $form->get('user')->getData()]);
+           
             $newProduit->setName($form->get('name')->getData())
                 ->setBrand($form->get('brand')->getData())
                 ->setModel($form->get('model')->getData())
@@ -108,11 +102,19 @@ class ProduitController extends AbstractController
             $this->em->persist($newProduit);
             $this->em->flush();
             $this->addFlash('sucess', 'Produit édité');
+        } else {
+            $form->get('name')->setData($produit->getName());
+            $form->get('brand')->setData($produit->getBrand());
+            $form->get('model')->setData($produit->getModel());
+            $form->get('status')->setData($produit->getStatus());
+            $form->get('type_produit')->setData($produit->getTypeProduit());
+            $form->get('place')->setData($produit->getPlace());
+            $form->get('user')->setData($produit->getUser()->getLastName());
         }
 
         return $this->render('produit/editProduit.html.twig', [
             'form' => $form->createView(),
-            'produits' => $produits,
+            'produit' => $produit,
         ]);
     }
 

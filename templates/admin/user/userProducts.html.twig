@@ -69,36 +69,19 @@
 					</tbody>
 				</table>
 			</div>
-        </div>
-        <div class='row'>
-            <a href="{{ path('admin_edit_user' , {id: user.id} ) }}"><button class="btn btn-primary mb-5 text-right float-right">Modifier l'utilisateur</button></a>
-			<div class='col-6'>
-				<table class="container bg-white shadow rounded-sm">
-					<tr>
-						<td>
-							Nom :
-							{{ user.firstname | upper }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Prénom:
-							{{ user.lastname | capitalize }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							BU:
-							{{ user.bu | capitalize }}
-						</td>
-					</tr>
-					<tr>
-						<td>
-							Depuis le
-							{{ user.created_at |format_date(locale='fr') }}
-						</td>
-					</tr>
-				</table>
+		</div>
+		<div class='row'>
+			<div class="card" style="width:400px">
+				<div class="card-body">
+					<h4 class="card-title">{{ user.firstname | upper }} {{ user.lastname | capitalize }}</h4>
+					<p class="card-text">BU : <strong>{{ user.bu | capitalize }}</strong></p>
+					<p class="card-text">Depuis le: <strong>{{ user.created_at |format_date(locale='fr') }}</strong></p>
+					<p class="card-text">à propos: {{ user.about }}</p>
+
+					<a href="{{ path('admin_edit_user' , {id: user.id} ) }}">
+						<button class="btn btn-primary mb-5 text-right float-right">Modifier l'utilisateur</button>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
