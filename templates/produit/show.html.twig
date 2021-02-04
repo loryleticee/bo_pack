@@ -10,14 +10,16 @@
 
 	{% include '/admin/_navbar.html.twig' %}
 	<div class="container">
+	    <h3 class="pb-4"><a class="pr-3" href="{{ path('admin_home') }}" >&#8249;</a>Fiche produit</h3>
 		<div class='row'>
 			<div class="card" style="width:400px">
 				<div class="card-body">
 					<h4 class="card-title">{{ produit.type_produit }} {{ produit.name }}</h4>
-					<p class="card-text">BU : <strong>{{ produit.brand }}</strong></p>
+					<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
+					<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
 					<p class="card-text">Emplacement : <strong>{{ produit.place }}</strong></p>
 					<p class="card-text">Modele: <strong>{{ produit.model }}</strong></p>
-					<p class="card-text">Status: {{ produit.status }}</p>
+					<p class="card-text">Status: <strong>{{ produit.status | upper}}</strong></p>
 					<p class="card-text">Ajouté le: {{ produit.addDate ? produit.addDate|date('Y-m-d H:i:s') : '' }}</p>
 					<p class="card-text">Dernière modification: {{ produit.lastModify ? produit.lastModify|date('Y-m-d H:i:s') : '' }}</p>
 					<p><img src='{{ '/uploads/qr_code/images/' ~ produit.id ~ '.png' }}' alt=''/></p>
