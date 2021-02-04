@@ -213,15 +213,14 @@ class AdminController extends AbstractController
                     return $item->getId();
                 }, $this->em->getRepository(User::class)->findBy([ 'email' => $userFilters['email'] ,'is_deleted' => 0 ]));
                 
-                $ids = array_merge($datas, $idsFromEmail);
+                $ids = array_merge($ids, $idsFromEmail);
             }
             
             if (!empty($userFilters['bu'])) {
                 $idsFromBu =  array_map(function($item) {
                     return $item->getId();
                 }, $this->em->getRepository(User::class)->findBy([ 'bu' => $userFilters['bu'], 'is_deleted' => 0 ]));
-                
-                $ids = array_merge($datas, $idsFromBu);
+                $ids = array_merge($ids, $idsFromBu);
             }
 
             if(!empty($ids)) {

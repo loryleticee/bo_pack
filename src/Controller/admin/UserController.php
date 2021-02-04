@@ -115,7 +115,7 @@ class UserController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             foreach($user->getProduits() as $produit) {
                 $produit->setUser(null);
-                $produit->setStatus(Produit::STATUS_OPTIONS['unused']);
+                $produit->setStatus(Produit::STATUS_UNUSED);
             }
             $user->setIsDeleted(true);
             $entityManager->flush();

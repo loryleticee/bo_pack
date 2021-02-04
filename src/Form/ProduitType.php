@@ -98,10 +98,10 @@ class ProduitType extends AbstractType
                 EntityType::class,
                 [
                     'class' => User::class,
-                    'choice_label' => 'lastname',
+                    'choice_label' => 'fullname',
                     'multiple' => false,
                     'expanded' => false,
-                    'required' => true,
+                    'required' => false,
                     'label' => 'Utilisateur',
                     'attr' => [
                         'class' => 'w-100 mb-3'
