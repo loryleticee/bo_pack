@@ -48,7 +48,9 @@
                                            href="{{ path('admin_edit_user', {id: user.id}) }}"
                                         > Editer
                                         </a>
-                                        {{ include('admin/user/_delete_form.html.twig') }}
+                                        {% if app.user != user %}
+                                            {{ include('admin/user/_delete_form.html.twig') }}
+                                        {% endif %}
                                     </div>
                                 </div>
                             </td>
