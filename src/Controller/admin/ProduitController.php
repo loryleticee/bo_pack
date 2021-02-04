@@ -21,16 +21,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProduitController extends AbstractController
 {
     /**
-     * @Route("/", name="produit_index", methods={"GET"})
-     */
-    public function index(ProduitRepository $produitRepository): Response
-    {
-        return $this->render('produit/index.html.twig', [
-            'produits' => $produitRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="produit_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -50,7 +40,6 @@ class ProduitController extends AbstractController
             'produit' => $produit,
             'form' => $form->createView(),
         ]);
-        
     }
 
     /**
@@ -58,7 +47,7 @@ class ProduitController extends AbstractController
      */
     public function newProductUser(User $user, Request $request): Response
     {
-        $produit = new Produit(); 
+        $produit = new Produit();
         $entityManager = $this->getDoctrine()->getManager();
         $user = $entityManager->getRepository(User::class)->findOneBy(['id' =>  $user->getId()]);
         $form = $this->createForm(ProduitType::class, $produit, ['user' => $user]);
@@ -76,7 +65,6 @@ class ProduitController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
         ]);
-        
     }
 
     /**
@@ -106,7 +94,6 @@ class ProduitController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-           
             $newProduit = $produits;
             $newUser = $em->getRepository(User::class)->findOneBy(['id' => $form->get('user')->getData()]);
             $newProduit->setName($form->get('name')->getData())
@@ -122,7 +109,7 @@ class ProduitController extends AbstractController
             $this->em->flush();
             $this->addFlash('sucess', 'Produit édité');
         }
-        
+
         return $this->render('produit/editProduit.html.twig', [
             'form' => $form->createView(),
             'produits' => $produits,

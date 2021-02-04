@@ -52,14 +52,7 @@ class UserCreationType extends AbstractType
             )
             ->add('bu', ChoiceType::class, [
                 'label' => 'BU',
-                'choices' => [
-                    'Pack' => 'Pack',
-                    'Luxe' => 'Luxe',
-                    'Digital' => 'Digital',
-                    'Santé' => 'Santé',
-                    'Pro' => 'Pro',
-                    'Autre' => 'Autre',
-                ]
+                'choices' => User::BU_OPTIONS,
             ])
             ->add(
                 'about',
@@ -78,7 +71,7 @@ class UserCreationType extends AbstractType
                 [
                     'label' => 'Enregistrer',
                     'attr' => [
-                        'class' => 'btn btn-primary mt-5',
+                        'class' => 'btn btn-primary mt-5 float-right',
                     ]
                 ]
             );

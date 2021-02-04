@@ -86,7 +86,7 @@ class ProduitType extends AbstractType
                 [
                     'label' => 'Enregister',
                     'attr' => [
-                        'class' => 'btn btn-primary',
+                        'class' => 'btn-lg btn-primary mt-5 float-right',
                     ]
                 ]
             );
@@ -120,7 +120,6 @@ class ProduitType extends AbstractType
                         'class' => 'form-control w-100 mb-3',
                         'disabled ' => true,
                     ],
-                    
                 ]
             );
         }

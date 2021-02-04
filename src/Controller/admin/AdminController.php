@@ -14,7 +14,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Manager\CongresManager;
-use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -66,16 +67,25 @@ class AdminController extends AbstractController
             ->add('modele', TextType::class, [
                 'required' => false,
             ])
-            ->add('user', TextType::class, [
+            ->add('user', EntityType::class,
+            [
+                'class' => User::class,
+                'choice_label' => 'lastname',
                 'required' => false,
+                'label' => 'Utilisateur',
             ])
             ->add('email', TextType::class, [
                 'required' => false,
             ])
-            ->add('bu', TextType::class, [
+            ->add('bu', ChoiceType::class, [
+                'choices' => User::BU_OPTIONS,
+                'label' => 'BU',
                 'required' => false,
             ])
-            ->add('save', SubmitType::class, ['label' => 'Rechercher'])
+            ->add('save', SubmitType::class, [
+                'label' => 'Rechercher',
+                'attr' => ['class' => 'btn-block btn-primary mt-4',]
+            ])
             ->getForm();
 
         $form->handleRequest($request);
@@ -197,7 +207,7 @@ class AdminController extends AbstractController
 
             $aUserIds = array_map( function ($filter, $key) {
                 if(!empty($filter)) {
-                    return $this->em->getRepository(User::class)->searchProducts([ $key => $filter ]);                    
+                    return $this->em->getRepository(User::class)->searchProducts([ $key => $filter ]);
                 }
             }, $userFilters, $filterKeys);
 
@@ -206,7 +216,7 @@ class AdminController extends AbstractController
             }, current(array_filter($aUserIds)));
 
             if(empty($datas)) {
-                $datas = $this->em->getRepository(Produit::class)->findBy(['user'=> $aIds ]);  
+                $datas = $this->em->getRepository(Produit::class)->findBy(['user'=> $aIds ]);
             }else {
                 $datas = array_filter($datas, function ($product) use($aIds) {
                     return in_array($product['id'], $aIds);
@@ -214,7 +224,7 @@ class AdminController extends AbstractController
             }
 
         }
-        
+
         return $datas;
     }
 }
