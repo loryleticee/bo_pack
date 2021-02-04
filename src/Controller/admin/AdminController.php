@@ -78,30 +78,10 @@ class AdminController extends AbstractController
             ->add('save', SubmitType::class, ['label' => 'Rechercher'])
             ->getForm();
 
-        // $form->get('product_name')->setData('');
-        // $form->get('brand')->setData('');
-        // $form->get('place')->setData('');
-        // $form->get('product_type')->setData('');
-        // $form->get('modele')->setData('');
-        // $form->get('user')->setData('');
-        // $form->get('email')->setData('');
-        // $form->get('bu')->setData('');
-
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $fliters = [
-                'name' => $form->get('product_name', [])->getData(),
-                'brand' => $form->get('brand', [])->getData(),
-                'place' => $form->get('place', [])->getData(),
-                'type_produit' => $form->get('product_type', [])->getData(),
-                'modele' => $form->get('modele', [])->getData(),
 
-                'user' => $form->get('user', [])->getData(),
-                'email' => $form->get('email', [])->getData(),
-                'bu' => $form->get('bu', [])->getData(),
-            ];
-
-            $produits = $this->em->getRepository(Produit::class)->searchProducts($fliters);
+            $produits = $this->getProducts($form);
 
             $this->addFlash('sucess', 'Lancement de la recherche');
         }
@@ -142,7 +122,6 @@ class AdminController extends AbstractController
      */
     public function user_products($id)
     {
-
         $user = $this->em->getRepository(User::class)->findOneBy(['id' => $id]);
         $produits = $user->getProduits();
         if ($produits == null) {
@@ -184,5 +163,58 @@ class AdminController extends AbstractController
         $products = $this->getDoctrine()->getRepository(Produit::class)->findBy(['is_deleted' => false]);
 
         $pdfGenerator->getPdf($products);
+    }
+
+    public function getProducts($form)
+    {
+        $datas = [];
+
+        $productfliters = [
+            'name' => $form->get('product_name', [])->getData(),
+            'brand' => $form->get('brand', [])->getData(),
+            'place' => $form->get('place', [])->getData(),
+            'type_produit' => $form->get('product_type', [])->getData(),
+            'modele' => $form->get('modele', [])->getData(),
+        ];
+
+        $userFilters = [
+            'user' => $form->get('user', [])->getData(),
+            'email' => $form->get('email', [])->getData(),
+            'bu' => $form->get('bu', [])->getData(),
+        ];
+
+        $products = $this->em->getRepository(Produit::class)->searchProducts($productfliters);
+
+        if (!empty($products)) {
+            if (!empty($userFilters['user'])) {
+                $datas = array_filter($products, function ($product) use($userFilters) {
+                    return ($product['id'] == $userFilters['user']);
+                });
+            }
+
+            $userFilters = array_slice($userFilters, 1);
+            $filterKeys = array_keys($userFilters);
+
+            $aUserIds = array_map( function ($filter, $key) {
+                if(!empty($filter)) {
+                    return $this->em->getRepository(User::class)->searchProducts([ $key => $filter ]);                    
+                }
+            }, $userFilters, $filterKeys);
+
+            $aIds = array_map( function ($item) {
+                return !empty($item['id']) ?  $item['id'] : null;
+            }, current(array_filter($aUserIds)));
+
+            if(empty($datas)) {
+                $datas = $this->em->getRepository(Produit::class)->findBy(['user'=> $aIds ]);  
+            }else {
+                $datas = array_filter($datas, function ($product) use($aIds) {
+                    return in_array($product['id'], $aIds);
+                });
+            }
+
+        }
+        
+        return $datas;
     }
 }
