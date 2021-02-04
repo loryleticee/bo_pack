@@ -91,7 +91,7 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $produits = $this->getProducts($form);
+            $produits = $this->applyFiltersToProducts($form);
 
             $this->addFlash('sucess', 'Lancement de la recherche');
         }
@@ -175,9 +175,10 @@ class AdminController extends AbstractController
         $pdfGenerator->getPdf($products);
     }
 
-    public function getProducts($form)
+    public function applyFiltersToProducts($form)
     {
         $datas = [];
+        $ids = [];
 
         $productfliters = [
             'name' => $form->get('product_name', [])->getData(),
@@ -194,35 +195,34 @@ class AdminController extends AbstractController
         ];
 
         $products = $this->em->getRepository(Produit::class)->searchProducts($productfliters);
+        $datas = $products;
 
         if (!empty($products)) {
             if (!empty($userFilters['user'])) {
-                $datas = array_filter($products, function ($product) use($userFilters) {
-                    return ($product['id'] == $userFilters['user']);
-                });
+                $ids = [$userFilters['user']->getId()];
             }
 
-            $userFilters = array_slice($userFilters, 1);
-            $filterKeys = array_keys($userFilters);
-
-            $aUserIds = array_map( function ($filter, $key) {
-                if(!empty($filter)) {
-                    return $this->em->getRepository(User::class)->searchProducts([ $key => $filter ]);
-                }
-            }, $userFilters, $filterKeys);
-
-            $aIds = array_map( function ($item) {
-                return !empty($item['id']) ?  $item['id'] : null;
-            }, current(array_filter($aUserIds)));
-
-            if(empty($datas)) {
-                $datas = $this->em->getRepository(Produit::class)->findBy(['user'=> $aIds ]);
-            }else {
-                $datas = array_filter($datas, function ($product) use($aIds) {
-                    return in_array($product['id'], $aIds);
-                });
+            if (!empty($userFilters['email'])) {
+                $idsFromEmail =  array_map(function($item) {
+                    return $item->getId();
+                }, $this->em->getRepository(User::class)->findBy([ 'email' => $userFilters['email'] ]));
+                
+                $ids = array_merge($datas, $idsFromEmail);
+            }
+            
+            if (!empty($userFilters['bu'])) {
+                $idsFromBu =  array_map(function($item) {
+                    return $item->getId();
+                }, $this->em->getRepository(User::class)->findBy([ 'bu' => $userFilters['bu'] ]));
+                
+                $ids = array_merge($datas, $idsFromBu);
             }
 
+            if(!empty($ids)) {
+                $datas = array_filter($products, function ($product) use($ids) {
+                   return in_array($product->getUser()->getId(), $ids);
+                });
+            }
         }
 
         return $datas;

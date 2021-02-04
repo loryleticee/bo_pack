@@ -6,25 +6,26 @@
 </div>
 <div class="container">
 	<div class="row bg-white">
-	<div class="col-3">
-		{{ form_row(form.product_name) }}
-		{{ form_row(form.brand) }}
+		<div class="col-3">
+			{{ form_row(form.product_name) }}
+			{{ form_row(form.brand) }}
+		</div>
+		<div class="col-3">
+			{{ form_row(form.place) }}
+			{{ form_row(form.product_type) }}
+		</div>
+		<div class="col-3">
+			{{ form_row(form.modele) }}
+			{{ form_row(form.user) }}
+		</div>
+		<div class="col-3">
+			{{ form_row(form.email) }}
+			{{ form_row(form.bu) }}
+		</div>
+		<div class="offset-9 col-3">
+			{{ form_row(form.save) }}
+		</div>
 	</div>
-	<div class="col-3">
-		{{ form_row(form.place) }}
-		{{ form_row(form.product_type) }}
-	</div>
-	<div class="col-3">
-		{{ form_row(form.modele) }}
-		{{ form_row(form.user) }}
-	</div>
-	<div class="col-3">
-		{{ form_row(form.email) }}
-		{{ form_row(form.bu) }}
-	</div>
-	<div class="offset-9 col-3">
-		{{ form_row(form.save) }}
-	</div>
+	{{ form_end(form) }}
+	<br>
 </div>
-{{ form_end(form) }}
-<br>
