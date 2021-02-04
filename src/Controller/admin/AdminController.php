@@ -31,7 +31,7 @@ class AdminController extends AbstractController
     /** @var CategoriesManager */
     protected $categoriesManager;
 
-    /** @var Em */
+    /** @var EntityManagerInterface */
     protected $em;
 
     protected $session;
@@ -98,6 +98,7 @@ class AdminController extends AbstractController
 
         return $this->render('admin/home.html.twig', [
             'produits' => $produits,
+            'totalProduits' => count($produits),
             'form' => $form->createView(),
         ]);
     }
@@ -162,17 +163,22 @@ class AdminController extends AbstractController
     /**
      * @Route("/qr_codes", name="admin_produits_get_qr_codes")
      * @param PdfGenerator $pdfGenerator
-     * @param RouterInterface $router
      */
     public function getQrCodes(PdfGenerator $pdfGenerator)
     {
-        #TODO: apply search filters
-        $products = $this->getDoctrine()->getRepository(Produit::class)->findBy(['is_deleted' => false]);
+        $lastResultsFilePath = $this->getParameter('qr_code_dir') . '/last_search.csv';
+        $fp = fopen($lastResultsFilePath, 'r');
+        $ids = fgetcsv($fp);
 
+        if (is_null(reset($ids))) {
+            return $this->redirectToRoute('admin_home', ['info' => "Pas d'elements trouvés pour la génération du pdf"]);
+        }
+
+        $products = $this->getDoctrine()->getRepository(Produit::class)->findBy(['id' => $ids]);
         $pdfGenerator->getPdf($products);
     }
 
-    public function applyFiltersToProducts($form)
+    private function applyFiltersToProducts($form)
     {
         $datas = [];
         $ids = [];
@@ -222,6 +228,20 @@ class AdminController extends AbstractController
             }
         }
 
+        $this->saveLastSearchResults($datas);
+
         return $datas;
+    }
+
+    private function saveLastSearchResults($results)
+    {
+        $results = array_values($results);
+        $lastResultsFilePath = $this->getParameter('qr_code_dir') . '/last_search.csv';
+        $ids = array_map(function($item) {
+            return $item->getId();
+        }, $results);
+
+        $fp = fopen($lastResultsFilePath, 'w');
+        fputcsv($fp, $ids);
     }
 }
