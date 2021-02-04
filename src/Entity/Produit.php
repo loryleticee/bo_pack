@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Produit
 {
+    const STATUS_OPTIONS = [
+        'used' => 'En cours d’utilisation',
+        'unused' => 'Non attribué',
+        'lost' => 'Perdu',
+    ];
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

@@ -15,13 +15,16 @@
 			<div class="card" style="width:400px">
 				<div class="card-body">
 					<h4 class="card-title">{{ produit.type_produit }} {{ produit.name }}</h4>
+					<p class="card-text">Attribué à : <strong>{{ produit.user.fullname }}</strong></p>
 					<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
 					<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
 					<p class="card-text">Emplacement : <strong>{{ produit.place }}</strong></p>
 					<p class="card-text">Modele: <strong>{{ produit.model }}</strong></p>
 					<p class="card-text">Status: <strong>{{ produit.status | upper}}</strong></p>
-					<p class="card-text">Ajouté le: {{ produit.addDate ? produit.addDate|date('Y-m-d H:i:s') : '' }}</p>
-					<p class="card-text">Dernière modification: {{ produit.lastModify ? produit.lastModify|date('Y-m-d H:i:s') : '' }}</p>
+					<p class="card-text">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
+					{% if produit.lastModify is not null %}
+						<p class="card-text">Dernière modification: {{ produit.lastModify }}</p>
+					{% endif %}
 					<p><img src='{{ '/uploads/qr_code/images/' ~ produit.id ~ '.png' }}' alt=''/></p>
 
 					<a href="{{ path('produit_edit', {'id': produit.id}) }}"><button class="btn btn-warning mb-5 text-right float-right">Modifier le produit</button></a>
@@ -29,56 +32,7 @@
 					{{ include('produit/_delete_form.html.twig') }}
 				</div>
 			</div>
-			
 		</div>
-			{# <div class="col-12">
-				<a href="{{ path('admin_home') }}">
-				</a>
-				<h3>{{ produit.name }}</h3>
-				<br>
-				<table class="bg-white shadow rounded-lg">
-					<tbody>
-						<tr>
-							<th>Id</th>
-							<td>{{ produit.id }}</td>
-						</tr>
-						<tr>
-							<th>Name</th>
-							<td>{{ produit.name }}</td>
-						</tr>
-						<tr>
-							<th>Brand</th>
-							<td>{{ produit.brand }}</td>
-						</tr>
-						<tr>
-							<th>Model</th>
-							<td>{{ produit.model }}</td>
-						</tr>
-						<tr>
-							<th>Status</th>
-							<td>{{ produit.status }}</td>
-						</tr>
-						<tr>
-							<th>Add_date</th>
-							<td>{{ produit.addDate ? produit.addDate|date('Y-m-d H:i:s') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Last_modify</th>
-							<td>{{ produit.lastModify ? produit.lastModify|date('Y-m-d H:i:s') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Type</th>
-							<td>{{ produit.type }}</td>
-						</tr>
-						<tr>
-							<th>Place</th>
-							<td>{{ produit.place }}</td>
-						</tr>
-					</tbody>
-				</table>
-				
-			</div> #}
-		
 	</div>
 
 {% endblock %}

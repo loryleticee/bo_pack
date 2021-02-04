@@ -3,9 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Produit;
+use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use stdClass;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -94,15 +97,16 @@ class ProduitEditType extends AbstractType
             ->add('user',  ChoiceType::class,
                 [
                     'choices' => $aUsers,
-                    'data' => $options['user']->getId()
+                    'data' => $options['user']
                 ]
             )
 
             ->add('old_user', HiddenType::class, [
+                'mapped' => false,
                 'attr' => [
                     'name' => 'old_user'
                 ],
-                'data'=> $options['user']->getId()
+                'data'=> $options['user'] ? $options['user']->getId() : []
             ])
 
             ->add(
@@ -115,6 +119,15 @@ class ProduitEditType extends AbstractType
                     ]
                 ]
             );
+           $userRepository =  $this->userRepository;
+            $builder->get('user')->addModelTransformer(new CallbackTransformer(
+                function ($input) {
+                    return $input ? $input->getId() : null;
+                },
+                function ($input) use($userRepository){
+                    return $userRepository->find($input);
+                }
+            ));
     }
 
     public function configureOptions(OptionsResolver $resolver)

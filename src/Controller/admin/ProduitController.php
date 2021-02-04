@@ -84,6 +84,7 @@ class ProduitController extends AbstractController
     public function edit(Produit $produit,Request $request, EntityManagerInterface $em)
     { 
         $form = $this->createForm(ProduitEditType::class , null,['user' => $produit->getUser() ]);
+       
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
@@ -99,8 +100,8 @@ class ProduitController extends AbstractController
                 ->setUser($newUser)
                 ->setLastModify($this->_hasNewUser($form->get('user')->getData(), $form->get('old_user')->getData()));
 
-            $this->em->persist($newProduit);
-            $this->em->flush();
+            $em->persist($newProduit);
+            $em->flush();
             $this->addFlash('sucess', 'Produit édité');
         } else {
             $form->get('name')->setData($produit->getName());
@@ -109,7 +110,6 @@ class ProduitController extends AbstractController
             $form->get('status')->setData($produit->getStatus());
             $form->get('type_produit')->setData($produit->getTypeProduit());
             $form->get('place')->setData($produit->getPlace());
-            $form->get('user')->setData($produit->getUser()->getLastName());
         }
 
         return $this->render('produit/editProduit.html.twig', [
@@ -126,6 +126,8 @@ class ProduitController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $produit->setIsDeleted(true);
+            $produit->setUser(null);
+            $produit->setStatus(Produit::STATUS_OPTIONS['unused']);
             $entityManager->persist($produit);
             $entityManager->flush();
         }
@@ -149,7 +151,6 @@ class ProduitController extends AbstractController
    }
 
     static function _hasNewUser($iUser, $iOldUser) {
-        dd($iUser, $iOldUser);
         $log = [date('Y-m-d H:i:s')];
         if ($iUser !== $iOldUser) {
             $log = ['date' => date('Y-m-d H:i:s'), 'last_user' => $iOldUser];

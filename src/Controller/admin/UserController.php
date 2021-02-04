@@ -4,23 +4,18 @@
 namespace App\Controller\admin;
 
 
-use App\Entity\Congres;
-use App\Entity\Meeting;
+
 use App\Entity\User;
-use App\Form\Back\UserCreationType;
+use App\Entity\Produit;
 use App\Form\Back\UserEditType;
 use App\Manager\CongresManager;
 use App\Manager\MeetingManager;
 use App\Manager\UserManager;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * Class UserController
@@ -118,6 +113,10 @@ class UserController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
+            foreach($user->getProduits() as $produit) {
+                $produit->setUser(null);
+                $produit->setStatus(Produit::STATUS_OPTIONS['unused']);
+            }
             $user->setIsDeleted(true);
             $entityManager->flush();
         }

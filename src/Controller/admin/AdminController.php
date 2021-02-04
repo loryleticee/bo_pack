@@ -70,7 +70,7 @@ class AdminController extends AbstractController
             ->add('user', EntityType::class,
             [
                 'class' => User::class,
-                'choice_label' => 'lastname',
+                'choice_label' => 'fullname',
                 'required' => false,
                 'label' => 'Utilisateur',
             ])
@@ -202,7 +202,7 @@ class AdminController extends AbstractController
             if (!empty($userFilters['email'])) {
                 $idsFromEmail =  array_map(function($item) {
                     return $item->getId();
-                }, $this->em->getRepository(User::class)->findBy([ 'email' => $userFilters['email'] ]));
+                }, $this->em->getRepository(User::class)->findBy([ 'email' => $userFilters['email'] ,'is_deleted' => 0 ]));
                 
                 $ids = array_merge($datas, $idsFromEmail);
             }
@@ -210,7 +210,7 @@ class AdminController extends AbstractController
             if (!empty($userFilters['bu'])) {
                 $idsFromBu =  array_map(function($item) {
                     return $item->getId();
-                }, $this->em->getRepository(User::class)->findBy([ 'bu' => $userFilters['bu'] ]));
+                }, $this->em->getRepository(User::class)->findBy([ 'bu' => $userFilters['bu'], 'is_deleted' => 0 ]));
                 
                 $ids = array_merge($datas, $idsFromBu);
             }
