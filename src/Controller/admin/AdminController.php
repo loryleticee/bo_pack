@@ -133,11 +133,7 @@ class AdminController extends AbstractController
     public function user_products($id)
     {
         $user = $this->em->getRepository(User::class)->findOneBy(['id' => $id]);
-
-        $produits = $user->getProduits();
-        if ($produits == null) {
-            return $this->render('notFound.html.twig');
-        }
+        $produits =  $this->em->getRepository(Produit::class)->findBy(['user' => $user->getId(), 'is_deleted' => 0]);
 
         return $this->render('admin/user/userProducts.html.twig', [
             'produits' => $produits,
