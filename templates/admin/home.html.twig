@@ -31,30 +31,25 @@
                 <table class="table bg-white shadow rounded-lg">
                     <thead>
                         <tr>
-                            <th>Nom</th>
                             <th>Type</th>
-                            <th>Utilisateur</th>
-                            <th>Date de création</th>
-                            <th>Emplacement</th>
-                            <th>Dernière modification</th>
+                            <th>Nom</th>
                             <th>Marque</th>
-                            <th>Modele</th>
+                            <th>Modèle</th>
+                            <th>Utilisateur</th>
+                            <th>Emplacement</th>
                             <th>État</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                   
                     {% for produit in produits %}
                         <tr>
+                            <td>{{ produit.getTypeProduit }}</td>
                             <td>{{ produit.name }}</td>
-                            <td>{{ produit.type_produit }}</td>
-                            <td>{{ produit.user_id }}</td>
-                            <td>{{ produit.add_date|format_date(locale='fr') }}</td>
-                            <td>{{ produit.place }}</td>
-                            <td>{{ produit.last_modify }}</td>
                             <td>{{ produit.brand }}</td>
                             <td>{{ produit.model }}</td>
+                            <td>{{ produit.user.fullname }}</td>
+                            <td><span class={% if produit.place == "Office" %}"badge badge-success"{% else %}"badge badge-warning"{% endif %}>{{ produit.place }}</span></td>
                             <td>{{ produit.status }}</td>
                             <td>
                                 <div class="dropdown">

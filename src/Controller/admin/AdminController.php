@@ -54,18 +54,23 @@ class AdminController extends AbstractController
         $produits = $this->em->getRepository(Produit::class)->findAllActive();
         $form = $this->createFormBuilder($produits)
             ->add('product_name', TextType::class, [
+                'label' => 'Nom du produit',
                 'required' => false,
             ])
             ->add('brand', TextType::class, [
+                'label' => 'Marque',
                 'required' => false,
             ])
             ->add('place', TextType::class, [
+                'label' => 'Emplacement',
                 'required' => false,
             ])
             ->add('product_type', TextType::class, [
+                'label' => 'Type de produit',
                 'required' => false,
             ])
             ->add('modele', TextType::class, [
+                'label' => 'Modèle',
                 'required' => false,
             ])
             ->add('user', EntityType::class,
@@ -96,7 +101,7 @@ class AdminController extends AbstractController
 
             $this->addFlash('sucess', 'Lancement de la recherche');
         }
-
+        
         return $this->render('admin/home.html.twig', [
             'produits' => $produits,
             'totalProduits' => count($produits),

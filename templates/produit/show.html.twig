@@ -19,7 +19,7 @@
 					<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
 					<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
 					<p class="card-text">Emplacement : <strong>{{ produit.place }}</strong></p>
-					<p class="card-text">Modele: <strong>{{ produit.model }}</strong></p>
+					<p class="card-text">Modèle: <strong>{{ produit.model }}</strong></p>
 					<p class="card-text">Status: <strong>{{ produit.status | upper}}</strong></p>
 					<p class="card-text">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
 					{% if produit.lastModify is not null %}
