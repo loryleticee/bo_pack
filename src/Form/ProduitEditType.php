@@ -47,17 +47,10 @@ class ProduitEditType extends AbstractType
                 ]
             )
             ->add('place', ChoiceType::class, [
-                'choices' => [
-                    'Office' => 'Office',
-                    'Home-office' => 'Home-office',
-                ]
+                'choices' => Produit::PLACE_OPTIONS
             ])
             ->add('status', ChoiceType::class, [
-                'choices' => [
-                    'Perdu' => 'Perdu',
-                    'Non attribué' => 'Non attribué',
-                    'En cours d’utilisation' => 'En cours d’utilisation',
-                ]
+                'choices' => Produit::STATUS_OPTIONS
             ])
             ->add(
                 'model',
@@ -82,22 +75,20 @@ class ProduitEditType extends AbstractType
                 ]
             )
             ->add('type_produit', ChoiceType::class, [
-                'choices' => [
-                    'Écran' => 'Écran',
-                    'Souris' => 'Souris',
-                    'Clavier' => 'Clavier',
-                    'Tours' => 'Tours',
-                    'Portable' => 'Portable',
-                    'Tablette' => 'Tablette',
-                    'Telephone fixe' => 'Telephone fixe',
-                    'Chaise' => 'Chaise',
-                ]
+                'choices' => Produit::TYPE_OPTIONS,
             ])
            
             ->add('user',  ChoiceType::class,
                 [
                     'choices' => $aUsers,
                     'data' => $options['user']
+                ]
+            )
+
+            ->add('is_deleted',  ChoiceType::class, [
+                    'choices' => Produit::DELETE_OPTIONS,
+                    'required' => true,
+                    'label' => 'Actif/Supprimé',
                 ]
             )
 

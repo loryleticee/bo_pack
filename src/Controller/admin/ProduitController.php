@@ -98,18 +98,19 @@ class ProduitController extends AbstractController
                 ->setTypeProduit($form->get('type_produit')->getData())
                 ->setPlace($form->get('place')->getData())
                 ->setUser($newUser)
+                ->setIsDeleted($form->get('is_deleted')->getData())
                 ->setLastModify($this->_hasNewUser($form->get('user')->getData(), $form->get('old_user')->getData()));
-
-            $em->persist($newProduit);
-            $em->flush();
-            $this->addFlash('sucess', 'Produit édité');
-        } else {
-            $form->get('name')->setData($produit->getName());
-            $form->get('brand')->setData($produit->getBrand());
-            $form->get('model')->setData($produit->getModel());
-            $form->get('status')->setData($produit->getStatus());
-            $form->get('type_produit')->setData($produit->getTypeProduit());
-            $form->get('place')->setData($produit->getPlace());
+                $em->persist($newProduit);
+                $em->flush();
+                $this->addFlash('sucess', 'Produit édité');
+            } else {
+                $form->get('name')->setData($produit->getName());
+                $form->get('brand')->setData($produit->getBrand());
+                $form->get('model')->setData($produit->getModel());
+                $form->get('status')->setData($produit->getStatus());
+                $form->get('type_produit')->setData($produit->getTypeProduit());
+                $form->get('place')->setData($produit->getPlace());
+                $form->get('is_deleted')->setData($produit->getIsDeleted());
         }
 
         return $this->render('produit/editProduit.html.twig', [

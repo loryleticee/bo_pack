@@ -32,9 +32,7 @@ class ProduitRepository extends ServiceEntityRepository
 
     public function searchProducts($filters)
     {
-        $qb = $this->createQueryBuilder('p')
-            ->where('p.is_deleted != 1');
-            // ->setParameter('value', 1);
+        $qb = $this->createQueryBuilder('p');
 
         foreach ($filters as $key => $filter) {
             if (!empty($filter)) { 

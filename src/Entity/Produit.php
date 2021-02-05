@@ -13,6 +13,31 @@ class Produit
     const STATUS_INUSE = 'En cours d’utilisation';
     const STATUS_UNUSED = 'Non attribué';
     const STATUS_LOST = 'Perdu';
+    const TYPE_OPTIONS = [
+        'Ecran' => 'Ecran',
+        'Souris' => 'Souris',
+        'Clavier' => 'Clavier',
+        'Tours' => 'Tours',
+        'Portable' => 'Portable',
+        'Tablette' => 'Tablette',
+        'Telephone fixe' => 'Telephone fixe',
+        'Chaise' => 'Chaise',
+    ];
+    const STATUS_OPTIONS = [
+        'En cours d’utilisation' => 'En cours d’utilisation',
+        'Non attribué' => 'Non attribué',
+        'Perdu' => 'Perdu',
+    ];
+    const PLACE_OPTIONS = [
+        'Office' => 'Office',
+        'Home-office' => 'Home-office',
+    ];
+
+    const DELETE_OPTIONS = [
+        "Actif" => 0,
+        "Supprimé" => 1,
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue

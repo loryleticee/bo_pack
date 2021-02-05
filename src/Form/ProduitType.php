@@ -42,6 +42,7 @@ class ProduitType extends AbstractType
                     ]
                 ]
             )
+
             ->add(
                 'model',
                 TextType::class,
@@ -53,33 +54,19 @@ class ProduitType extends AbstractType
                     ]
                 ]
             )
+
             ->add('status', ChoiceType::class, [
-                'choices' => [
-                    'En cours d’utilisation' => 'En cours d’utilisation',
-                    'Non attribué' => 'Non attribué',
-                    'Perdu' => 'Perdu',
-                ]
+                'choices' => Produit::STATUS_OPTIONS,
             ])
 
             ->add('type_produit', ChoiceType::class, [
                 'label' => 'Type de produit',
-                'choices' => [
-                    'Ecran' => 'Ecran',
-                    'Souris' => 'Souris',
-                    'Clavier' => 'Clavier',
-                    'Tours' => 'Tours',
-                    'Portable' => 'Portable',
-                    'Tablette' => 'Tablette',
-                    'Telephone fixe' => 'Telephone fixe',
-                    'Chaise' => 'Chaise',
-                ]
+                'choices' => Produit::TYPE_OPTIONS,
             ])
+
             ->add('place', ChoiceType::class, [
                 'label' => 'Emplacement',
-                'choices' => [
-                    'Office' => 'Office',
-                    'Home-office' => 'Home-office',
-                ]
+                'choices' => Produit::PLACE_OPTIONS
             ])
             ->add(
                 'save',
