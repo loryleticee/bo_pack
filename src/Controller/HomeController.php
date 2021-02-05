@@ -26,7 +26,7 @@ class HomeController extends AbstractController
     */
     public function homeRedirect()
     {
-        return $this->redirectToRoute('congres_home', ['id'=>1]);
+        return $this->redirectToRoute('admin_home');
     }
 
 
