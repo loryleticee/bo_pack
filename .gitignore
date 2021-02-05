@@ -8,5 +8,4 @@ var/
 node_modules/
 public/uploads/qr_code/temp/*
 public/uploads/qr_code/*.png
-public/uploads/qr_code/last_search.csv
 !public/uploads/qr_code/images
