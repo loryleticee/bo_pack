@@ -96,6 +96,11 @@ class AdminController extends AbstractController
                 'choices' => Produit::DELETE_OPTIONS,
                 'required' => false,
             ])
+            ->add('state', ChoiceType::class, [
+                'label' => 'État',
+                'choices' => Produit::STATUS_OPTIONS,
+                'required' => false,
+            ])
             ->add('save', SubmitType::class, [
                 'label' => 'Rechercher',
                 'attr' => ['class' => 'btn-block btn-primary mt-4',]
@@ -237,6 +242,7 @@ class AdminController extends AbstractController
             'type_produit' => $form->get('product_type', [])->getData(),
             'modele' => $form->get('modele', [])->getData(),
             'is_deleted' => $form->get('is_deleted', [])->getData(),
+            'status' => $form->get('state', [])->getData(),
         ];
 
         $userFilters = [

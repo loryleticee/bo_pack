@@ -45,7 +45,8 @@
                             <th>Utilisateur</th>
                             <th>Emplacement</th>
                             <th>État</th>
-                            <th></th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -58,6 +59,7 @@
                             <td>{{ produit.user.fullname }}</td>
                             <td><span class={% if produit.place == "Office" %}"badge badge-success"{% else %}"badge badge-warning"{% endif %}>{{ produit.place }}</span></td>
                             <td><span class="{{ array[produit.status]}}"> {{produit.status}}</span></td>
+                            <td><span class="{{ produit.getIsDeleted == false ? 'badge badge-success' : 'badge badge-danger' }}">{{ produit.getIsDeleted == false ? 'Actif' : 'Supprimé'  }}</span></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">
