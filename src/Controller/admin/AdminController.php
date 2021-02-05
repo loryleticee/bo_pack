@@ -5,22 +5,17 @@ namespace App\Controller\admin;
 use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\Back\UserCreationType;
-use App\Manager\CategoriesManager;
-use App\Repository\ProduitRepository;
 use App\Tools\PdfGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Manager\CongresManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Routing\RouterInterface;
 
 /**
  * Class AdminController
@@ -29,12 +24,6 @@ use Symfony\Component\Routing\RouterInterface;
  */
 class AdminController extends AbstractController
 {
-    /** @var CongresManager */
-    protected $congresManager;
-
-    /** @var CategoriesManager */
-    protected $categoriesManager;
-
     /** @var EntityManagerInterface */
     protected $em;
 
@@ -166,38 +155,9 @@ class AdminController extends AbstractController
     public function users(Request $request)
     {
         $users = $this->em->getRepository(User::class)->findAllActive();
-        $form = $this->createFormBuilder($users)
-            ->add('firstname', TextType::class, [
-                'label' => 'Prénom',
-                'required' => false,
-            ])
-            ->add('lastname', TextType::class, [
-                'label' => 'Nom',
-                'required' => false,
-            ])
-            ->add('email', TextType::class, [
-                'label' => 'Email',
-                'required' => false,
-            ])
-            ->add('bu', ChoiceType::class, [
-                'label' => 'BU',
-                'choices' => User::BU_OPTIONS,
-                'required' => false,
-            ])
-            ->add('status', ChoiceType::class, [
-                'label' => 'Status',
-                'choices' => User::DELETE_OPTIONS,
-                'required' => false,
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Rechercher',
-                'attr' => ['class' => 'btn-block btn-primary mt-4',]
-            ])
-            ->getForm();
-
+        $form = $this->getSearchForm($users);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $users = $this->applyFiltersToUsers($form);
 
             $this->addFlash('sucess', 'Lancement de la recherche');
@@ -230,7 +190,6 @@ class AdminController extends AbstractController
 
     private function applyFiltersToProducts($form)
     {
-        $datas = [];
         $ids = [];
 
         $productfliters = [
@@ -284,8 +243,6 @@ class AdminController extends AbstractController
 
     private function applyFiltersToUsers($form)
     {
-        $datas = [];
-
         $userfliters = [
             'firstname' => $form->get('firstname', [])->getData(),
             'lastname' => $form->get('lastname', [])->getData(),
@@ -293,10 +250,46 @@ class AdminController extends AbstractController
             'bu' => $form->get('bu', [])->getData(),
             'is_deleted' => $form->get('status', [])->getData(),
         ];
-        
-        $datas = $this->em->getRepository(User::class)->searchUsers($userfliters);
 
-        return $datas;
+        return $this->em->getRepository(User::class)->searchUsers($userfliters);
     }
-    
+
+    /**
+     * @param $users
+     * @return FormInterface
+     */
+    private function getSearchForm($users)
+    {
+        return $this->createFormBuilder($users)
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'required' => false,
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'required' => false,
+            ])
+            ->add('email', TextType::class, [
+                'label' => 'Email',
+                'required' => false,
+            ])
+            ->add('bu', ChoiceType::class, [
+                'label' => 'BU',
+                'choices' => User::BU_OPTIONS,
+                'required' => false,
+            ])
+            ->add('status', ChoiceType::class, [
+                'label' => 'Status',
+                'choices' => [
+                    'Actif' => 0,
+                    'Supprimé' => 1,
+                ],
+                'required' => false,
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Rechercher',
+                'attr' => ['class' => 'btn-block btn-primary mt-4',]
+            ])
+            ->getForm();
+    }
 }
