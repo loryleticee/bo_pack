@@ -11,7 +11,10 @@ use App\Tools\PdfGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Manager\CongresManager;
@@ -109,7 +112,6 @@ class AdminController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/create/user", name="user_create", methods={"GET","POST"})
      */
@@ -167,23 +169,26 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/qr_codes", name="admin_produits_get_qr_codes")
+     * @Route("/qr_code/{id}", name="admin_produit_get_qr_code")
      * @param PdfGenerator $pdfGenerator
-     * @param ProduitRepository $productsRepo
+     * @param Produit $product
      */
-    public function getQrCodes(PdfGenerator $pdfGenerator, ProduitRepository $productsRepo)
+    public function getQrCode(PdfGenerator $pdfGenerator, Produit $product)
     {
-        $lastResultsFilePath = $this->getParameter('qr_code_dir') . '/last_search.csv';
-        $fp = fopen($lastResultsFilePath, 'r');
-        $ids = fgetcsv($fp);
+        $pdfPath = $pdfGenerator->getPdfDyno([$product]);
 
-        if (is_null(reset($ids))) {
-            $products = $productsRepo->findBy(['is_deleted' => false]);
-        } else {
-            $products = $productsRepo->findBy(['id' => $ids]);
-        }
+        return $this->file($pdfPath, 'generated.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
 
-        $pdfGenerator->getPdf($products);
+        #open in browser
+        $response = new BinaryFileResponse($pdfPath);
+        $response->headers->set('Content-Type', 'application/pdf');
+        $response->setContentDisposition(
+            ResponseHeaderBag::DISPOSITION_INLINE, // to open in browser
+//            ResponseHeaderBag::DISPOSITION_ATTACHMENT, // to save as an attachement
+            'generated.pdf'
+        );
+
+        return $response;
     }
 
     private function applyFiltersToProducts($form)
@@ -235,20 +240,6 @@ class AdminController extends AbstractController
             }
         }
 
-        $this->saveLastSearchResults($datas);
-
         return $datas;
-    }
-
-    private function saveLastSearchResults($results)
-    {
-        $results = array_values($results);
-        $lastResultsFilePath = $this->getParameter('qr_code_dir') . '/last_search.csv';
-        $ids = array_map(function($item) {
-            return $item->getId();
-        }, $results);
-
-        $fp = fopen($lastResultsFilePath, 'w');
-        fputcsv($fp, $ids);
     }
 }
