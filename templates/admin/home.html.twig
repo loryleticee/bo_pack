@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block body %}
-{% set array = {
-  'En cours d’utilisation': 'badge badge-info',
-  'Perdu': 'badge badge-danger',
-  'Non attribué': 'badge badge-light',
-}
-%}
+    {% set array = {
+    'En cours d’utilisation': 'badge badge-info',
+    'Perdu': 'badge badge-danger',
+    'Non attribué': 'badge badge-light',
+    }
+    %}
     {% include '/admin/_navbar.html.twig' %}
     <div class="container">
         <div class="row">

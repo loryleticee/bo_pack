@@ -7,7 +7,12 @@
 	{{ encore_entry_link_tags('admin') }}
 {% endblock %}
 {% block body %}
-
+	{% set array = {
+	'En cours d’utilisation': 'badge badge-info',
+	'Perdu': 'badge badge-danger',
+	'Non attribué': 'badge badge-light',
+	}
+	%}
 	{% include '/admin/_navbar.html.twig' %}
 	<div class="container">
 		<div class="row">
@@ -25,32 +30,26 @@
 				<table class="table bg-white shadow rounded-lg">
 					<thead>
 						<tr>
-							<th>Nom</th>
 							<th>Type</th>
-							<th>Utilisateur</th>
-							<th>Date de création</th>
-							<th>Emplacement</th>
-							<th>Date de modification</th>
-							<th>Qr Code</th>
+							<th>Nom</th>
 							<th>Marque</th>
 							<th>Modèle</th>
+							<th>Emplacement</th>
 							<th>État</th>
+							<th>Dèrniere modification</th>
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for produit in produits %}
 							<tr>
+								<td>{{ produit.getTypeProduit }}</td>
 								<td>{{ produit.name }}</td>
-								<td>{{ produit.type }}</td>
-								<td>{{ produit.user_id }}</td>
-								<td>{{ produit.add_date|format_date(locale='fr') }}</td>
-								<td>{{ produit.place }}</td>
-								<td>{{ produit.last_modify|format_date(locale='fr') }}</td>
-								<td>{{ produit.qr_code }}</td>
 								<td>{{ produit.brand }}</td>
 								<td>{{ produit.model }}</td>
-								<td>{{ produit.status }}</td>
+                            	<td><span class={% if produit.place == "Office" %}"badge badge-success"{% else %}"badge badge-warning"{% endif %}>{{ produit.place }}</span></td>
+                            	<td><span class="{{ array[produit.status]}}"> {{produit.status}}</span></td>
+								<td>{{ produit.last_modify }}</td>
 								<td>
 									<div class="dropdown">
 										<button class="btn btn-sm  rounded-circle border" data-toggle="dropdown">
@@ -75,7 +74,7 @@
 					<h4 class="card-title">{{ user.firstname | upper }} {{ user.lastname | capitalize }}</h4>
 					<p class="card-text">BU : <strong>{{ user.bu | capitalize }}</strong></p>
 					<p class="card-text">Depuis le: <strong>{{ user.created_at |format_date(locale='fr') }}</strong></p>
-					<p class="card-text">à propos: {{ user.about }}</p>
+					<p class="card-text">À propos: {{ user.about }}</p>
 
 					<a href="{{ path('admin_edit_user' , {id: user.id} ) }}">
 						<button class="btn btn-warning mb-5 text-right float-right">Modifier l'utilisateur</button>
