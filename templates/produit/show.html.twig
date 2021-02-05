@@ -7,6 +7,18 @@
 	{{ encore_entry_link_tags('admin') }}
 {% endblock %}
 {% block body %}
+    {% set STATUS_OPTIONS = {
+        'En cours d’utilisation': 'badge badge-primary',
+        'Perdu': 'badge badge-danger',
+        'Non attribué': 'badge badge-light',
+    }
+	%}
+	{%
+   	set PLACE_OPTIONS = {
+        'Home-office': 'badge badge-dark',
+        'Office': 'badge badge-info',
+    }
+    %}
 
 	{% include '/admin/_navbar.html.twig' %}
 
@@ -20,10 +32,10 @@
 						<p class="card-text">Attribué à : <strong>{{ produit.user.fullname }}</strong></p>
 						<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
 						<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
-						<p class="card-text">Emplacement : <strong>{{ produit.place }}</strong></p>
+						<p class="card-text ">Emplacement : <span class="{{PLACE_OPTIONS[produit.place]}}"><strong>{{ produit.place }}</strong></span></p>
 						<p class="card-text">Modèle: <strong>{{ produit.model }}</strong></p>
 						<p class="card-text">Status: <strong>{{ produit.status | upper}}</strong></p>
-						<p class="card-text">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
+						<p class="card-text bad">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
 						{% if produit.lastModify is not null %}
 							<p class="card-text">Dernière modification: {{ produit.lastModify }}</p>
 						{% endif %}

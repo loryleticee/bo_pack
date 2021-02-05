@@ -7,10 +7,10 @@
 {% endblock %}
 
 {% block body %}
-    {% set array = {
-    'En cours d’utilisation': 'badge badge-primary',
-    'Perdu': 'badge badge-danger',
-    'Non attribué': 'badge badge-light',
+    {% set STATUS_OPTIONS = {
+        'En cours d’utilisation': 'badge badge-primary',
+        'Perdu': 'badge badge-danger',
+        'Non attribué': 'badge badge-light',
     }
     %}
     {% include '/admin/_navbar.html.twig' %}
@@ -43,6 +43,7 @@
                             <th>Marque</th>
                             <th>Modèle</th>
                             <th>Utilisateur</th>
+                            <th>BU</th>
                             <th>Emplacement</th>
                             <th>État</th>
                             <th>Status</th>
@@ -57,8 +58,9 @@
                             <td>{{ produit.brand }}</td>
                             <td>{{ produit.model }}</td>
                             <td>{{ produit.user.fullname }}</td>
+                            <td>{{ produit.user.bu }}</td>
                             <td><span class={% if produit.place == "Office" %}"badge badge-info"{% else %}"badge badge-dark"{% endif %}>{{ produit.place }}</span></td>
-                            <td><span class="{{ array[produit.status]}}"> {{produit.status}}</span></td>
+                            <td><span class="{{ STATUS_OPTIONS[produit.status]}}"> {{produit.status}}</span></td>
                             <td><span class="{{ produit.getIsDeleted == false ? 'badge badge-success' : 'badge badge-danger' }}">{{ produit.getIsDeleted == false ? 'Actif' : 'Supprimé'  }}</span></td>
                             <td>
                                 <div class="dropdown">

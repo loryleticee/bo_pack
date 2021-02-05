@@ -21,6 +21,10 @@ class User implements UserInterface
         'Pro' => 'Pro',
         'Autre' => 'Autre',
     ];
+    const DELETE_OPTIONS = [
+        'Actif' => 0,
+        'Supprimé' => 1,
+    ];
 
     /**
      * @ORM\Id()

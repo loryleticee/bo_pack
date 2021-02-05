@@ -186,10 +186,7 @@ class AdminController extends AbstractController
             ])
             ->add('status', ChoiceType::class, [
                 'label' => 'Status',
-                'choices' => [
-                    'Actif' => 0,
-                    'Supprimé' => 1,
-                ],
+                'choices' => User::DELETE_OPTIONS,
                 'required' => false,
             ])
             ->add('save', SubmitType::class, [
@@ -296,7 +293,7 @@ class AdminController extends AbstractController
             'bu' => $form->get('bu', [])->getData(),
             'is_deleted' => $form->get('status', [])->getData(),
         ];
-
+        
         $datas = $this->em->getRepository(User::class)->searchUsers($userfliters);
 
         return $datas;
