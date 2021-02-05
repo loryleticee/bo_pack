@@ -9,31 +9,45 @@
 {% block body %}
 
 	{% include '/admin/_navbar.html.twig' %}
+
 	<div class="container">
 	    <h3 class="pb-4"><a class="pr-3" href="{{ path('admin_home') }}" >&#8249;</a>Fiche produit</h3>
-		<div class='row'>
-			<div class="card" style="width:400px">
-				<div class="card-body">
-					<h4 class="card-title">{{ produit.type_produit }} {{ produit.name }}</h4>
-					<p class="card-text">Attribué à : <strong>{{ produit.user.fullname }}</strong></p>
-					<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
-					<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
-					<p class="card-text">Emplacement : <strong>{{ produit.place }}</strong></p>
-					<p class="card-text">Modèle: <strong>{{ produit.model }}</strong></p>
-					<p class="card-text">Status: <strong>{{ produit.status | upper}}</strong></p>
-					<p class="card-text">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
-					{% if produit.lastModify is not null %}
-						<p class="card-text">Dernière modification: {{ produit.lastModify }}</p>
-					{% endif %}
-					<p><img src='{{ '/uploads/qr_code/images/' ~ produit.id ~ '.png' }}' alt=''/></p>
+		<div class="card">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-6">
+						<h4 class="card-title">{{ produit.type_produit }} {{ produit.name }}</h4>
+						<p class="card-text">Attribué à : <strong>{{ produit.user.fullname }}</strong></p>
+						<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
+						<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
+						<p class="card-text">Emplacement : <strong>{{ produit.place }}</strong></p>
+						<p class="card-text">Modèle: <strong>{{ produit.model }}</strong></p>
+						<p class="card-text">Status: <strong>{{ produit.status | upper}}</strong></p>
+						<p class="card-text">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
+						{% if produit.lastModify is not null %}
+							<p class="card-text">Dernière modification: {{ produit.lastModify }}</p>
+						{% endif %}
 
-					<a href="{{ path('admin_produit_get_qr_code', {'id': produit.id}) }}"><button class="btn btn-success mb-5 text-right float-right">Imprimer QR Code</button></a>
-					<a href="{{ path('produit_edit', {'id': produit.id}) }}"><button class="btn btn-warning mb-5 text-right float-right">Modifier le produit</button></a>
-
-					{{ include('produit/_delete_form.html.twig') }}
-				</div>
+						<div class="row">
+							<div class="col-5">
+								<a href="{{ path('produit_edit', {'id': produit.id}) }}"><button class="btn btn-warning text-right">Modifier le produit</button></a>
+							</div>
+							<div class="col-3">
+								<form method="post" action="{{ path('produit_delete', {'id': produit.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produits?');" class="p-0">
+									<input type="hidden" name="_method" value="DELETE">
+									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+									<a class="dropdown-item p-0" ><button class="btn btn-danger ">Supprimer</button></a>
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="col-6">
+						<h4 class="card-title">QR code</h4>
+						<p><img src='{{ '/uploads/qr_code/images/' ~ produit.id ~ '.png' }}' width="250" height="250" alt="QR Code" /></p>
+						<a href="{{ path('admin_produit_get_qr_code', {'id': produit.id}) }}"><button class="btn btn-success mb-5 text-right">Imprimer QR Code</button></a>
+					</div>
 			</div>
 		</div>
-	</div>
+    </div>
 
 {% endblock %}

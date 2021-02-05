@@ -178,17 +178,6 @@ class AdminController extends AbstractController
         $pdfPath = $pdfGenerator->getPdfDyno([$product]);
 
         return $this->file($pdfPath, 'generated.pdf', ResponseHeaderBag::DISPOSITION_INLINE);
-
-        #open in browser
-        $response = new BinaryFileResponse($pdfPath);
-        $response->headers->set('Content-Type', 'application/pdf');
-        $response->setContentDisposition(
-            ResponseHeaderBag::DISPOSITION_INLINE, // to open in browser
-//            ResponseHeaderBag::DISPOSITION_ATTACHMENT, // to save as an attachement
-            'generated.pdf'
-        );
-
-        return $response;
     }
 
     private function applyFiltersToProducts($form)
