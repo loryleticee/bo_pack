@@ -14,7 +14,7 @@
                 {{ message }}
             </div>
         {% endfor %}
-       
+       {{ include('/admin/user/_search_bar.html.twig') }}
         <div class="row pt-5">
             <div class="col-12">
                 <a href="{{ path('user_create') }}"><button class="btn btn-primary mb-4 float-right">Ajouter un utilisateur</button></a>

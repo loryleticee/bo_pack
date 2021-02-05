@@ -99,7 +99,19 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $results;
     }
 
-
+    public function searchUsers($filters)
+    {
+        $qb = $this->createQueryBuilder('u');
+        foreach ($filters as $key => $filter) {
+            if (!is_null($filter)) {     
+                $qb->andwhere("u.$key  like :" . $key);
+                $qb->setParameter($key, "%$filter%");
+            }
+        }
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+        return $results;
+    }
 
     /*
     public function findOneBySomeField($value): ?User

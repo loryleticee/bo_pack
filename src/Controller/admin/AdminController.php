@@ -153,11 +153,51 @@ class AdminController extends AbstractController
     /**
      * @Route("/users", name="admin_user", methods={"GET","POST"})
      */
-    public function users()
+    public function users(Request $request)
     {
         $users = $this->em->getRepository(User::class)->findAll();
+        $form = $this->createFormBuilder($users)
+            ->add('firstname', TextType::class, [
+                'label' => 'Prénom',
+                'required' => false,
+            ])
+            ->add('lastname', TextType::class, [
+                'label' => 'Nom',
+                'required' => false,
+            ])
+            ->add('email', TextType::class, [
+                'label' => 'Email',
+                'required' => false,
+            ])
+            ->add('bu', TextType::class, [
+                'label' => 'BU',
+                'required' => false,
+            ])
+            ->add('status', ChoiceType::class, [
+                'label' => 'Status',
+                'choices' => [
+                    'Actif' => 0,
+                    'Supprimé' => 1,
+                ],
+                'required' => false,
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Rechercher',
+                'attr' => ['class' => 'btn-block btn-primary mt-4',]
+            ])
+            ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $users = $this->applyFiltersToUsers($form);
+
+            $this->addFlash('sucess', 'Lancement de la recherche');
+        }
+
         return $this->render('admin/user/users.html.twig', [
-            'users' => $users
+            'users' => $users,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -242,4 +282,22 @@ class AdminController extends AbstractController
 
         return $datas;
     }
+
+    private function applyFiltersToUsers($form)
+    {
+        $datas = [];
+
+        $userfliters = [
+            'firstname' => $form->get('firstname', [])->getData(),
+            'lastname' => $form->get('lastname', [])->getData(),
+            'email' => $form->get('email', [])->getData(),
+            'bu' => $form->get('bu', [])->getData(),
+            'is_deleted' => $form->get('status', [])->getData(),
+        ];
+
+        $datas = $this->em->getRepository(User::class)->searchUsers($userfliters);
+
+        return $datas;
+    }
+    
 }
