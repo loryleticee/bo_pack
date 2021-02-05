@@ -8,8 +8,6 @@ namespace App\Controller\admin;
 use App\Entity\User;
 use App\Entity\Produit;
 use App\Form\Back\UserEditType;
-use App\Manager\CongresManager;
-use App\Manager\MeetingManager;
 use App\Manager\UserManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,53 +22,23 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class UserController extends AbstractController
 {
-    /** @var CongresManager */
-    protected $congresManager;
-
     /** @var UserManager */
     protected $userManager;
 
     /** @var Em */
     protected $em;
 
-    /** @var MeetingManager */
-    protected $meetingManager;
-
     private $passwordEncoder;
 
 
     public function __construct(
-        CongresManager $congresManager,
         UserManager $userManager,
         EntityManagerInterface $em,
-        UserPasswordEncoderInterface $passwordEncoder,
-        MeetingManager $meetingManager
+        UserPasswordEncoderInterface $passwordEncoder
     ) {
-        $this->congresManager = $congresManager;
-        $this->userManager = $userManager;
         $this->userManager = $userManager;
         $this->em = $em;
-        $this->meetingManager = $meetingManager;
         $this->passwordEncoder = $passwordEncoder;
-
-    }
-
-    /**
-     * @Route("/{id}/user", name="admin_congres_user")
-     */
-    public function user($id, Request $request)
-    {
-        $congres = $this->congresManager->getById($id);
-        $users = $this->userManager->getAllByCongres($congres);
-        if ($congres == null) {
-            return $this->render('notFound.html.twig');
-        }
-
-        return $this->render('admin/congres/user.html.twig', [
-            'congres' => $congres,
-            'users' => $users
-
-        ]);
     }
 
     /**
