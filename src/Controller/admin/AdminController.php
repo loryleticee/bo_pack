@@ -155,7 +155,7 @@ class AdminController extends AbstractController
      */
     public function users(Request $request)
     {
-        $users = $this->em->getRepository(User::class)->findAll();
+        $users = $this->em->getRepository(User::class)->findAllActive();
         $form = $this->createFormBuilder($users)
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
