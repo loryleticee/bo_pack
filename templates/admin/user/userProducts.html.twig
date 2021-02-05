@@ -15,8 +15,25 @@
 	%}
 	{% include '/admin/_navbar.html.twig' %}
 	<div class="container">
-		<div class="row">
-			<div class="col-6">
+		<h3 class="pb-4"><a class="pr-3" href="{{ path('admin_home') }}" >&#8249;</a></h3>
+		<div class='row'>
+			<div class="card" style="width:400px">
+				<div class="card-body">
+					<h4 class="card-title">{{ user.firstname | upper }} {{ user.lastname | capitalize }}</h4>
+					<p class="card-text">BU : <strong>{{ user.bu | capitalize }}</strong></p>
+					<p class="card-text">Email : <strong><a href="mailto:{{ user.email | lower }}">{{ user.email | lower }}</a></strong></p>
+					<p class="card-text">Depuis le: <strong>{{ user.created_at |format_date(locale='fr') }}</strong></p>
+					<p class="card-text">À propos: {{ user.about }}</p>
+
+					<a href="{{ path('admin_edit_user' , {id: user.id} ) }}">
+						<button class="btn btn-warning mb-5 text-right float-right">Modifier l'utilisateur</button>
+					</a>
+				</div>
+			</div>
+		</div>
+		<hr />
+		<div class="row bg-white rounded-lg shadow-lg p-3">
+			<div class="col-12">
 				<a href="{{ path('produit_new_user', {id: user.id}) }}">
 					<button class="btn btn-primary mb-5 text-right float-right">Créer un produit pour
 						{{ user.firstname}}
@@ -66,20 +83,6 @@
 						{% endfor %}
 					</tbody>
 				</table>
-			</div>
-		</div>
-		<div class='row'>
-			<div class="card" style="width:400px">
-				<div class="card-body">
-					<h4 class="card-title">{{ user.firstname | upper }} {{ user.lastname | capitalize }}</h4>
-					<p class="card-text">BU : <strong>{{ user.bu | capitalize }}</strong></p>
-					<p class="card-text">Depuis le: <strong>{{ user.created_at |format_date(locale='fr') }}</strong></p>
-					<p class="card-text">À propos: {{ user.about }}</p>
-
-					<a href="{{ path('admin_edit_user' , {id: user.id} ) }}">
-						<button class="btn btn-warning mb-5 text-right float-right">Modifier l'utilisateur</button>
-					</a>
-				</div>
 			</div>
 		</div>
 	</div>
