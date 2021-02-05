@@ -179,8 +179,9 @@ class AdminController extends AbstractController
                 'label' => 'Email',
                 'required' => false,
             ])
-            ->add('bu', TextType::class, [
+            ->add('bu', ChoiceType::class, [
                 'label' => 'BU',
+                'choices' => User::BU_OPTIONS,
                 'required' => false,
             ])
             ->add('status', ChoiceType::class, [

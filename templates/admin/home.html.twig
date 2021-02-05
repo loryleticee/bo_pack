@@ -8,7 +8,7 @@
 
 {% block body %}
     {% set array = {
-    'En cours d’utilisation': 'badge badge-info',
+    'En cours d’utilisation': 'badge badge-primary',
     'Perdu': 'badge badge-danger',
     'Non attribué': 'badge badge-light',
     }
@@ -57,7 +57,7 @@
                             <td>{{ produit.brand }}</td>
                             <td>{{ produit.model }}</td>
                             <td>{{ produit.user.fullname }}</td>
-                            <td><span class={% if produit.place == "Office" %}"badge badge-success"{% else %}"badge badge-warning"{% endif %}>{{ produit.place }}</span></td>
+                            <td><span class={% if produit.place == "Office" %}"badge badge-info"{% else %}"badge badge-dark"{% endif %}>{{ produit.place }}</span></td>
                             <td><span class="{{ array[produit.status]}}"> {{produit.status}}</span></td>
                             <td><span class="{{ produit.getIsDeleted == false ? 'badge badge-success' : 'badge badge-danger' }}">{{ produit.getIsDeleted == false ? 'Actif' : 'Supprimé'  }}</span></td>
                             <td>

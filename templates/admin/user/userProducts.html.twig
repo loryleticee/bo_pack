@@ -7,10 +7,10 @@
 	{{ encore_entry_link_tags('admin') }}
 {% endblock %}
 {% block body %}
-	{% set array = {
-	'En cours d’utilisation': 'badge badge-info',
-	'Perdu': 'badge badge-danger',
-	'Non attribué': 'badge badge-light',
+	{% set STATUS_OPTIONS = {
+    'En cours d’utilisation': 'badge badge-primary',
+    'Perdu': 'badge badge-danger',
+    'Non attribué': 'badge badge-light',
 	}
 	%}
 	{% include '/admin/_navbar.html.twig' %}
@@ -64,8 +64,8 @@
 								<td>{{ produit.name }}</td>
 								<td>{{ produit.brand }}</td>
 								<td>{{ produit.model }}</td>
-                            	<td><span class={% if produit.place == "Office" %}"badge badge-success"{% else %}"badge badge-warning"{% endif %}>{{ produit.place }}</span></td>
-                            	<td><span class="{{ array[produit.status]}}"> {{produit.status}}</span></td>
+                            	<td><span class={% if produit.place == "Office" %}"badge badge-info"{% else %}"badge badge-dark"{% endif %}>{{ produit.place }}</span></td>
+                            	<td><span class="{{ STATUS_OPTIONS[produit.status]}}"> {{produit.status}}</span></td>
 								<td>{{ produit.last_modify }}</td>
 								<td>
 									<div class="dropdown">
