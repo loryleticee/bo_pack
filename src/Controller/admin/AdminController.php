@@ -153,7 +153,7 @@ class AdminController extends AbstractController
      */
     public function users()
     {
-        $users = $this->em->getRepository(User::class)->findAllActive();
+        $users = $this->em->getRepository(User::class)->findAll();
         return $this->render('admin/user/users.html.twig', [
             'users' => $users
         ]);
