@@ -44,61 +44,10 @@ class AdminController extends AbstractController
     public function home(Request $request)
     {
         $produits = $this->em->getRepository(Produit::class)->findAllActive();
-        $form = $this->createFormBuilder($produits)
-            ->add('product_name', TextType::class, [
-                'label' => 'Nom du produit',
-                'required' => false,
-            ])
-            ->add('brand', TextType::class, [
-                'label' => 'Marque',
-                'required' => false,
-            ])
-            ->add('place', TextType::class, [
-                'label' => 'Emplacement',
-                'required' => false,
-            ])
-            ->add('product_type', TextType::class, [
-                'label' => 'Type de produit',
-                'required' => false,
-            ])
-            ->add('modele', TextType::class, [
-                'label' => 'Modèle',
-                'required' => false,
-            ])
-            ->add('user', EntityType::class,
-            [
-                'class' => User::class,
-                'choice_label' => 'fullname',
-                'required' => false,
-                'label' => 'Utilisateur',
-            ])
-            ->add('email', TextType::class, [
-                'required' => false,
-            ])
-            ->add('bu', ChoiceType::class, [
-                'choices' => User::BU_OPTIONS,
-                'label' => 'BU',
-                'required' => false,
-            ])
-            ->add('is_deleted', ChoiceType::class, [
-                'label' => 'Status',
-                'choices' => Produit::DELETE_OPTIONS,
-                'required' => false,
-            ])
-            ->add('state', ChoiceType::class, [
-                'label' => 'État',
-                'choices' => Produit::STATUS_OPTIONS,
-                'required' => false,
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Rechercher',
-                'attr' => ['class' => 'btn-block btn-primary mt-4',]
-            ])
-            ->getForm();
+        $form = $this->getSearchProductsForm($produits);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $produits = $this->applyFiltersToProducts($form);
 
             $this->addFlash('sucess', 'Lancement de la recherche');
@@ -155,7 +104,7 @@ class AdminController extends AbstractController
     public function users(Request $request)
     {
         $users = $this->em->getRepository(User::class)->findAllActive();
-        $form = $this->getSearchForm($users);
+        $form = $this->getSearchUsersForm($users);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $users = $this->applyFiltersToUsers($form);
@@ -258,7 +207,7 @@ class AdminController extends AbstractController
      * @param $users
      * @return FormInterface
      */
-    private function getSearchForm($users)
+    private function getSearchUsersForm($users)
     {
         return $this->createFormBuilder($users)
             ->add('firstname', TextType::class, [
@@ -284,6 +233,65 @@ class AdminController extends AbstractController
                     'Actif' => 0,
                     'Supprimé' => 1,
                 ],
+                'required' => false,
+            ])
+            ->add('save', SubmitType::class, [
+                'label' => 'Rechercher',
+                'attr' => ['class' => 'btn-block btn-primary mt-4',]
+            ])
+            ->getForm();
+    }
+
+    /**
+     * @param $produits
+     * @return FormInterface
+     */
+    private function getSearchProductsForm($produits): FormInterface
+    {
+        return $this->createFormBuilder($produits)
+            ->add('product_name', TextType::class, [
+                'label' => 'Nom du produit',
+                'required' => false,
+            ])
+            ->add('brand', TextType::class, [
+                'label' => 'Marque',
+                'required' => false,
+            ])
+            ->add('place', TextType::class, [
+                'label' => 'Emplacement',
+                'required' => false,
+            ])
+            ->add('product_type', TextType::class, [
+                'label' => 'Type de produit',
+                'required' => false,
+            ])
+            ->add('modele', TextType::class, [
+                'label' => 'Modèle',
+                'required' => false,
+            ])
+            ->add('user', EntityType::class,
+                [
+                    'class' => User::class,
+                    'choice_label' => 'fullname',
+                    'required' => false,
+                    'label' => 'Utilisateur',
+                ])
+            ->add('email', TextType::class, [
+                'required' => false,
+            ])
+            ->add('bu', ChoiceType::class, [
+                'choices' => User::BU_OPTIONS,
+                'label' => 'BU',
+                'required' => false,
+            ])
+            ->add('is_deleted', ChoiceType::class, [
+                'label' => 'Status',
+                'choices' => Produit::DELETE_OPTIONS,
+                'required' => false,
+            ])
+            ->add('state', ChoiceType::class, [
+                'label' => 'État',
+                'choices' => Produit::STATUS_OPTIONS,
                 'required' => false,
             ])
             ->add('save', SubmitType::class, [
