@@ -5,7 +5,14 @@
     {{ parent() }}
     {{ encore_entry_link_tags('admin') }}
 {% endblock %}
+
 {% block body %}
+{% set array = {
+  'En cours d’utilisation': 'badge badge-info',
+  'Perdu': 'badge badge-danger',
+  'Non attribué': 'badge badge-light',
+}
+%}
     {% include '/admin/_navbar.html.twig' %}
     <div class="container">
         <div class="row">
@@ -50,7 +57,7 @@
                             <td>{{ produit.model }}</td>
                             <td>{{ produit.user.fullname }}</td>
                             <td><span class={% if produit.place == "Office" %}"badge badge-success"{% else %}"badge badge-warning"{% endif %}>{{ produit.place }}</span></td>
-                            <td>{{ produit.status }}</td>
+                            <td><span class="{{ array[produit.status]}}"> {{produit.status}}</span></td>
                             <td>
                                 <div class="dropdown">
                                     <button class="btn btn-sm  rounded-circle border"  data-toggle="dropdown">

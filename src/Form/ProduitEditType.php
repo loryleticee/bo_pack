@@ -63,8 +63,8 @@ class ProduitEditType extends AbstractType
                 'model',
                 TextType::class,
                 [
-                    'required' => true,
-                    'label' => 'Modele*',
+                    'required' => false,
+                    'label' => 'Modele',
                     'attr' => [
                         'class' => 'form-control w-100 mb-3'
                     ]
@@ -74,8 +74,8 @@ class ProduitEditType extends AbstractType
                 'brand',
                 TextType::class,
                 [
-                    'required' => true,
-                    'label' => 'Marque*',
+                    'required' => false,
+                    'label' => 'Marque',
                     'attr' => [
                         'class' => 'form-control w-100 mb-3'
                     ]

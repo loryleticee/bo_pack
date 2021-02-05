@@ -35,8 +35,8 @@ class ProduitType extends AbstractType
                 'brand',
                 TextType::class,
                 [
-                    'required' => true,
-                    'label' => 'Marque*',
+                    'required' => false,
+                    'label' => 'Marque',
                     'attr' => [
                         'class' => 'form-control w-100 mb-3'
                     ]
@@ -46,8 +46,8 @@ class ProduitType extends AbstractType
                 'model',
                 TextType::class,
                 [
-                    'required' => true,
-                    'label' => 'Modele*',
+                    'required' => false,
+                    'label' => 'Modèle',
                     'attr' => [
                         'class' => 'form-control w-100 mb-3'
                     ]
@@ -62,6 +62,7 @@ class ProduitType extends AbstractType
             ])
 
             ->add('type_produit', ChoiceType::class, [
+                'label' => 'Type de produit',
                 'choices' => [
                     'Ecran' => 'Ecran',
                     'Souris' => 'Souris',
