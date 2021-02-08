@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-left text-center">
     <a href="{{ path('admin_home') }}">
-        <img class="mt-4" src="{{ asset('img/logo-surf-noir.png') }}" alt="" width="68">
+        <img class="mt-4" src="{{ asset('img/logo-surf-blanc.png') }}" alt="" width="68">
     </a>
     {% set route =  app.request.get('_route') %}
     <a href="{{ path('admin_home') }}" class="calendar_icon {{ route == 'admin_home' ? 'active': ''}}"></a>

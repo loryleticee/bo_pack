@@ -12,8 +12,13 @@ label {
   color:#989797;
 }
 
+.search-btn {
+  width: auto;
+  border-radius: 20px;
+}
+
 .bg-dark {
-  background-color: #8A8B8D !important;
+  background-color: black !important;
 }
 
 .btn-primary {
@@ -132,7 +137,7 @@ a.calendar_icon:hover {
 }
 
 a.active {
-  background-color: black;
+  background-color: #e20181;
   border-radius: 50%;
   opacity: 1;
 

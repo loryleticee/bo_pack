@@ -232,7 +232,7 @@ class AdminController extends AbstractController
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Rechercher',
-                'attr' => ['class' => 'btn-block btn-primary mt-4',]
+                'attr' => ['class' => 'search-btn btn-block btn-primary mt-4',]
             ])
             ->getForm();
     }
@@ -291,7 +291,7 @@ class AdminController extends AbstractController
             ])
             ->add('save', SubmitType::class, [
                 'label' => 'Rechercher',
-                'attr' => ['class' => 'btn-block btn-primary mt-4',]
+                'attr' => ['class' => 'search-btn btn-block btn-primary mt-4',]
             ])
             ->getForm();
     }
