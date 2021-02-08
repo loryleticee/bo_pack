@@ -6,6 +6,14 @@
     {{ encore_entry_link_tags('admin') }}
 {% endblock %}
 
+{% block javascripts %}
+{{ parent() }}
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable({searching: false});
+        });
+    </script>
+ {% endblock %}
 {% block body %}
     {% set STATUS_OPTIONS = {
         'En cours d’utilisation': 'badge badge-primary',

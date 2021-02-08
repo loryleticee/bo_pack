@@ -10,6 +10,10 @@
         <title>PARC</title>
         <link rel="apple-touch-icon" href="{{ asset('/img/icon.png') }}">
         <link rel="SHORTCUT ICON" href="{{ asset('img/favicon.ico') }}" type="image/x-icon" />
+        <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+        
+
+        
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -18,6 +22,7 @@
         {% block body %}{% endblock %}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
+            <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
         {% endblock %}
     </body>
 </html>
