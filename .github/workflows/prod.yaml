@@ -11,6 +11,7 @@ jobs:
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
+          php-version: '7.3.20'
           host: ${{ secrets.SSH_SERVER }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD}}
