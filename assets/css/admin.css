@@ -11,10 +11,20 @@ body {
 label {
   color:#989797;
 }
+
+.bg-dark {
+  background-color: #e20181 !important;
+}
+
 .btn-primary {
+  color: #000;
+  background-color: #e20181;
+  border-color: #e20181;
+}
+.btn-primary:hover {
   color: #fff;
-  background-color: #63c9d1;
-  border-color: #63c9d1;
+  background-color: #000;
+  border-color: #000;
 }
 .fond {
   background-color: #FFFFFF;
@@ -122,7 +132,7 @@ a.calendar_icon:hover {
 }
 
 a.active {
-  background-color: #63c9d1;
+  background-color: black;
   border-radius: 50%;
   opacity: 1;
 

@@ -164,27 +164,22 @@ class AdminController extends AbstractController
             if (!empty($userFilters['user'])) {
                 $ids = [$userFilters['user']->getId()];
             }
-
             if (!empty($userFilters['email'])) {
                 $idsFromEmail =  array_map(function($item) {
                     return $item->getId();
                 }, $this->em->getRepository(User::class)->findBy([ 'email' => $userFilters['email'] ,'is_deleted' => 0 ]));
-                
+
                 $ids = array_merge($ids, $idsFromEmail);
             }
-            
             if (!empty($userFilters['bu'])) {
                 $idsFromBu =  array_map(function($item) {
                     return $item->getId();
                 }, $this->em->getRepository(User::class)->findBy([ 'bu' => $userFilters['bu'], 'is_deleted' => 0 ]));
                 $ids = array_merge($ids, $idsFromBu);
             }
-
-            if(!empty($ids)) {
-                $datas = array_filter($products, function ($product) use($ids) {
-                   return in_array($product->getUser()->getId(), $ids);
-                });
-            }
+            $datas = array_filter($products, function ($product) use($ids) {
+               return in_array($product->getUser()->getId(), $ids);
+            });
         }
 
         return $datas;

@@ -27,7 +27,7 @@
 		<div class="card">
 			<div class="card-body">
 				<div class="row">
-					<div class="col-6">
+					<div class="col-sm-6">
 						<h4 class="card-title">{{ produit.type_produit }} {{ produit.name }}</h4>
 						<p class="card-text">Attribué à : <strong>{{ produit.user.fullname }}</strong></p>
 						<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
@@ -41,10 +41,10 @@
 						{% endif %}
 
 						<div class="row">
-							<div class="col-5">
+							<div class="col-sm-5">
 								<a href="{{ path('produit_edit', {'id': produit.id}) }}"><button class="btn btn-warning text-right">Modifier le produit</button></a>
 							</div>
-							<div class="col-3">
+							<div class="col-sm-3">
 								<form method="post" action="{{ path('produit_delete', {'id': produit.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce produits?');" class="p-0">
 									<input type="hidden" name="_method" value="DELETE">
 									<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
@@ -53,9 +53,9 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
+					<div class="col-sm-6">
 						<h4 class="card-title">QR code</h4>
-						<p><img src='{{ '/uploads/qr_code/images/' ~ produit.id ~ '.png' }}' width="250" height="250" alt="QR Code" /></p>
+						<img class="img-fluid d-block mb-4" src='{{ '/uploads/qr_code/images/' ~ produit.id ~ '.png' }}' width="250" height="250" alt="QR Code" />
 						<a target='_blank' href="{{ path('admin_produit_get_qr_code', {'id': produit.id}) }}"><button class="btn btn-success mb-5">Imprimer QR Code</button></a>
 					</div>
 			</div>
