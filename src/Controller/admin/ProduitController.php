@@ -79,6 +79,18 @@ class ProduitController extends AbstractController
     }
 
     /**
+     * @Route("/front/{id}", name="produit_front_show", methods={"GET"})
+     */
+    public function front(Produit $produit, ParameterBagInterface $params): Response
+    {
+        return $this->render('produit/details.html.twig', [
+            'produit' => $produit,
+            'imageUrl' => $params->get('qr_code_dir') . '/images/' . $produit->getId()
+        ]);
+    }
+
+
+    /**
      * @Route("/{id}/edit", name="produit_edit", methods={"GET","POST"})
      */
     public function edit(Produit $produit,Request $request, EntityManagerInterface $em)

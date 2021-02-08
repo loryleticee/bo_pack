@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - Bo_pack
+{% endblock %}
+{% block stylesheets %}
+	{{ parent() }}
+{% endblock %}
+{% block body %}
+    {% set STATUS_OPTIONS = {
+        'En cours d’utilisation': 'badge badge-primary',
+        'Perdu': 'badge badge-danger',
+        'Non attribué': 'badge badge-light',
+    }
+	%}
+	{%
+   	set PLACE_OPTIONS = {
+        'Home-office': 'badge badge-dark',
+        'Office': 'badge badge-info',
+    }
+    %}
+
+	<div class="container">
+	    <h3 class="pb-4">Fiche produit</h3>
+		<div class="row">
+			<div class="col-sm-6 bg-white">
+				<h4 class="card-title">{{ produit.typeProduit }} {{ produit.name }}</h4>
+				<p class="card-text">Attribué à : <strong>{{ produit.user.fullname }}</strong></p>
+				<p class="card-text">BU : <strong>{{ produit.user.bu }}</strong></p>
+				<p class="card-text">Marque: <strong>{{ produit.brand }}</strong></p>
+				<p class="card-text ">Emplacement : <span class="{{PLACE_OPTIONS[produit.place]}}"><strong>{{ produit.place | upper }}</strong></span></p>
+				<p class="card-text">Modèle: <strong>{{ produit.model }}</strong></p>
+				<p class="card-text">Status: <span class="{{STATUS_OPTIONS[produit.status]}}"><strong>{{ produit.status | upper}}</strong></span></p>
+				<p class="card-text bad">Ajouté le: {{ produit.addDate|date('Y-m-d H:i:s')}}</p>
+				{% if produit.lastModify is not null %}
+					<p class="card-text">Dernière modification: {{ produit.lastModify }}</p>
+				{% endif %}
+			</div>
+		</div>
+    </div>
+
+{% endblock %}

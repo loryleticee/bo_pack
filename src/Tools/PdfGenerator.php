@@ -38,7 +38,7 @@ class PdfGenerator
 
         $pdf->useTemplate($templateId, 0, 0, 1);
         $pdf->SetFont('Helvetica', '', 7);
-        $pdf->SetTextColor(255, 0, 0);
+        $pdf->SetTextColor(0, 0, 0);
 
         $currentProduct = $products[0];
         $image = $this->qrCodeDir . "/images/{$currentProduct->getId()}.png";
@@ -46,10 +46,10 @@ class PdfGenerator
             $this->generateQrCode($currentProduct);
         }
 
-        $pdf->SetXY(7, 26);
+        $pdf->SetXY(2, 33);
         $pdf->Write(0, 'id:' . $currentProduct->getId());
-        $pdf->SetXY(4, 4);
-        $pdf->Cell(20, 20, $pdf->Image($image, $pdf->GetX(), $pdf->GetY(), /*side*/ 20), 0, 0, 'C', false);
+        $pdf->SetXY(2, 7);
+        $pdf->Cell(20, 20, $pdf->Image($image, $pdf->GetX(), $pdf->GetY(), /*side*/ 24), 0, 0, 'C', false);
 
         $tempFilePath = "{$this->qrCodeDir}/temp/dyno.pdf";
         $pdf->Output($tempFilePath, 'F');
@@ -62,7 +62,7 @@ class PdfGenerator
      */
     private function generateQrCode($currentProduct): void
     {
-        $url = $this->router->generate('produit_show', ['id' => $currentProduct->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
+        $url = $this->router->generate('produit_front_show', ['id' => $currentProduct->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
         $this->qrCodeHandler->generateQrCode($url);
         $this->qrCodeHandler->saveQrImage($currentProduct->getId());
     }
