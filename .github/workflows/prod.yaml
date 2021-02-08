@@ -11,7 +11,7 @@ jobs:
       - name: Deploy
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '7.4'
+          php-version: '7.3'
           host: ${{ secrets.SSH_SERVER }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD}}
