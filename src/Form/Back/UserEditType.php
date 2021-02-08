@@ -44,6 +44,7 @@ class UserEditType extends AbstractType
            
 
             ->add('bu', ChoiceType::class, [
+                'required' =>false,
                 'choices' => [
                     'Digital' => 'Digital',
                     'Luxe' => 'Luxe',
