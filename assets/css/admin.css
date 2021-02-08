@@ -193,3 +193,7 @@ th{
   z-index: 1030;
   align-items: start!important;
 }
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  display: initial!important;
+}
