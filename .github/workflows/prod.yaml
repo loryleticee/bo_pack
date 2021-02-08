@@ -15,6 +15,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD}}
           script: |
-            cd /parc.agence.surf/
+            cd parc.agence.surf/
             sudo git pull origin dev
             php bin/console c:c
