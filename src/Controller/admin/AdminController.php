@@ -150,7 +150,7 @@ class AdminController extends AbstractController
             'is_deleted' => $form->get('is_deleted', [])->getData(),
             'status' => $form->get('state', [])->getData(),
         ];
-
+         
         $userFilters = [
             'user' => $form->get('user', [])->getData(),
             'email' => $form->get('email', [])->getData(),
@@ -159,7 +159,6 @@ class AdminController extends AbstractController
 
         $products = $this->em->getRepository(Produit::class)->searchProducts($productfliters);
         $datas = $products;
-
         if (!empty($products)) {
             if (!empty($userFilters['user'])) {
                 $ids = [$userFilters['user']->getId()];
@@ -177,8 +176,12 @@ class AdminController extends AbstractController
                 }, $this->em->getRepository(User::class)->findBy([ 'bu' => $userFilters['bu'], 'is_deleted' => 0 ]));
                 $ids = array_merge($ids, $idsFromBu);
             }
+        
             $datas = array_filter($products, function ($product) use($ids) {
-               return in_array($product->getUser()->getId(), $ids);
+                if (empty($ids)) return true;
+                if (is_null($product->getUser())) return false;
+
+                return in_array($product->getUser()->getId(), $ids);
             });
         }
 

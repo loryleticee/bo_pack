@@ -33,10 +33,8 @@ class ProduitRepository extends ServiceEntityRepository
     public function searchProducts($filters)
     {
         $qb = $this->createQueryBuilder('p');
-
         foreach ($filters as $key => $filter) {
-            if (!empty($filter)) { 
-                
+            if ($filter !== null) { 
                 $qb->andwhere("p.$key  like :" . $key);
                 $qb->setParameter($key, "%$filter%");
             }
