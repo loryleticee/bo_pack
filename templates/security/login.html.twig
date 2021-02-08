@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Log in!{% endblock %}
-
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('admin') }}
+{% endblock %}
 {% block body %}
 <body class="text-center">
 <div class="pt-5 container">
@@ -19,7 +22,7 @@
                     </div>
                 {% endif %}
 
-                <img class="mb-4" src="{{ asset('img/logo-bleu.png') }}" alt="" height="72">
+                <img class="mb-4" src="{{ asset('img/logo-surf-noir.png') }}" alt="" height="72">
                 <h1 class="h3 mb-3 font-weight-normal">Administration</h1>
                 <label for="inputEmail">Email</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
@@ -35,7 +38,7 @@
                     Se connecter
                 </button>
             </form>
-            <p class="mt-5 mb-3 text-muted">&copy; Agence Surf - 2020</p>
+            <p class="mt-5 mb-3 text-muted">&copy; Agence Surf - 2021</p>
 
         </div>
     </div>
