@@ -27,7 +27,7 @@ class ProductQrCodeGenerator {
 
     public function postPersist(Produit $product, LifecycleEventArgs $event): void
     {
-        $url = $this->router->generate('produit_show', [ 'id' => $product->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
+        $url = $this->router->generate('produit_front_show', [ 'id' => $product->getId()], UrlGeneratorInterface::ABSOLUTE_URL);
         $this->qrCodeHandler->generateQrCode($url);
         $this->qrCodeHandler->saveQrImage($product->getId());
     }
