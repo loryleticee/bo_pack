@@ -273,6 +273,7 @@ class AdminController extends AbstractController
                     'choice_label' => 'fullname',
                     'required' => false,
                     'label' => 'Utilisateur',
+                    'choices' => $this->em->getRepository(User::class)->findAllActive()
                 ])
             ->add('email', TextType::class, [
                 'required' => false,
