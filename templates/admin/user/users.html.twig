@@ -9,7 +9,12 @@
     {{ parent() }}
     <script>
         $(document).ready( function () {
-            $('.table').DataTable({searching: false});
+            $('.table').DataTable({
+                searching: false,
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json'
+                }
+            });
         });
     </script>{% endblock %}
 {% block body %}
