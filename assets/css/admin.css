@@ -16,7 +16,9 @@ label {
   width: auto;
   border-radius: 20px;
 }
-
+.search-btn-label {
+  padding: 25px;
+}
 .bg-dark {
   background-color: black !important;
 }

@@ -56,7 +56,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         $qb = $this->createQueryBuilder('u')
             ->where('u.is_deleted != :value')
-            ->setParameter('value', 1);
+            ->andWhere('u.roles != :roles')
+            ->setParameter('value',  1 )
+            ->setParameter('roles', '["ROLE_ADMIN"]');
 
         $query = $qb->getQuery();
         $results = $query->getResult();
@@ -86,7 +88,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     {
         $qb = $this->createQueryBuilder('u')
             ->select('u.id')
-            ->where('u.is_deleted != 1');
+            ->where('u.is_deleted != 1')
+            ->andWhere('u.roles != :roles')
+            ->setParameter('roles', '["ROLE_ADMIN"]');
     
         foreach ($filters as $key => $filter) {
             if (!empty($filter)) {     
@@ -108,6 +112,8 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
                 $qb->setParameter($key, "%$filter%");
             }
         }
+        $qb->andWhere('u.roles != :roles');
+        $qb->setParameter('roles', '["ROLE_ADMIN"]');
         $query = $qb->getQuery();
         $results = $query->getResult();
         return $results;
