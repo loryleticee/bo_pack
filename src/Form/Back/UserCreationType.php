@@ -44,7 +44,7 @@ class UserCreationType extends AbstractType
                 EmailType::class,
                 [
                     'required' => false,
-                    'label' => 'Email*',
+                    'label' => 'Email',
                     'attr' => [
                         'class' => 'form-control w-100 mb-3'
                     ]
