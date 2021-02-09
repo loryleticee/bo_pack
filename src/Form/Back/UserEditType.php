@@ -35,7 +35,7 @@ class UserEditType extends AbstractType
             ->add('email',
                 EmailType::class,
                 [
-                    'required' => true,
+                    'required' => false,
                     'label' => 'Email*',
                     'attr' => [
                         'class'=> 'form-control w-100 mb-3'
