@@ -47,9 +47,13 @@ class PdfGenerator
         }
 
         $pdf->SetXY(2, 33);
-        $pdf->Write(0, 'id:' . $currentProduct->getId());
+        $pdf->Write(0, 'surf-' . str_pad($currentProduct->getId(), 4, '0', STR_PAD_LEFT));
         $pdf->SetXY(2, 7);
-        $pdf->Cell(20, 20, $pdf->Image($image, $pdf->GetX(), $pdf->GetY(), /*side*/ 24), 0, 0, 'C', false);
+        $pdf->Cell(20, 20, $pdf->Image($image, $pdf->GetX(), $pdf->GetY(), 24), 0, 0, 'C', false);
+        $logo = $this->qrCodeDir . "/logo-surf-noir.png";
+        $pdf->SetXY(2, 35);
+        $pdf->Cell(20, 20, $pdf->Image($logo, $pdf->GetX(), $pdf->GetY(), 24), 0, 0, 'C', false);
+
 
         $tempFilePath = "{$this->qrCodeDir}/temp/dyno.pdf";
         $pdf->Output($tempFilePath, 'F');
