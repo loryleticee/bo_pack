@@ -16,12 +16,13 @@
 
     {% include '/admin/_navbar.html.twig' %}
     <div class="container">
+        <h3>Rechercher un utilisateur</h3>
         {% for message in app.flashes('sucess') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
-       {{ include('/admin/user/_search_bar.html.twig') }}
+        {{ include('/admin/user/_search_bar.html.twig') }}
         <div class="row pt-5">
             <div class="col-12">
                 <a href="{{ path('user_create') }}"><button class="search-btn btn btn-primary mb-4 float-right">Ajouter un utilisateur</button></a>
